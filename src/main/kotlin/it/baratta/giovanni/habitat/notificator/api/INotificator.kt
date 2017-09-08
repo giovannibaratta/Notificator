@@ -1,4 +1,4 @@
-package it.baratta.giovanni.habitat.notificator
+package it.baratta.giovanni.habitat.notificator.api
 
 import java.io.Serializable
 
