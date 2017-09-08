@@ -1,7 +1,10 @@
 package it.baratta.giovanni.habitat.notificator.api
 
 import java.io.Serializable
+import kotlin.reflect.KClass
 
 interface INotificator{
-    fun notify(clientID : Int, payload : Serializable)
+    fun initNotifcator(clientToken : String, params : NotificatorParams) : Boolean
+    fun destroyNotificator(clientToken : String)
+    fun notify(clientToken: String, payload : Serializable)
 }

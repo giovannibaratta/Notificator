@@ -1,4 +1,5 @@
 package it.baratta.giovanni.habitat.notificator.api
 
-interface NotificatorRequest {
+data class NotificatorRequest(val notificatorName : String,
+                         val params : NotificatorParams) {
 }

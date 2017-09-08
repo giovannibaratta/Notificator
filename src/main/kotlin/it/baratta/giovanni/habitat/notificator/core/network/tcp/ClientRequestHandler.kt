@@ -1,5 +1,7 @@
 package it.baratta.giovanni.habitat.notificator.core.network.tcp
 
+import com.google.gson.Gson
+import it.baratta.giovanni.habitat.notificator.api.DataType
 import it.baratta.giovanni.habitat.notificator.api.NotificatorRequest
 import it.baratta.giovanni.habitat.utils.errorAndThrow
 import org.apache.logging.log4j.LogManager
@@ -9,7 +11,6 @@ import java.nio.ByteBuffer
 import it.baratta.giovanni.habitat.notificator.api.RequestCode
 import it.baratta.giovanni.habitat.notificator.core.ClientManager
 import it.baratta.giovanni.habitat.notificator.core.network.BadRequestException
-import it.baratta.giovanni.habitat.notificator.core.notificatorImplementation.NotificatorRequestParser
 import java.nio.charset.Charset
 
 /**
@@ -25,6 +26,7 @@ class ClientRequestHandler(private val clientSocket : Socket) : Thread() {
 
     val inputStream = clientSocket.getInputStream()
     val outputStream = clientSocket.getOutputStream()
+    val gson = Gson()
 
     companion object {
         private val logger = LogManager.getLogger(ClientRequestHandler::class)
@@ -43,9 +45,9 @@ class ClientRequestHandler(private val clientSocket : Socket) : Thread() {
             val requestCode = readRequestCode()
             println("Tipologia richiesta -> ${requestCode} ")
 
-            when(requestCode){
-                RequestCode.REGISTER.code -> register()
-                RequestCode.UNREGISTER.code -> unregister()
+            when(requestCode.toInt()){
+                RequestCode.REGISTER.ordinal -> register()
+                RequestCode.UNREGISTER.ordinal -> unregister()
                 else -> BadRequestException("Codice richiesta non valido")
             }
 
@@ -65,13 +67,22 @@ class ClientRequestHandler(private val clientSocket : Socket) : Thread() {
 
         // leggo il numero di sorgenti a cui collegarsi
         val notificatorNumber = readNotificatorNumber()
-        for(i in 0.until(notificatorNumber)){
-            // leggo la lunghezza dei dati del modulo
-            val size = readLength()
-            // leggo la porzioni di dati da parsare
-            val buffer = inputStream.readBytes(size)
-            // li delego al parser
-            notificatorRequest.add(NotificatorRequestParser.parse(buffer))
+        // leggo la tipologia di trasferimento
+        val dataType = inputStream.read()
+
+        println("datatype " +dataType)
+
+        when(dataType){
+            DataType.RAW.ordinal -> throw BadRequestException("RAW non implementato")
+            DataType.JSON.ordinal -> for(i in 0.until(notificatorNumber)){
+                // leggo la lunghezza dei dati del modulo
+                val size = readLength()
+                // leggo la porzioni di dati da parsare
+                val buffer = inputStream.readBytes(size)
+                // leggo il module in formato JSON
+                notificatorRequest.add(gson.fromJson(String(buffer), NotificatorRequest::class.java))
+            }
+            else -> throw BadRequestException("DataType non supportato")
         }
 
         val clientToken = ClientManager.instance.registerClient(notificatorRequest.toList())
@@ -105,8 +116,8 @@ class ClientRequestHandler(private val clientSocket : Socket) : Thread() {
     }
 
     private fun unregister(){
-        // leggi il token di 128 bit
-        val clientToken = readString(128)
+        // leggi il token
+        val clientToken = readString(ClientManager.TOKEN_SIZE)
         ClientManager.instance.unregisterClient(clientToken)
         outputStream.write(0)
     }

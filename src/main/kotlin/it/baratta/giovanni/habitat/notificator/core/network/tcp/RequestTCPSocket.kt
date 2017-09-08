@@ -22,10 +22,11 @@ class RequestTCPSocket(private val port : Int) : Thread(){
 
     override fun run() {
         // apro la connessione sulla quale i clienti possono connettersi
-        var socket : ServerSocket
+        val socket : ServerSocket
 
         try{
             socket = ServerSocket(port)
+            socket.reuseAddress = true
         }catch (exception : Exception){
             logger.errorAndThrow(IllegalStateException("Non sono riuscito ad aprire la socket.",exception))
         }
