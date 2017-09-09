@@ -1,11 +1,11 @@
 package it.baratta.giovanni.habitat.notificator.core.notificatorImplementation
 
 import it.baratta.giovanni.habitat.notificator.api.INotificator
-import it.baratta.giovanni.habitat.notificator.api.NotificatorParams
+import it.baratta.giovanni.habitat.notificator.api.ConfigurationParams
 import java.io.Serializable
 
 class FirebaseCloudMessagingNotificator : INotificator{
-    override fun initNotifcator(clientToken: String, params: NotificatorParams): Boolean {
+    override fun initNotifcator(clientToken: String, params: ConfigurationParams): Boolean {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

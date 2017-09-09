@@ -1,7 +1,7 @@
 package it.baratta.giovanni.habitat.notificator.core.notificatorImplementation
 
 import it.baratta.giovanni.habitat.notificator.api.INotificator
-import it.baratta.giovanni.habitat.notificator.api.NotificatorParams
+import it.baratta.giovanni.habitat.notificator.api.ConfigurationParams
 import it.baratta.giovanni.habitat.utils.errorAndThrow
 import org.apache.commons.lang3.SerializationUtils
 import org.apache.logging.log4j.LogManager
@@ -10,8 +10,10 @@ import org.eclipse.paho.client.mqttv3.MqttClient
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions
 import java.io.Serializable
 import java.util.*
+import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.Semaphore
 import kotlin.collections.HashMap
+import kotlin.collections.HashSet
 
 /**
  *  Inoltra le richieste verso l'unica istanza di MqttNotificator
@@ -22,7 +24,7 @@ class MqttNotificatorAdapter() : INotificator{
         val notificator = MqttNotificator.instance
     }
 
-    override fun initNotifcator(clientToken: String, params: NotificatorParams): Boolean
+    override fun initNotifcator(clientToken: String, params: ConfigurationParams): Boolean
         = notificator.initNotifcator(clientToken, params)
 
     override fun destroyNotificator(clientToken: String)
@@ -41,14 +43,15 @@ class MqttNotificator private constructor(): INotificator {
     /* clienti registrati per le notifiche */
     private val clientThread = HashMap<String, MqttConnectionHandler>()
 
+    private val creatingClient = HashSet<String>()
+    private val lock = Object()
+
     /**
      * Crea un nuovo thread per il cliente. Utilizza [params] per le impostazioni della
      * connessione.
      * @return true se è il thread è stato creato senza errori, false altrimenti.
      */
-    override fun initNotifcator(clientToken: String, params: NotificatorParams): Boolean {
-        if(clientThread.containsKey(clientToken))
-            return false
+    override fun initNotifcator(clientToken: String, params: ConfigurationParams): Boolean {
 
         val server = params.getParam("server")
         if(server == null)
@@ -58,6 +61,13 @@ class MqttNotificator private constructor(): INotificator {
         if(topic == null)
             return false
 
+        synchronized(lock){
+            logger.debug("registazione ${creatingClient.contains(clientToken)} - ${this}")
+            if(creatingClient.contains(clientToken))
+                return false
+            creatingClient.add(clientToken)
+        }
+
         val thread : MqttConnectionHandler
 
         try{
@@ -66,6 +76,7 @@ class MqttNotificator private constructor(): INotificator {
             thread = MqttConnectionHandler(server, topic, 1)
         }catch (exception : Exception){
             logger.error("Non sono riuscito a connettermi al server ${server}")
+            creatingClient.remove(clientToken)
             return false
         }
 
@@ -79,8 +90,10 @@ class MqttNotificator private constructor(): INotificator {
      * cliente non è registrato.
      */
     override fun destroyNotificator(clientToken: String) {
+        logger.debug("Destory notificator ${clientToken}")
         clientThread[clientToken]?.closeConnection()
         clientThread.remove(clientToken)
+        creatingClient.remove(clientToken)
     }
 
     /**
@@ -138,7 +151,7 @@ class MqttNotificator private constructor(): INotificator {
                 // inivio le notifiche
                 while(queue.size > 0){
                     logger.debug{SimpleMessage("Inivio  notifica sul topic ${topic}")}
-                    mqttClient.publish(topic, SerializationUtils.serialize(queue.remove()),1,false)
+                    mqttClient.publish(topic, SerializationUtils.serialize(queue.remove()),2,false)
                 }
             }
 

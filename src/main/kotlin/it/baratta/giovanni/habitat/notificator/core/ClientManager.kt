@@ -1,9 +1,12 @@
 package it.baratta.giovanni.habitat.notificator.core
 
+import it.baratta.giovanni.habitat.notificator.api.ConfigurationParams
 import it.baratta.giovanni.habitat.notificator.api.NotificatorRequest
+import it.baratta.giovanni.habitat.notificator.core.eventSourceImplementation.MockSource
 import it.baratta.giovanni.habitat.utils.errorAndThrow
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.message.SimpleMessage
+import java.io.Serializable
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -34,9 +37,30 @@ class ClientManager private constructor(){
             logger.errorAndThrow(IllegalStateException("Non è stato possibile inizializzare tutti i notificator."))
         }
 
+        /*
+        * Inizializzo tutti gli event source*/
+
+        /* DA ELIMINARE */
         client.put(clientToken, initializer)
+        MockSource.instance.registerClient(clientToken, ConfigurationParams(HashMap())).subscribe{ data -> notifier(clientToken, data)}
+        /*
+        MockSource.instance.registerClient(clientToken, ConfigurationParams(HashMap())).subscribe(
+                { data ->
+                    logger.debug("Messagio ricevuto")
+                    notificatorsRequest.forEach{ NotificatorBinder.instance.getNotificatorModule(it.notificatorName).notify(clientToken, data) }
+            }, {
+            logger.debug("Errore")
+        })*/
+
         logger.info{SimpleMessage("Rilascio il token ${clientToken}")}
         return clientToken
+    }
+
+    private fun notifier(clientToken: String, data : Serializable){
+        logger.debug("Messagio ricevuto")
+        for (i in 0.until(client[clientToken]?.notificatorsRequest?.size ?: 0)){
+            NotificatorBinder.instance.getNotificatorModule(client[clientToken]!!.notificatorsRequest[i]!!.notificatorName).notify(clientToken, data)
+        }
     }
 
 

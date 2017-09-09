@@ -22,7 +22,7 @@ import java.util.concurrent.TimeoutException
  * @throws TimeoutException se non si è riuscito a configurare tutti i notificatori prima del timeout
  */
 class NotificatorInitializer(val clientToken : String,
-        private val notificatorsRequest : List<NotificatorRequest>) {
+        val notificatorsRequest : List<NotificatorRequest>) {
 
 
     private val binder = NotificatorBinder.instance
@@ -35,7 +35,7 @@ class NotificatorInitializer(val clientToken : String,
 
         notificatorsRequest.forEach {
             /* Controllo che il notificatore sia caricato nel server */
-            if(!binder.isServiceAvailable(it.notificatorName)) {
+            if(!binder.isNotificatorAvailable(it.notificatorName)) {
                 unregisterClient()
                 logger.errorAndThrow(BadRequestException("Il servizio ${it.notificatorName} non è disponibile"))
             }
@@ -43,7 +43,7 @@ class NotificatorInitializer(val clientToken : String,
             /* Creo un thread per ogni configurazione, ogni notificatore potrebbe essereguire sulla rete o sul disco */
             val thread = Thread{
                 try {
-                    if (!binder.getService(it.notificatorName).initNotifcator(clientToken, it.params)) {
+                    if (!binder.getNotificatorModule(it.notificatorName).initNotifcator(clientToken, it.params)) {
                         unregisterClient()
                         logger.errorAndThrow(IllegalStateException("Il servizio ${it.notificatorName} non è riuscito ad effettuare il setup."))
                     }
@@ -70,7 +70,7 @@ class NotificatorInitializer(val clientToken : String,
 
     fun unregisterClient(){
         notificatorsRequest.forEach{
-            binder.getService(it.notificatorName).destroyNotificator(clientToken)
+            binder.getNotificatorModule(it.notificatorName).destroyNotificator(clientToken)
         }
         threadArray.forEach{
             it.interrupt() }
