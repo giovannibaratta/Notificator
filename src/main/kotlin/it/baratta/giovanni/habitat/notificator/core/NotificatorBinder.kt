@@ -6,8 +6,10 @@ import org.apache.logging.log4j.LogManager
 import java.util.*
 import kotlin.reflect.KClass
 
-/* Gestisce i notificatori, tramite il moduleBinding si passano delle coppie composte
- * da <nomeLogico,Classe che realizza il servizio di Notificator> si istanziano i notificatori desiderati  */
+/**
+ *  Gestisce i notificatori, tramite il moduleBinding si passano delle coppie composte
+ * da <nomeLogico,Classe che realizza il servizio di Notificator> si istanziano i notificatori desiderati
+ */
 class NotificatorBinder private constructor() {
 
     companion object {

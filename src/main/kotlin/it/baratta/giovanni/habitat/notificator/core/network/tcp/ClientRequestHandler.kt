@@ -33,7 +33,6 @@ class ClientRequestHandler(private val clientSocket : Socket) : Thread() {
     }
 
     override fun run() {
-
         if(inputStream == null
                 || outputStream == null)
             logger.errorAndThrow(IllegalStateException("La socket ricevuta non è utilizzabile"))
