@@ -5,10 +5,24 @@ import io.reactivex.subjects.PublishSubject
 import io.reactivex.subjects.Subject
 import it.baratta.giovanni.habitat.notificator.api.ConfigurationParams
 import it.baratta.giovanni.habitat.notificator.api.IEventSource
+import it.baratta.giovanni.habitat.notificator.api.InitializationException
 import org.apache.logging.log4j.LogManager
 import java.io.Serializable
 import java.util.*
 import kotlin.concurrent.thread
+
+class MockSourceAdapter() : IEventSource{
+    companion object {
+        private val instance = MockSource.instance
+    }
+
+    override fun registerClient(clientToken: String, params: ConfigurationParams)
+            : Observable<Serializable>
+        = instance.registerClient(clientToken,params)
+
+    override fun unregisterClient(clientToken: String)
+        = instance.unregisterClient(clientToken)
+}
 
 class MockSource private constructor(): IEventSource{
 
@@ -16,7 +30,7 @@ class MockSource private constructor(): IEventSource{
 
     override fun registerClient(clientToken: String, params: ConfigurationParams): Observable<Serializable> {
         if(subscribedClient.containsKey(clientToken))
-            throw IllegalStateException("Il cliente è già registrato")
+            throw InitializationException("Il cliente è già registrato")
         val subject = PublishSubject.create<Serializable>()
 
         val temp = Thread {
@@ -26,9 +40,10 @@ class MockSource private constructor(): IEventSource{
                 subject.onNext("Message ${i}")
                 Thread.sleep(Random().nextInt(500)+500L)
             }
+            subject.onComplete()
         }
 
-        temp .start()
+        temp.start()
 
         subscribedClient.put(clientToken, subject)
         return subject.hide()

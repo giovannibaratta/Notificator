@@ -1,6 +1,6 @@
 package it.baratta.giovanni.habitat.notificator.core
 
-import it.baratta.giovanni.habitat.notificator.api.NotificatorRequest
+import it.baratta.giovanni.habitat.notificator.api.ModuleRequest
 import it.baratta.giovanni.habitat.notificator.core.network.BadRequestException
 import it.baratta.giovanni.habitat.utils.errorAndThrow
 import org.apache.logging.log4j.LogManager
@@ -22,7 +22,7 @@ import java.util.concurrent.TimeoutException
  * @throws TimeoutException se non si è riuscito a configurare tutti i notificatori prima del timeout
  */
 class NotificatorInitializer(val clientToken : String,
-        val notificatorsRequest : List<NotificatorRequest>) {
+        val notificatorsRequest : List<ModuleRequest>) {
 
 
     private val binder = NotificatorBinder.instance
@@ -35,19 +35,19 @@ class NotificatorInitializer(val clientToken : String,
 
         notificatorsRequest.forEach {
             /* Controllo che il notificatore sia caricato nel server */
-            if(!binder.isNotificatorAvailable(it.notificatorName)) {
+            if(!binder.isNotificatorAvailable(it.moduleName)) {
                 unregisterClient()
-                logger.errorAndThrow(BadRequestException("Il servizio ${it.notificatorName} non è disponibile"))
+                logger.errorAndThrow(BadRequestException("Il servizio ${it.moduleName} non è disponibile"))
             }
 
             /* Creo un thread per ogni configurazione, ogni notificatore potrebbe essereguire sulla rete o sul disco */
             val thread = Thread{
                 try {
-                    if (!binder.getNotificatorModule(it.notificatorName).initNotifcator(clientToken, it.params)) {
+                    if (!binder.getNotificatorModule(it.moduleName).initNotifcator(clientToken, it.params)) {
                         unregisterClient()
-                        logger.errorAndThrow(IllegalStateException("Il servizio ${it.notificatorName} non è riuscito ad effettuare il setup."))
+                        logger.errorAndThrow(IllegalStateException("Il servizio ${it.moduleName} non è riuscito ad effettuare il setup."))
                     }
-                    logger.debug{SimpleMessage("Binding presso ${it.notificatorName} per il client ${clientToken} completato.")}
+                    logger.debug{SimpleMessage("Binding presso ${it.moduleName} per il client ${clientToken} completato.")}
                     /* Se il notificatore è stato configurato correttamente lo segnalo */
                     positiveResponse()
                 }catch (exception : Exception){
@@ -70,7 +70,7 @@ class NotificatorInitializer(val clientToken : String,
 
     fun unregisterClient(){
         notificatorsRequest.forEach{
-            binder.getNotificatorModule(it.notificatorName).destroyNotificator(clientToken)
+            binder.getNotificatorModule(it.moduleName).destroyNotificator(clientToken)
         }
         threadArray.forEach{
             it.interrupt() }

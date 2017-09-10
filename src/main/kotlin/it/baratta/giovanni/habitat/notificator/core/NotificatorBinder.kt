@@ -15,7 +15,7 @@ class NotificatorBinder private constructor() {
 
     companion object {
         val instance = NotificatorBinder()
-        private val logger = LogManager.getLogger(NotificatorBinder::class)
+        private val logger = LogManager.getLogger(NotificatorBinder::class.java)
     }
 
     private val notificatorInstance = HashMap<String, INotificator>()

@@ -1,7 +1,9 @@
 package it.baratta.giovanni.habitat.notificator.core
 
 import it.baratta.giovanni.habitat.notificator.api.ConfigurationParams
-import it.baratta.giovanni.habitat.notificator.api.NotificatorRequest
+import it.baratta.giovanni.habitat.notificator.api.ModuleRequest
+import it.baratta.giovanni.habitat.notificator.core.eventSourceImplementation.MockSource
+import it.baratta.giovanni.habitat.notificator.core.eventSourceImplementation.MockSourceAdapter
 import it.baratta.giovanni.habitat.notificator.core.notificatorImplementation.MqttNotificator
 import it.baratta.giovanni.habitat.notificator.core.notificatorImplementation.MqttNotificatorAdapter
 import org.apache.logging.log4j.LogManager
@@ -24,51 +26,43 @@ fun main(args : Array<String>) {
     RequestTCPSocket(2000).start()
     //RequestTCPSocket(Random().nextInt(50000)+1024).start()
     */
+    NotificatorBinder.instance.bindEventSourceModule("mock", MockSourceAdapter::class)
     NotificatorBinder.instance.bindNotificatorModule("mqtt", MqttNotificatorAdapter::class)
 
     /* Client 1*/
-    val parms = HashMap<String, String>()
-    parms.put("server", "tcp://192.168.0.5:1883")
-    parms.put("topic", "IoT")
-    val params = ConfigurationParams(parms)
-    val notificator = NotificatorRequest("mqtt", params)
+    val notificatorParms = HashMap<String, String>()
+    notificatorParms.put("server", "tcp://192.168.0.5:1883")
+    notificatorParms.put("topic", "IoT")
+    val params = ConfigurationParams(notificatorParms)
+    val notificator = ModuleRequest("mqtt", params)
 
+    val eventSourceParms = HashMap<String, String>()
+    val evparams = ConfigurationParams(eventSourceParms)
+    val source = ModuleRequest("mock", evparams)
 
     try{
-        val token = ClientManager.instance.registerClient(listOf(notificator))
+        val token = ClientManager.instance.registerClient(listOf(source),
+                listOf(notificator))
     }catch (exception : Exception){
-
+        logger.error("eccezzione", exception)
     }
 
 
-
+    /*
     /*  Client 2 */
     val parms2 = HashMap<String, String>()
     parms2.put("server", "tcp://192.168.0.5:1883")
     parms2.put("topic", "IoT2")
     val params2 = ConfigurationParams(parms2)
-    val notificator2 = NotificatorRequest("mqtt", params2)
+    val notificator2 = ModuleRequest("mqtt", params2)
     try{
         val token = ClientManager.instance.registerClient(listOf(notificator2))
     }catch (exception : Exception){
         println("Exception")
     }
 
-    sleep(10000)
-    //th1(token, 2).start()
-    //th1(token2, 1).start()
-
+    */
 
     logger.info { SimpleMessage("Servizio avviato correttamente") }
-}
-
-class th1(private val token : String, private val count : Int) : Thread(){
-    override fun run() {
-        for(i in 0.until(count)){
-            MqttNotificator.instance.notify(token, "Msg${i}")
-            sleep(500L+Random().nextInt(1000))
-        }
-        MqttNotificator.instance.destroyNotificator(token)
-    }
 }
 

@@ -1,8 +1,8 @@
 package it.baratta.giovanni.habitat.notificator.core
 
-import it.baratta.giovanni.habitat.notificator.api.ConfigurationParams
-import it.baratta.giovanni.habitat.notificator.api.NotificatorRequest
-import it.baratta.giovanni.habitat.notificator.core.eventSourceImplementation.MockSource
+import io.reactivex.disposables.Disposable
+import it.baratta.giovanni.habitat.notificator.api.InitializationException
+import it.baratta.giovanni.habitat.notificator.api.ModuleRequest
 import it.baratta.giovanni.habitat.utils.errorAndThrow
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.message.SimpleMessage
@@ -15,7 +15,8 @@ import kotlin.collections.HashMap
  */
 class ClientManager private constructor(){
 
-    private val client = HashMap<String, NotificatorInitializer>()
+    private val client = HashMap<String, Pair<EventSourceInitializer,NotificatorInitializer>>()
+    private val clientSubscription = HashMap<String, Disposable>()
 
     /**
      * Elabora la richiesta del cliente e restituisce un token in
@@ -24,43 +25,69 @@ class ClientManager private constructor(){
      * @param notificatorsRequest moduli per le notifiche da attivare per il cliente
      * @return Token univoco associato al cliente, da usare durante la deregistrazione o per le notifiche
      */
-    fun registerClient(notificatorsRequest : List<NotificatorRequest>) : String {
+    fun registerClient(eventSourceRequest : List<ModuleRequest>, notificatorsRequest : List<ModuleRequest>) : String {
 
         // generazione token univoco
         val clientToken = UUID.randomUUID().toString().replace("-","")
-        val initializer : NotificatorInitializer
+        val notificatorInitializer : NotificatorInitializer
+        val eventSourceInitializer : EventSourceInitializer
 
-        try{
-            // inizializzo tutti i moduli di notifiche specifici per il cliente
-            initializer = NotificatorInitializer(clientToken,notificatorsRequest)
-        }catch (exception : Exception){
-            logger.errorAndThrow(IllegalStateException("Non è stato possibile inizializzare tutti i notificator."))
+        val notificatorThread = object : Thread(){
+            lateinit var initializer : NotificatorInitializer
+
+            override fun run() {
+                // inizializzo tutti i moduli di notifiche specifici per il cliente
+                initializer = NotificatorInitializer(clientToken,notificatorsRequest)
+            }
         }
 
-        /*
-        * Inizializzo tutti gli event source*/
+        val eventThread = object : Thread(){
+            lateinit var initializer : EventSourceInitializer
 
-        /* DA ELIMINARE */
-        client.put(clientToken, initializer)
-        MockSource.instance.registerClient(clientToken, ConfigurationParams(HashMap())).subscribe{ data -> notifier(clientToken, data)}
-        /*
-        MockSource.instance.registerClient(clientToken, ConfigurationParams(HashMap())).subscribe(
-                { data ->
-                    logger.debug("Messagio ricevuto")
-                    notificatorsRequest.forEach{ NotificatorBinder.instance.getNotificatorModule(it.notificatorName).notify(clientToken, data) }
-            }, {
-            logger.debug("Errore")
-        })*/
+            override fun run() {
+                // inizializzo tutti i moduli di notifiche specifici per il cliente
+                initializer = EventSourceInitializer(clientToken,eventSourceRequest)
+            }
+        }
+
+        notificatorThread.setUncaughtExceptionHandler(this::exceptionCollector)
+        eventThread.setUncaughtExceptionHandler(this::exceptionCollector)
+
+        notificatorThread.start()
+        eventThread.start()
+
+        notificatorThread.join()
+        eventThread.join()
+
+        notificatorInitializer = notificatorThread.initializer
+        eventSourceInitializer = eventThread.initializer
+
+        client.put(clientToken, Pair(eventSourceInitializer,notificatorInitializer))
+
+        clientSubscription.put(clientToken,
+                eventSourceInitializer.event.subscribe(
+                        {notify(clientToken,it)}, // onNext
+                        {unregisterClient(clientToken)}, // onError
+                        {unregisterClient(clientToken)})) // onComplete
 
         logger.info{SimpleMessage("Rilascio il token ${clientToken}")}
         return clientToken
     }
 
-    private fun notifier(clientToken: String, data : Serializable){
+    private fun exceptionCollector(thread: Thread, throwable: Throwable) : Nothing{
+        logger.errorAndThrow(InitializationException("Uno dei thread configuratori non è terminato correttamente"))
+    }
+
+    private fun notify(clientToken: String, data : Serializable){
         logger.debug("Messagio ricevuto")
-        for (i in 0.until(client[clientToken]?.notificatorsRequest?.size ?: 0)){
-            NotificatorBinder.instance.getNotificatorModule(client[clientToken]!!.notificatorsRequest[i]!!.notificatorName).notify(clientToken, data)
-        }
+
+        val moduleList : List<ModuleRequest>
+                = client[clientToken]?.second?.notificatorsRequest ?: throw IllegalStateException("Moduli non trovato")
+
+        for (i in 0.until(moduleList.size))
+            NotificatorBinder.instance
+                    .getNotificatorModule(moduleList[i].moduleName)
+                    .notify(clientToken, data)
     }
 
 
@@ -68,13 +95,16 @@ class ClientManager private constructor(){
      *  Rimuovo il cliente dal sistema
      */
     fun unregisterClient(clientToken : String){
-        client[clientToken]?.unregisterClient()
+        clientSubscription[clientToken]?.dispose()
+        clientSubscription.remove(clientToken)
+        client[clientToken]?.first?.unregisterClient()
+        client[clientToken]?.second?.unregisterClient()
         client.remove(clientToken)
     }
 
     companion object {
         val instance = ClientManager()
-        private val logger = LogManager.getLogger(ClientManager::class)
+        private val logger = LogManager.getLogger(ClientManager::class.java)
         const val TOKEN_SIZE = 32
     }
 

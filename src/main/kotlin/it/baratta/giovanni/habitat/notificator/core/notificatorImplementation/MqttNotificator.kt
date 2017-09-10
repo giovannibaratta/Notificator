@@ -146,7 +146,6 @@ class MqttNotificator private constructor(): INotificator {
             while(!end) {
                 // attendo l'arrivo di un notifica
                 sempahore.acquire()
-                logger.debug{SimpleMessage("Risveglio per inivio notifiche o per terminare")}
 
                 // inivio le notifiche
                 while(queue.size > 0){
@@ -164,7 +163,6 @@ class MqttNotificator private constructor(): INotificator {
          *  Accodo una notifica
          */
         fun notify(payload: Serializable){
-            logger.debug{SimpleMessage("Carico notifica")}
             queue.add(payload)
             sempahore.release()
         }

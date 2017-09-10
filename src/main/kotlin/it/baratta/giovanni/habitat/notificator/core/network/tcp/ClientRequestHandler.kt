@@ -2,7 +2,7 @@ package it.baratta.giovanni.habitat.notificator.core.network.tcp
 
 import com.google.gson.Gson
 import it.baratta.giovanni.habitat.notificator.api.DataType
-import it.baratta.giovanni.habitat.notificator.api.NotificatorRequest
+import it.baratta.giovanni.habitat.notificator.api.ModuleRequest
 import it.baratta.giovanni.habitat.utils.errorAndThrow
 import org.apache.logging.log4j.LogManager
 import java.io.IOException
@@ -29,7 +29,7 @@ class ClientRequestHandler(private val clientSocket : Socket) : Thread() {
     val gson = Gson()
 
     companion object {
-        private val logger = LogManager.getLogger(ClientRequestHandler::class)
+        private val logger = LogManager.getLogger(ClientRequestHandler::class.java)
     }
 
     override fun run() {
@@ -62,29 +62,45 @@ class ClientRequestHandler(private val clientSocket : Socket) : Thread() {
     }
 
     private fun register(){
-        val notificatorRequest = ArrayList<NotificatorRequest>()
+        val notificatorRequest = ArrayList<ModuleRequest>()
+        val eventRequest = ArrayList<ModuleRequest>()
 
-        // leggo il numero di sorgenti a cui collegarsi
-        val notificatorNumber = readNotificatorNumber()
         // leggo la tipologia di trasferimento
         val dataType = inputStream.read()
 
+
+        // leggo il numero di eventi a cui collegarsi
+        val eventSourceNumber = readByte()
+        // leggo il numero di sorgenti a cui collegarsi
+        val notificatorNumber = readByte()
+
         println("datatype " +dataType)
 
-        when(dataType){
+        when(dataType) {
             DataType.RAW.ordinal -> throw BadRequestException("RAW non implementato")
-            DataType.JSON.ordinal -> for(i in 0.until(notificatorNumber)){
-                // leggo la lunghezza dei dati del modulo
-                val size = readLength()
-                // leggo la porzioni di dati da parsare
-                val buffer = inputStream.readBytes(size)
-                // leggo il module in formato JSON
-                notificatorRequest.add(gson.fromJson(String(buffer), NotificatorRequest::class.java))
+            DataType.JSON.ordinal ->{
+                for (i in 0.until(eventSourceNumber)) {
+                    // leggo la lunghezza dei dati del modulo
+                    val size = readLength()
+                    // leggo la porzioni di dati da parsare
+                    val buffer = inputStream.readBytes(size)
+                    // leggo il module in formato JSON
+                    notificatorRequest.add(gson.fromJson(String(buffer), ModuleRequest::class.java))
+                }
+
+                for (i in 0.until(notificatorNumber)) {
+                    // leggo la lunghezza dei dati del modulo
+                    val size = readLength()
+                    // leggo la porzioni di dati da parsare
+                    val buffer = inputStream.readBytes(size)
+                    // leggo il module in formato JSON
+                    notificatorRequest.add(gson.fromJson(String(buffer), ModuleRequest::class.java))
+                }
             }
             else -> throw BadRequestException("DataType non supportato")
         }
 
-        val clientToken = ClientManager.instance.registerClient(notificatorRequest.toList())
+        val clientToken = ClientManager.instance.registerClient(eventRequest.toList(),notificatorRequest.toList())
         // invio il token
         outputStream.write(clientToken.toByteArray(Charset.forName("UTF-8")))
     }
@@ -121,7 +137,7 @@ class ClientRequestHandler(private val clientSocket : Socket) : Thread() {
         outputStream.write(0)
     }
 
-    private fun readNotificatorNumber() : Int{
+    private fun readByte() : Int{
         try{
             return inputStream.read()
         }catch (exception : IOException){
