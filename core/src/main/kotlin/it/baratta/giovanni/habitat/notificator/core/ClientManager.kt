@@ -29,11 +29,11 @@ class ClientManager private constructor(){
 
         // generazione token univoco
         val clientToken = UUID.randomUUID().toString().replace("-","")
-        val notificatorInitializer : NotificatorInitializer
-        val eventSourceInitializer : EventSourceInitializer
+        val notificatorInitializer : NotificatorInitializer?
+        val eventSourceInitializer : EventSourceInitializer?
 
         val notificatorThread = object : Thread(){
-            lateinit var initializer : NotificatorInitializer
+            var initializer : NotificatorInitializer? = null
 
             override fun run() {
                 // inizializzo tutti i moduli di notifiche specifici per il cliente
@@ -42,7 +42,7 @@ class ClientManager private constructor(){
         }
 
         val eventThread = object : Thread(){
-            lateinit var initializer : EventSourceInitializer
+            var initializer : EventSourceInitializer? = null
 
             override fun run() {
                 // inizializzo tutti i moduli di notifiche specifici per il cliente
@@ -62,6 +62,10 @@ class ClientManager private constructor(){
         notificatorInitializer = notificatorThread.initializer
         eventSourceInitializer = eventThread.initializer
 
+        if(notificatorInitializer == null || eventSourceInitializer == null){
+            logger.errorAndThrow(IllegalStateException("uno dei gli initializer non è valido"))
+        }
+
         client.put(clientToken, Pair(eventSourceInitializer,notificatorInitializer))
 
         clientSubscription.put(clientToken,
@@ -79,7 +83,7 @@ class ClientManager private constructor(){
     }
 
     private fun notify(clientToken: String, data : Serializable){
-        logger.debug("Messagio ricevuto")
+        //logger.debug("Messagio ricevuto")
 
         val moduleList : List<ModuleRequest>
                 = client[clientToken]?.second?.notificatorsRequest ?: throw IllegalStateException("Moduli non trovato")

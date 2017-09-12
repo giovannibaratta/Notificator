@@ -106,9 +106,15 @@ class ClientRequestHandler(private val clientSocket : Socket) : Thread() {
             else -> throw BadRequestException("DataType non supportato")
         }
 
-        val clientToken = ClientManager.instance.registerClient(eventRequest.toList(),notificatorRequest.toList())
-        // invio il token
-        outputStream.write(clientToken.toByteArray(Charset.forName("UTF-8")))
+        try{
+            val clientToken = ClientManager.instance.registerClient(eventRequest.toList(),notificatorRequest.toList())
+            outputStream.write(0)
+            // invio il token
+            outputStream.write(clientToken.toByteArray(Charset.forName("UTF-8")))
+        }catch (exception : Exception){
+            // errore durante la registrazione, invio esito negativo
+            outputStream.write(1)
+        }
     }
 
     private fun readJSON(esNumber : Int, ntNumer : Int) : Pair<List<ModuleRequest>, List<ModuleRequest>>{
@@ -122,7 +128,7 @@ class ClientRequestHandler(private val clientSocket : Socket) : Thread() {
             // leggo la porzioni di dati da parsare
             val buffer = inputStream.readBytes(size)
             // covnerto il modulo in formato JSON
-            notificatorRequest.add(gson.fromJson(String(buffer), ModuleRequest::class.java))
+            eventRequest.add(gson.fromJson(String(buffer), ModuleRequest::class.java))
         }
 
         for (i in 0.until(ntNumer)) {

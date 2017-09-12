@@ -27,10 +27,11 @@ fun main(args: Array<String>) {
     val threadException = Thread.UncaughtExceptionHandler{th, thowable ->  }
     // Avvio la socket dove ricevere le registrazioni
     //val requestThread = RequestTCPSocket(2000).start()
-    val requestThread = RequestTCPSocket(Random().nextInt(50000)+1024)
+    val requestThread = RequestTCPSocket(2000 /*Random().nextInt(50000)+1024*/)
     shutdownThread.addThread(requestThread)
     requestThread.start()
 
+    /* TEST
     /* Client 1*/
     val notificatorParms = HashMap<String, String>()
     notificatorParms.put("server", "tcp://192.168.0.5:1883")
@@ -48,6 +49,7 @@ fun main(args: Array<String>) {
     } catch (exception: Exception) {
         logger.error("eccezzione", exception)
     }
+    */
 
     requestThread.join()
     logger.info { SimpleMessage("Servizio avviato correttamente") }
