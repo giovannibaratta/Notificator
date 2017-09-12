@@ -1,0 +1,16 @@
+subprojects {
+    dependencies{
+
+    }
+
+    repositories{
+        mavenCentral()
+        google()
+    }
+
+    apply plugin : 'idea'
+    apply plugin : 'maven'
+
+    group 'it.baratta.giovanni.habitat'
+    version '0.2-SNAPSHOT'
+}
