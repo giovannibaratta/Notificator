@@ -1,4 +1,5 @@
 rootProject.name = 'Notificator'
-include 'Core'
+include 'core'
 include 'api'
+include 'clientdemo'
 
