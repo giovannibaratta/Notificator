@@ -2,7 +2,8 @@ package it.baratta.giovanni.habitat.notificator.core
 
 import io.reactivex.disposables.Disposable
 import it.baratta.giovanni.habitat.notificator.api.InitializationException
-import it.baratta.giovanni.habitat.notificator.api.ModuleRequest
+import it.baratta.giovanni.habitat.notificator.api.request.ModuleRequest
+import it.baratta.giovanni.habitat.notificator.core.eventSourceImplementation.MockSourceAdapter
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.message.SimpleMessage
 import java.io.Serializable
@@ -62,8 +63,12 @@ class ClientManager private constructor(){
         notificatorInitializer = notificatorThread.initializer
         eventSourceInitializer = eventThread.initializer
 
-        if(notificatorInitializer == null || eventSourceInitializer == null){
-            logger.errorAndThrow(IllegalStateException("uno dei gli initializer non è valido"))
+        if(notificatorInitializer == null){
+            logger.errorAndThrow(IllegalStateException("uno dei gli notificator initializer non è valido"))
+        }
+
+        if(eventSourceInitializer == null){
+            logger.errorAndThrow(IllegalStateException("uno dei gli event source initializer non è valido"))
         }
 
         client.put(clientToken, Pair(eventSourceInitializer,notificatorInitializer))

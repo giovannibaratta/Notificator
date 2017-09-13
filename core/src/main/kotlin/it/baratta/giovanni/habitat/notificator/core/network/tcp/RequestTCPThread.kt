@@ -16,7 +16,7 @@ import java.net.SocketException
  *
  * @param port porta sulla quale aprire la connessione tcp
  */
-class RequestTCPSocket(private val port : Int) : Thread(), RequestHandler {
+class RequestTCPThread(private val port : Int) : Thread(), RequestHandler {
 
     private lateinit var socket : ServerSocket
 
@@ -60,6 +60,6 @@ class RequestTCPSocket(private val port : Int) : Thread(), RequestHandler {
     }
 
     companion object {
-        private val logger = LogManager.getLogger(RequestTCPSocket::class.java)
+        private val logger = LogManager.getLogger(RequestTCPThread::class.java)
     }
 }

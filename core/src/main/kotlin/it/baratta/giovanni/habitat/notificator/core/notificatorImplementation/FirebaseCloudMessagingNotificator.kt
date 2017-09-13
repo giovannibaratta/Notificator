@@ -1,7 +1,7 @@
 package it.baratta.giovanni.habitat.notificator.core.notificatorImplementation
 
 import it.baratta.giovanni.habitat.notificator.api.INotificator
-import it.baratta.giovanni.habitat.notificator.api.ConfigurationParams
+import it.baratta.giovanni.habitat.notificator.api.request.ConfigurationParams
 import java.io.Serializable
 
 class FirebaseCloudMessagingNotificator : INotificator {

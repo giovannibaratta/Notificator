@@ -1,6 +1,6 @@
 package it.baratta.giovanni.habitat.notificator.core
 
-import it.baratta.giovanni.habitat.notificator.api.ModuleRequest
+import it.baratta.giovanni.habitat.notificator.api.request.ModuleRequest
 import it.baratta.giovanni.habitat.notificator.core.network.BadRequestException
 import it.baratta.giovanni.habitat.utils.errorAndThrow
 import org.apache.logging.log4j.LogManager

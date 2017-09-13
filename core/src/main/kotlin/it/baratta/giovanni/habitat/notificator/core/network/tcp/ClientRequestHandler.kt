@@ -2,7 +2,7 @@ package it.baratta.giovanni.habitat.notificator.core.network.tcp
 
 import com.google.gson.Gson
 import it.baratta.giovanni.habitat.notificator.api.DataType
-import it.baratta.giovanni.habitat.notificator.api.ModuleRequest
+import it.baratta.giovanni.habitat.notificator.api.request.ModuleRequest
 import org.apache.logging.log4j.LogManager
 import java.io.IOException
 import java.net.Socket

@@ -1,7 +1,7 @@
 package it.baratta.giovanni.habitat.notificator.core.eventSourceImplementation
 
 import io.reactivex.Observable
-import it.baratta.giovanni.habitat.notificator.api.ConfigurationParams
+import it.baratta.giovanni.habitat.notificator.api.request.ConfigurationParams
 import it.baratta.giovanni.habitat.notificator.api.IEventSource
 import java.io.Serializable
 

@@ -1,7 +1,7 @@
 package it.baratta.giovanni.habitat.notificator.core.notificatorImplementation
 
 import it.baratta.giovanni.habitat.notificator.api.INotificator
-import it.baratta.giovanni.habitat.notificator.api.ConfigurationParams
+import it.baratta.giovanni.habitat.notificator.api.request.ConfigurationParams
 import it.baratta.giovanni.habitat.utils.errorAndThrow
 import org.apache.commons.lang3.SerializationUtils
 import org.apache.logging.log4j.LogManager

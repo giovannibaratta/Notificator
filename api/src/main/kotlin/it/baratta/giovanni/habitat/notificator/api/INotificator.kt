@@ -1,5 +1,6 @@
 package it.baratta.giovanni.habitat.notificator.api
 
+import it.baratta.giovanni.habitat.notificator.api.request.ConfigurationParams
 import java.io.Serializable
 
 interface INotificator{

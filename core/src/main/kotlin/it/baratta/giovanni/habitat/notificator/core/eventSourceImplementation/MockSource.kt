@@ -3,7 +3,7 @@ package it.baratta.giovanni.habitat.notificator.core.eventSourceImplementation
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import io.reactivex.subjects.Subject
-import it.baratta.giovanni.habitat.notificator.api.ConfigurationParams
+import it.baratta.giovanni.habitat.notificator.api.request.ConfigurationParams
 import it.baratta.giovanni.habitat.notificator.api.IEventSource
 import it.baratta.giovanni.habitat.notificator.api.InitializationException
 import org.apache.logging.log4j.LogManager

@@ -3,7 +3,7 @@ package it.baratta.giovanni.habitat.notificator.core
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import it.baratta.giovanni.habitat.notificator.api.InitializationException
-import it.baratta.giovanni.habitat.notificator.api.ModuleRequest
+import it.baratta.giovanni.habitat.notificator.api.request.ModuleRequest
 import it.baratta.giovanni.habitat.notificator.core.network.BadRequestException
 import it.baratta.giovanni.habitat.utils.errorAndThrow
 import org.apache.logging.log4j.LogManager

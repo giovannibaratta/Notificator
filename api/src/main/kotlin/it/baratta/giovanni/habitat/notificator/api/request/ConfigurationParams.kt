@@ -1,4 +1,4 @@
-package it.baratta.giovanni.habitat.notificator.api
+package it.baratta.giovanni.habitat.notificator.api.request
 
 import java.util.*
 
@@ -12,5 +12,4 @@ data class ConfigurationParams(val params : HashMap<String, String>) {
         require(params.keys.contains(key))
         return params[key]
     }
-
 }
