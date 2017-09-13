@@ -12,9 +12,7 @@ buildscript {
             mavenCentral()
             maven{ url 'https://repo.eclipse.org/content/repositories/paho-releases/' }
         }
-        flatDir {
-            dirs 'libs'
-        }
+
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
