@@ -3,9 +3,6 @@ apply plugin: 'maven'
 group = 'com.github.giovannibaratta'
 
 subprojects {
-    dependencies{
-
-    }
 
     repositories{
         mavenCentral()
@@ -16,5 +13,5 @@ subprojects {
     apply plugin : 'maven'
 
     group 'it.baratta.giovanni.habitat'
-    version '0.2-SNAPSHOT'
+    version '0.3-SNAPSHOT'
 }

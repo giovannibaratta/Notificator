@@ -9,7 +9,7 @@ import javax.servlet.ServletContextListener
 import javax.servlet.annotation.WebListener
 
 @WebListener
-class WebServerInitializer : ServletContextListener{
+class WebServerInitializer : ServletContextListener {
 
     private var tcpThread : RequestTCPThread
             = RequestTCPThread(2000 /*Random().nextInt(50000)+1024*/)

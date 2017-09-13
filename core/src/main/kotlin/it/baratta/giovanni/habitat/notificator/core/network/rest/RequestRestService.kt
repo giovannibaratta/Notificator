@@ -10,13 +10,15 @@ import it.baratta.giovanni.habitat.notificator.core.ClientManager
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 
+
 @Path("/rest")
 class RequestRestService {
 
     private val gson = Gson()
 
     @Path("/registration")
-    @POST @Consumes(MediaType.APPLICATION_JSON)
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     fun registration(data : String) : String{
 
@@ -41,7 +43,8 @@ class RequestRestService {
         return  gson.toJson(ResponseBuilder.registrationResponse(token))
     }
 
-    @DELETE @Path("/deregistration")
+    @DELETE
+    @Path("/deregistration")
     @Produces(MediaType.APPLICATION_JSON)
     fun deregistration(@QueryParam("token") token : String?) : String{
         if(token == null)
