@@ -1,6 +1,5 @@
 apply plugin: 'application'
 apply plugin: 'kotlin'
-apply plugin: 'jetty'
 
 mainClassName = 'it.baratta.giovanni.habitat.notificator.core.MainKt'
 
