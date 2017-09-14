@@ -49,8 +49,9 @@ class RequestRestService {
         if(token == null)
             return gson.toJson(ErrorResponse("token non presente"))
         val status = ClientManager.instance.registrationStatus(token)
-        return gson.toJson(StatusResponse( !status.first.isEmpty() && !status.second.isEmpty(),
-                                                status.first, status.second))
+        return gson.toJson(StatusResponse( token,
+                            !status.first.isEmpty() && !status.second.isEmpty(),
+                                    status.first, status.second))
     }
 
     @DELETE @Path("/deregistration")

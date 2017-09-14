@@ -2,7 +2,8 @@ package it.baratta.giovanni.habitat.notificator.api.response
 
 import it.baratta.giovanni.habitat.notificator.api.request.ModuleRequest
 
-data class StatusResponse(val registered: Boolean,
+data class StatusResponse(val token : String,
+                          val registered: Boolean,
                           val eventModule : List<ModuleRequest>,
                           val notificatorModule : List<ModuleRequest>) : IResponse {
 
