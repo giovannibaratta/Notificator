@@ -20,5 +20,7 @@ interface INotificator{
      * @param clientToken cliente a cui inviare i dati
      * @param payload dati da inviare
      */
-    fun notify(clientToken: String, payload : Serializable)
+    fun notify(clientToken: String, message: Message)
+
+    val notificatorName : String
 }

@@ -1,42 +1,38 @@
 package it.baratta.giovanni.habitat.notificator.core.eventSourceImplementation
 
+import com.google.gson.Gson
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import io.reactivex.subjects.Subject
 import it.baratta.giovanni.habitat.notificator.api.request.ConfigurationParams
 import it.baratta.giovanni.habitat.notificator.api.IEventSource
 import it.baratta.giovanni.habitat.notificator.api.InitializationException
+import it.baratta.giovanni.habitat.notificator.api.Message
 import org.apache.logging.log4j.LogManager
-import java.io.Serializable
 import java.util.*
-
-class MockSourceAdapter() : IEventSource {
-    companion object {
-        private val instance = MockSource.instance
-    }
-
-    override fun registerClient(clientToken: String, params: ConfigurationParams)
-            : Observable<Serializable>
-        = instance.registerClient(clientToken,params)
-
-    override fun unregisterClient(clientToken: String)
-        = instance.unregisterClient(clientToken)
-}
 
 class MockSource private constructor(): IEventSource {
 
-    private val subscribedClient = HashMap<String, Subject<Serializable>>()
+    private val subscribedClient = HashMap<String, Subject<Message>>()
+    private var messageCounter = 0
 
-    override fun registerClient(clientToken: String, params: ConfigurationParams): Observable<Serializable> {
+    override val sourceName: String = "mock"
+
+    override fun registerClient(clientToken: String, params: ConfigurationParams): Observable<Message> {
         if(subscribedClient.containsKey(clientToken))
             throw InitializationException("Il cliente è già registrato")
-        val subject = PublishSubject.create<Serializable>()
+        val subject = PublishSubject.create<Message>()
 
         val temp = Thread {
+            val className = String::class.qualifiedName
+            if(className == null)
+                throw IllegalStateException("String non ha un nome")
+
             Thread.sleep(1000)
             for(i in 0.until(10)){
                 logger.debug("Messaggio generato ${i} - ${clientToken}")
-                subject.onNext("Message ${i}")
+                subject.onNext(Message(messageCounter, sourceName,
+                                        gson.toJson("Message ${messageCounter}"), className))
                 Thread.sleep(Random().nextInt(500)+500L)
             }
             subject.onComplete()
@@ -53,9 +49,9 @@ class MockSource private constructor(): IEventSource {
         subscribedClient.remove(clientToken)
     }
 
-
     companion object {
         val instance = MockSource()
         private val logger = LogManager.getLogger(MockSource::class.java)
+        private val gson = Gson()
     }
 }

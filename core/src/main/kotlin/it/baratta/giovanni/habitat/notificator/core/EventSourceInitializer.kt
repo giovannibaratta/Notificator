@@ -3,12 +3,12 @@ package it.baratta.giovanni.habitat.notificator.core
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import it.baratta.giovanni.habitat.notificator.api.InitializationException
+import it.baratta.giovanni.habitat.notificator.api.Message
 import it.baratta.giovanni.habitat.notificator.api.request.ModuleRequest
 import it.baratta.giovanni.habitat.notificator.core.network.BadRequestException
 import it.baratta.giovanni.habitat.utils.errorAndThrow
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.message.SimpleMessage
-import java.io.Serializable
 import java.util.*
 import java.util.concurrent.Semaphore
 import java.util.concurrent.TimeUnit
@@ -21,19 +21,19 @@ class EventSourceInitializer(val clientToken : String,
                              val moduleRequest: List<ModuleRequest>) {
 
 
-    private val binder = NotificatorBinder.instance
+    private val binder = ServiceBinder.instance
     /* l'oggetto non viene creato se non sono stati inizializzati tutti gli eventSource */
     private val lock = Semaphore(-moduleRequest.size + 1)
     /* array dei thread di configurazione in esecuzione */
     private val threadArray = ArrayList<Thread>(moduleRequest.size)
 
-    private lateinit var collector : PublishSubject<Serializable>
-    var event : Observable<Serializable>
+    private lateinit var collector : PublishSubject<Message>
+    var event : Observable<Message>
 
     init{
         require(moduleRequest.size > 0)
 
-        val observer = ArrayList<Observable<Serializable>>()
+        val observer = ArrayList<Observable<Message>>()
 
         moduleRequest.forEach {
             /* Controllo che l'eventSource sia caricato nel server */

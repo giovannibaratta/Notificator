@@ -1,7 +1,10 @@
 package it.baratta.giovanni.habitat.notificator.core.notificatorImplementation
 
+import com.google.gson.Gson
 import it.baratta.giovanni.habitat.notificator.api.INotificator
+import it.baratta.giovanni.habitat.notificator.api.Message
 import it.baratta.giovanni.habitat.notificator.api.request.ConfigurationParams
+import it.baratta.giovanni.habitat.notificator.core.eventSourceImplementation.MockSource
 import it.baratta.giovanni.habitat.utils.errorAndThrow
 import org.apache.commons.lang3.SerializationUtils
 import org.apache.logging.log4j.LogManager
@@ -15,25 +18,6 @@ import kotlin.collections.HashMap
 import kotlin.collections.HashSet
 
 /**
- *  Inoltra le richieste verso l'unica istanza di MqttNotificator
- *  */
-class MqttNotificatorAdapter() : INotificator {
-
-    companion object {
-        val notificator = MqttNotificator.instance
-    }
-
-    override fun initNotifcator(clientToken: String, params: ConfigurationParams): Boolean
-        = notificator.initNotifcator(clientToken, params)
-
-    override fun destroyNotificator(clientToken: String)
-        = notificator.destroyNotificator(clientToken)
-
-    override fun notify(clientToken: String, payload: Serializable)
-        = notificator.notify(clientToken, payload)
-}
-
-/**
  * Crea dei thread per gestire le connessione verso dei broker mqtt.
  * Ogni cliente dispone di un proprio thread.
  */
@@ -41,6 +25,8 @@ class MqttNotificator private constructor(): INotificator {
 
     /* clienti registrati per le notifiche */
     private val clientThread = HashMap<String, MqttConnectionHandler>()
+
+    override val notificatorName: String = "mqtt"
 
     private val creatingClient = HashSet<String>()
     private val lock = Object()
@@ -98,15 +84,16 @@ class MqttNotificator private constructor(): INotificator {
     /**
      * Invia i dati al mqtt broker utilizzando il thread del cliente
      */
-    override fun notify(clientToken: String, payload: Serializable) {
+    override fun notify(clientToken: String, message: Message) {
         if(!clientThread.containsKey(clientToken))
             logger.errorAndThrow(IllegalStateException("Non è registrato nessun cliente con il token ${clientToken}"))
-        clientThread[clientToken]?.notify(payload)
+        clientThread[clientToken]?.notify(message)
     }
 
     companion object {
         val instance = MqttNotificator()
         private val logger = LogManager.getLogger(MqttNotificator::class.java)
+        private val gson = Gson()
     }
 
     /**
@@ -123,7 +110,7 @@ class MqttNotificator private constructor(): INotificator {
         // se = true, il thread può terminare
         private var end = false
         // coda dei messaggi
-        private val queue : Queue<Serializable> = LinkedList<Serializable>()
+        private val queue : Queue<Message> = LinkedList<Message>()
         // attesa nel caso non ci siano messaggi da inviare
         private val sempahore = Semaphore(0)
         private val mqttClient : MqttClient
@@ -149,7 +136,7 @@ class MqttNotificator private constructor(): INotificator {
                 // inivio le notifiche
                 while(queue.size > 0){
                     logger.debug{SimpleMessage("Inivio  notifica sul topic ${topic}")}
-                    mqttClient.publish(topic, SerializationUtils.serialize(queue.remove()),2,false)
+                    mqttClient.publish(topic, gson.toJson(queue.remove()).toByteArray(),2,false)
                 }
             }
 
@@ -161,8 +148,8 @@ class MqttNotificator private constructor(): INotificator {
         /**
          *  Accodo una notifica
          */
-        fun notify(payload: Serializable){
-            queue.add(payload)
+        fun notify(message : Message){
+            queue.add(message)
             sempahore.release()
         }
 

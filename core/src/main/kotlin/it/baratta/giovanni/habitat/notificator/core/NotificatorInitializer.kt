@@ -25,7 +25,7 @@ class NotificatorInitializer(val clientToken : String,
         val notificatorsRequest : List<ModuleRequest>) {
 
 
-    private val binder = NotificatorBinder.instance
+    private val binder = ServiceBinder.instance
     /* l'oggetto non viene creato se non sono stati inizializzati tutti i notificatori */
     private val lock = Semaphore(-notificatorsRequest.size + 1)
     /* array dei thread di configurazione in esecuzione */

@@ -2,11 +2,10 @@ package it.baratta.giovanni.habitat.notificator.core
 
 import io.reactivex.disposables.Disposable
 import it.baratta.giovanni.habitat.notificator.api.InitializationException
+import it.baratta.giovanni.habitat.notificator.api.Message
 import it.baratta.giovanni.habitat.notificator.api.request.ModuleRequest
-import it.baratta.giovanni.habitat.notificator.core.eventSourceImplementation.MockSourceAdapter
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.message.SimpleMessage
-import java.io.Serializable
 import java.util.*
 import kotlin.collections.HashMap
 import it.baratta.giovanni.habitat.utils.*
@@ -87,16 +86,16 @@ class ClientManager private constructor(){
         logger.errorAndThrow(InitializationException("Uno dei thread configuratori non è terminato correttamente"))
     }
 
-    private fun notify(clientToken: String, data : Serializable){
+    private fun notify(clientToken: String, message : Message){
         //logger.debug("Messagio ricevuto")
 
         val moduleList : List<ModuleRequest>
                 = client[clientToken]?.second?.notificatorsRequest ?: throw IllegalStateException("Moduli non trovato")
 
         for (i in 0.until(moduleList.size))
-            NotificatorBinder.instance
+            ServiceBinder.instance
                     .getNotificatorModule(moduleList[i].moduleName)
-                    .notify(clientToken, data)
+                    .notify(clientToken, message)
     }
 
 
