@@ -1,6 +1,7 @@
 package it.baratta.giovanni.habitat.notificator.core
 
 import io.reactivex.disposables.Disposable
+import it.baratta.giovanni.habitat.notificator.api.IEventSource
 import it.baratta.giovanni.habitat.notificator.api.InitializationException
 import it.baratta.giovanni.habitat.notificator.api.Message
 import it.baratta.giovanni.habitat.notificator.api.request.ModuleRequest
@@ -103,11 +104,19 @@ class ClientManager private constructor(){
      *  Rimuovo il cliente dal sistema
      */
     fun unregisterClient(clientToken : String){
+        val clientToDelete = client[clientToken]
+        client.remove(clientToken)
         clientSubscription[clientToken]?.dispose()
         clientSubscription.remove(clientToken)
-        client[clientToken]?.first?.unregisterClient()
-        client[clientToken]?.second?.unregisterClient()
-        client.remove(clientToken)
+        clientToDelete?.first?.unregisterClient()
+        clientToDelete?.second?.unregisterClient()
+    }
+
+    fun registrationStatus(clientToken : String) : Pair<List<ModuleRequest>,List<ModuleRequest>>{
+        val clientStatus = client[clientToken]
+        if(clientStatus == null)
+            return Pair(emptyList(), emptyList())
+        return Pair(clientStatus.first.moduleRequest, clientStatus.second.notificatorsRequest)
     }
 
     companion object {

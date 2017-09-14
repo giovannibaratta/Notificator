@@ -6,6 +6,7 @@ import it.baratta.giovanni.habitat.notificator.api.request.RegistrationRequest
 import it.baratta.giovanni.habitat.notificator.api.response.DeregistrationResponse
 import it.baratta.giovanni.habitat.notificator.api.response.ErrorResponse
 import it.baratta.giovanni.habitat.notificator.api.response.RegistrationResponse
+import it.baratta.giovanni.habitat.notificator.api.response.StatusResponse
 import it.baratta.giovanni.habitat.notificator.core.ClientManager
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
@@ -16,8 +17,7 @@ class RequestRestService {
 
     private val gson = Gson()
 
-    @Path("/registration")
-    @POST
+    @Path("/registration") @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     fun registration(data : String) : String{
@@ -43,8 +43,17 @@ class RequestRestService {
         return  gson.toJson(RegistrationResponse(token))
     }
 
-    @DELETE
-    @Path("/deregistration")
+    @GET @Path("/registrationStatus")
+    @Produces(MediaType.APPLICATION_JSON)
+    fun registrationStatus(@QueryParam("token") token : String?) : String{
+        if(token == null)
+            return gson.toJson(ErrorResponse("token non presente"))
+        val status = ClientManager.instance.registrationStatus(token)
+        return gson.toJson(StatusResponse( !status.first.isEmpty() && !status.second.isEmpty(),
+                                                status.first, status.second))
+    }
+
+    @DELETE @Path("/deregistration")
     @Produces(MediaType.APPLICATION_JSON)
     fun deregistration(@QueryParam("token") token : String?) : String{
         if(token == null)

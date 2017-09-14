@@ -32,7 +32,7 @@ class MockSource private constructor(): IEventSource {
             for(i in 0.until(10)){
                 logger.debug("Messaggio generato ${i} - ${clientToken}")
                 subject.onNext(Message(messageCounter, sourceName,
-                                        gson.toJson("Message ${messageCounter}"), className))
+                                        gson.toJson("Message ${messageCounter++}"), className))
                 Thread.sleep(Random().nextInt(500)+500L)
             }
             subject.onComplete()
