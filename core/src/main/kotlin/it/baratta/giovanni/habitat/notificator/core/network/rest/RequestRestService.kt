@@ -8,6 +8,7 @@ import it.baratta.giovanni.habitat.notificator.api.response.ErrorResponse
 import it.baratta.giovanni.habitat.notificator.api.response.RegistrationResponse
 import it.baratta.giovanni.habitat.notificator.api.response.StatusResponse
 import it.baratta.giovanni.habitat.notificator.core.ClientManager
+import org.apache.logging.log4j.LogManager
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 
@@ -46,11 +47,13 @@ class RequestRestService {
     @GET @Path("/registrationStatus")
     @Produces(MediaType.APPLICATION_JSON)
     fun registrationStatus(@QueryParam("token") token : String?) : String{
+        logger.info("Richiesta di stato per il token ${token}")
         if(token == null)
             return gson.toJson(ErrorResponse("token non presente"))
         val status = ClientManager.instance.registrationStatus(token)
-        return gson.toJson(StatusResponse( token,
-                            !status.first.isEmpty() && !status.second.isEmpty(),
+        val registered = !status.first.isEmpty() && !status.second.isEmpty()
+        logger.info("Stato token ${token} - ${registered}")
+        return gson.toJson(StatusResponse( token, registered,
                                     status.first, status.second))
     }
 
@@ -61,6 +64,10 @@ class RequestRestService {
             return gson.toJson(ErrorResponse("token non presente"))
         ClientManager.instance.unregisterClient(token)
         return gson.toJson(DeregistrationResponse())
+    }
+
+    companion object {
+        private val logger = LogManager.getLogger(RequestRestService::class.java)
     }
 
 }

@@ -29,11 +29,11 @@ class MockSource private constructor(): IEventSource {
                 throw IllegalStateException("String non ha un nome")
 
             Thread.sleep(1000)
-            for(i in 0.until(10)){
+            for(i in 0.until(1000)){
                 logger.debug("Messaggio generato ${i} - ${clientToken}")
                 subject.onNext(Message(messageCounter, sourceName,
                                         gson.toJson("Message ${messageCounter++}"), className))
-                Thread.sleep(Random().nextInt(500)+500L)
+                Thread.sleep(Random().nextInt(500)+1000L)
             }
             subject.onComplete()
         }
