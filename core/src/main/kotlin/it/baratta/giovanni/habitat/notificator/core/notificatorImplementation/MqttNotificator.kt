@@ -4,14 +4,11 @@ import com.google.gson.Gson
 import it.baratta.giovanni.habitat.notificator.api.INotificator
 import it.baratta.giovanni.habitat.notificator.api.Message
 import it.baratta.giovanni.habitat.notificator.api.request.ConfigurationParams
-import it.baratta.giovanni.habitat.notificator.core.eventSourceImplementation.MockSource
 import it.baratta.giovanni.habitat.utils.errorAndThrow
-import org.apache.commons.lang3.SerializationUtils
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.message.SimpleMessage
 import org.eclipse.paho.client.mqttv3.MqttClient
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions
-import java.io.Serializable
 import java.util.*
 import java.util.concurrent.Semaphore
 import kotlin.collections.HashMap

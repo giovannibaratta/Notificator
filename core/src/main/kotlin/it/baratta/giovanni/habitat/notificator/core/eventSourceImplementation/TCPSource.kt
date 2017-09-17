@@ -1,15 +1,14 @@
 package it.baratta.giovanni.habitat.notificator.core.eventSourceImplementation
 
 import io.reactivex.Observable
-import it.baratta.giovanni.habitat.notificator.api.request.ConfigurationParams
 import it.baratta.giovanni.habitat.notificator.api.IEventSource
 import it.baratta.giovanni.habitat.notificator.api.Message
-import java.io.Serializable
+import it.baratta.giovanni.habitat.notificator.api.request.ConfigurationParams
 
 class TCPSource : IEventSource {
 
-    companion object {
-        val sourceName = "TCP"
+    override fun shutdown() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun registerClient(clientToken: String, params: ConfigurationParams): Observable<Message> {

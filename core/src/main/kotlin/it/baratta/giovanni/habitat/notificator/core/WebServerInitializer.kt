@@ -1,6 +1,7 @@
 package it.baratta.giovanni.habitat.notificator.core
 
-import it.baratta.giovanni.habitat.notificator.core.eventSourceImplementation.MockSource
+import it.baratta.giovanni.habitat.notificator.core.eventSourceImplementation.PingSource
+import it.baratta.giovanni.habitat.notificator.core.eventSourceImplementation.SEPASource
 import it.baratta.giovanni.habitat.notificator.core.network.tcp.RequestTCPThread
 import it.baratta.giovanni.habitat.notificator.core.notificatorImplementation.MqttNotificator
 import org.apache.logging.log4j.LogManager
@@ -16,8 +17,9 @@ class WebServerInitializer : ServletContextListener {
 
     override fun contextInitialized(p0: ServletContextEvent?) {
         // Carico i moduli da supportare
-        ServiceBinder.instance.bindEventSourceModule(MockSource.instance)
+        ServiceBinder.instance.bindEventSourceModule(PingSource.instance)
         ServiceBinder.instance.bindNotificatorModule(MqttNotificator.instance)
+        ServiceBinder.instance.bindEventSourceModule(SEPASource.instance)
         // Inizializzo la socket TCP
         tcpThread.setUncaughtExceptionHandler { t, e -> logger.error("Errore nella socket TCP") }
         // Avvio la socket

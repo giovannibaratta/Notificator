@@ -1,15 +1,14 @@
 package it.baratta.giovanni.habitat.notificator.core
 
 import io.reactivex.disposables.Disposable
-import it.baratta.giovanni.habitat.notificator.api.IEventSource
 import it.baratta.giovanni.habitat.notificator.api.InitializationException
 import it.baratta.giovanni.habitat.notificator.api.Message
 import it.baratta.giovanni.habitat.notificator.api.request.ModuleRequest
+import it.baratta.giovanni.habitat.utils.errorAndThrow
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.message.SimpleMessage
 import java.util.*
 import kotlin.collections.HashMap
-import it.baratta.giovanni.habitat.utils.*
 
 /**
  * Gestisce le registrazione dei clienti
@@ -91,14 +90,13 @@ class ClientManager private constructor(){
         //logger.debug("Messagio ricevuto")
 
         val moduleList : List<ModuleRequest>
-                = client[clientToken]?.second?.notificatorsRequest ?: throw IllegalStateException("Moduli non trovato")
+                = client[clientToken]?.second?.notificatorsRequest ?: emptyList()
 
         for (i in 0.until(moduleList.size))
             ServiceBinder.instance
                     .getNotificatorModule(moduleList[i].moduleName)
                     .notify(clientToken, message)
     }
-
 
     /**
      *  Rimuovo il cliente dal sistema
