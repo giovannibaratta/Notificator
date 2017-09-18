@@ -72,6 +72,6 @@ class FirebaseCloudMessagingNotificator private constructor(): INotificator {
 
 
     private data class MessageWrapper(val token : String,
-                                      val data: Any)
+                                      val data: Message)
 
 }
