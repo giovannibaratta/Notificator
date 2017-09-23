@@ -5,10 +5,24 @@ import io.reactivex.subjects.PublishSubject
 import it.baratta.giovanni.habitat.notificator.api.IEventSource
 import it.baratta.giovanni.habitat.notificator.api.Message
 import it.baratta.giovanni.habitat.notificator.api.request.ConfigurationParams
+import it.unibo.arces.wot.sepa.api.INotificationHandler
+import it.unibo.arces.wot.sepa.api.SPARQL11SEProperties
+import it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol
+import it.unibo.arces.wot.sepa.commons.request.SubscribeRequest
+import it.unibo.arces.wot.sepa.commons.request.UnsubscribeRequest
+import it.unibo.arces.wot.sepa.commons.request.UpdateRequest
+import it.unibo.arces.wot.sepa.commons.response.*
 import org.apache.logging.log4j.LogManager
-import org.glassfish.tyrus.client.ClientManager
-import java.net.URI
-import javax.websocket.*
+import java.io.DataOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.io.FileWriter
+import java.net.SocketException
+import java.util.*
+import java.util.concurrent.locks.ReentrantLock
+import javax.xml.bind.DatatypeConverter
+import kotlin.collections.HashMap
+
 
 class SEPASource private constructor(): IEventSource {
 
@@ -19,95 +33,261 @@ class SEPASource private constructor(): IEventSource {
 
     override val sourceName: String = "sepa"
 
-    private val registeredClient = HashMap<String, Pair<SepaConnectionHolder,PublishSubject<Message>>>()
+    private val lock = ReentrantLock()
+
+    private val jaspConnection = HashMap<SPARQL11SEProperties, Pair<SepaConnectionHolder, Int>>()
+    private val tokenConnection = HashMap<String, SepaConnectionHolder>()
+    private val tokenJasp = HashMap<String, SPARQL11SEProperties>()
 
     override fun registerClient(clientToken: String, params: ConfigurationParams): Observable<Message> {
-        if(registeredClient.containsKey(clientToken))
-            throw IllegalStateException("Il token $clientToken è già registrato")
+        logger.debug("Cliente in arrivo nella SEPA")
+        // verifico che nei parametri sia il file jasp di configurazione e il file ssl serializzato
+        val jasp = params.getParam("jasp")
+        if(jasp == null)
+            throw IllegalStateException("nei parametri non è presente il jasp")
 
-        val server = params.getParam("serverURI")
-        if(server == null)
-            throw IllegalStateException("nei parametri non è presente il server")
+        val sslKey = params.getParam("sslKey")
+        if(sslKey == null)
+            throw IllegalStateException("nei parametri non è presente la sslKey")
+
+        val query = params.getParam("query")
+        if(query == null)
+            throw IllegalStateException("nei parametri non è presente la query")
+
+        val tempJasp : File
+        try {
+            tempJasp = File.createTempFile(clientToken,"jasp")
+            val fileWriter = FileWriter(tempJasp)
+            fileWriter.write(jasp)
+            fileWriter.close()
+        }catch (exception : Exception){
+            throw IllegalStateException("Non è stato possibile creare un file temporaneo")
+        }
+
+        val sparqlProp : SPARQL11SEProperties
+        try {
+            sparqlProp = SPARQL11SEProperties(tempJasp.absolutePath)
+        }catch (exception : Exception){
+            throw IllegalStateException("Il file jasp fornito non è valido.}",exception)
+        }
+
+        try{
+            tempJasp.delete()
+        }catch (exception : Exception){
+
+        }
+
+        val jksFile : File
+
+        val temp = File("C:\\Users\\Gio\\Desktop\\SEPA\\SEPADocs-master\\prova.txt")
+        try {
+            logger.debug("DATA")
+            val data = DatatypeConverter.parseBase64Binary(sslKey)
+            jksFile = File.createTempFile(clientToken,".jks")
+            val writer = DataOutputStream(FileOutputStream(jksFile))
+            writer.write(DatatypeConverter.parseBase64Binary(sslKey))
+            writer.close()
+        }catch (exception : Exception){
+            throw IllegalStateException("Il file sslkey fornito non è valido",exception)
+        }
 
         val emitter = PublishSubject.create<Message>()
-        val thread = SepaConnectionHolder(this, server, emitter)
+        val connHolder : SepaConnectionHolder
+        try {
+            connHolder = SepaConnectionHolder(this,sparqlProp,jksFile.absolutePath,emitter)
+        }catch (exception : Exception){
+            throw IllegalStateException("non è stato possibile stabilire una connessione con il server.",exception)
+        }
 
-        registeredClient.put(clientToken, Pair(thread, emitter))
-        thread.start()
+        lock.lock()
+
+        if(tokenConnection.contains(clientToken))
+            throw IllegalArgumentException("Il token è già registrato")
+
+        // verifico se esiste un file di configurazione compatibile con le richieste del cliente
+        when(jaspConnection.containsKey(sparqlProp)) {
+            true ->
+                // elimino il mio handler perchè uno è già pronto
+                connHolder.closeConnection()
+            false ->
+                // nessun jasp comptabile, creo un nuovo connection handler
+                jaspConnection.put(sparqlProp, Pair(connHolder, 0))
+        }
+
+        try{
+            connHolder.subscribe(clientToken, query)
+        }catch (exception : Exception){
+            throw IllegalStateException("non è stato possibible registrare la query",exception)
+        }
+
+        val prev = jaspConnection.getOrElse(sparqlProp,{throw IllegalStateException("jaspConnection non presente")})
+        jaspConnection[sparqlProp] = Pair(prev.first,prev.second + 1)
+        tokenJasp[clientToken] = sparqlProp
+        tokenConnection[clientToken] = connHolder
+        lock.unlock()
         return emitter.hide()
     }
 
     override fun unregisterClient(clientToken: String) {
-        registeredClient[clientToken]?.first?.closeConnection()
-        registeredClient[clientToken]?.second?.onComplete()
-        registeredClient.remove(clientToken)
+        lock.lock()
+        val conn = tokenConnection[clientToken]
+        if(conn == null)
+            throw IllegalArgumentException("il token non è registartoo")
+        conn.unsubscribe(clientToken)
+
+        val clientJasp = tokenJasp.getOrElse(clientToken,
+                                                {throw IllegalStateException("client token non presente")})
+
+        var connCount = jaspConnection.getOrElse(clientJasp
+                                                ,{throw IllegalStateException("jasp non presente")})
+                                        .second
+        if(--connCount == 0){
+            conn.closeConnection()
+            jaspConnection.remove(clientJasp)
+        }else{
+            jaspConnection[clientJasp] = Pair(conn, connCount)
+        }
+        tokenJasp.remove(clientToken)
+        tokenConnection.remove(clientToken)
+        // elimina file jks
+        lock.unlock()
     }
 
     override fun shutdown() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        lock.lock()
+        tokenConnection.forEach{
+            it.component2().closeConnection()
+        }
+        tokenConnection.clear()
+        jaspConnection.clear()
+        tokenJasp.clear()
+        lock.unlock()
     }
 
-    @ClientEndpoint
-    private class SepaConnectionHolder(private val source: IEventSource,
-                                       server : String,
-                                       private val emitter: PublishSubject<Message>) : Thread(){
+    private class SepaConnectionHolder(source: IEventSource,
+                                       sparqL11SEProperties: SPARQL11SEProperties,
+                                       jksFile : String,
+                                       emitter: PublishSubject<Message>){
 
-        private val clientSession: Session
-        private var messageCount = 0L
+
+        private val sepaProtocol : SPARQL11SEProtocol
+        private var timer : Timer = Timer()
+        private val subscription = HashMap<String, SubscribeResponse>()
 
         init {
-            logger.info("Tento l'apertura")
-            // apro la web socket
-            //clientSession = ClientManager.createClient().connectToServer(SepaConnectionHolder::class.java, URI(server))
-            //clientSession = ClientManager.createClient().connectToServer(this, URI(server))
-            val config : ClientEndpointConfig = ClientEndpointConfig.Builder.create().build()
-            val endpoint = SEPAEndpoint(source, emitter)
-            clientSession = ClientManager.createClient().connectToServer(endpoint,config,URI(server))
-            logger.info("Open ? ${clientSession.isOpen}")
+            logger.debug("INIZIO CONFIGURAZIONE INIT")
+            sepaProtocol = SPARQL11SEProtocol(sparqL11SEProperties,
+                                                NotificationHandler(source, emitter),
+                                                jksFile,
+                                                "sepa2017",
+                                                "sepa2017")
+
+            val response = sepaProtocol.register("SEPATest")
+            when(response){
+                is RegistrationResponse -> tokenRequest()
+                is ErrorResponse -> throw IllegalStateException("Errore durante la registrazion. ${response.errorCode} - ${response.errorMessage}")
+                else -> throw IllegalStateException("Risposta registration non valida")
+            }
+
+            logger.debug("REG -> ${response.asJsonObject}")
+            val responseToken = sepaProtocol.requestToken()
+            logger.debug("TOKEN -> ${responseToken.asJsonObject}")
         }
 
-        override fun run() {
-
-            Thread.sleep(1000000L)
-            // resto in attesa dei messaggi
-
-            // chiudo la websocket
+        private fun tokenRequest(){
+            timer.cancel()
+            val response = sepaProtocol.requestToken()
+            when(response){
+                is JWTResponse -> {
+                    // scheduling per il rinnovo del token
+                    val timerTask = object : TimerTask(){
+                        override fun run() {
+                            tokenRequest()
+                        }
+                    }
+                    timer = Timer()
+                    timer.schedule(timerTask, response.expiresIn)
+                }
+                is ErrorResponse -> {
+                    if(response.errorMessage.compareTo("Token is not expired") != 0)
+                        throw IllegalStateException("Errore durante la richiesta del token. ${response.errorCode} - ${response.errorMessage}")
+                    else{
+                        // scheduling per il rinnovo del token
+                        val timerTask = object : TimerTask(){
+                            override fun run() {
+                                tokenRequest()
+                            }
+                        }
+                        timer = Timer()
+                        timer.schedule(timerTask, 100000L)
+                    }
+                }
+                else -> throw IllegalStateException("Riposta token non valida")
+            }
         }
 
-        fun closeConnection()
-            = clientSession.close()
+        @Synchronized
+        fun subscribe(clientToken: String, query : String){
+            if(subscription.containsKey(clientToken))
+                throw IllegalStateException("Il cliente possiede già una query registrata")
+            val response = sepaProtocol.secureSubscribe(SubscribeRequest(query,clientToken))
+            when(response){
+                is SubscribeResponse -> {
+                    logger.debug("Subscribe avvenuto correttamente")
+                    subscription.put(clientToken,response)
 
+                    timer.scheduleAtFixedRate(object : TimerTask(){
+                        override fun run() {
+                            logger.debug("Invio UPDATE")
+                            val response = sepaProtocol.update(UpdateRequest(""" INSERT DATA { <http://myBookDomain${Random().nextInt()}.it> foaf:name "MyValue" } """))
+                            logger.debug("FINE UPDATE")
+                            when(response){
+                                is UpdateResponse -> logger.debug("UPDATE successo ${response} ")
+                                is ErrorResponse -> logger.debug("UPDATE ERRORE ${response.errorCode} - ${response.errorMessage}")
+                                else -> logger.debug("RIsposta non supportata")
+                            }
+                        }
+                    },2000L,20000L)
+                }
+                is ErrorResponse -> throw IllegalStateException("Errore nella sottoscrizione. ${response.errorCode} - ${response.errorMessage}")
+                else -> throw IllegalStateException("Risposta non valida")
+            }
+        }
+
+        @Synchronized
+        fun unsubscribe(clientToken: String){
+            val sub = subscription[clientToken]
+            if(sub == null)
+                return
+            sepaProtocol.secureUnsubscribe(UnsubscribeRequest(sub.token, sub.spuid))
+            subscription.remove(clientToken)
+        }
+
+        @Synchronized
+        fun closeConnection(){
+            timer.cancel()
+            subscription.forEach{ unsubscribe(it.key) }
+        }
     }
 }
 
-@ClientEndpoint
-class SEPAEndpoint(private val source : IEventSource,
-                           private val emitter : PublishSubject<Message>) : Endpoint(), MessageHandler.Whole<String>{
+class NotificationHandler(private val source : IEventSource,
+                 private val emitter : PublishSubject<Message>) : INotificationHandler{
 
-    private var messageCount = 0L
-
-    @OnOpen
-    override fun onOpen(session: Session?, config: EndpointConfig?) {
-        if(session == null)
+    override fun onSemanticEvent(notify: Notification?) {
+        if(notify == null)
             return
-        logger.info("Connesione apert ${session}")
-        // creo la registrazione
-        session.basicRemote.sendText(""" {"subscribe" : "select * where {?s ?p ?o}",
-"authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ",
-"alias" : "All"} """)
-        session.addMessageHandler(this)
+        emitter.onNext(Message.build(source, notify.sequence.toLong(),"SemanticEvent"))
     }
 
-    override fun onMessage(message: String?) {
-        logger.info("Messaggio dalla web socket , ${message}")
-        emitter.onNext(Message.build(source,messageCount++,"Arrivato un messaggio dalla sepa"))
+    override fun onPing() {
+        emitter.onNext(Message.build(source, Random().nextLong(),"PingEvent"))
     }
 
-    @OnClose
-    private fun onCloseConnection(session: Session, closeReason: CloseReason){
+    override fun onBrokenSocket() {
+        emitter.onError(SocketException("Broken sepa socket"))
     }
 
-    companion object {
-        private val logger = LogManager.getLogger(SEPAEndpoint)
+    override fun onError(errorResponse: ErrorResponse?) {
     }
 }

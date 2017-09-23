@@ -1,0 +1,24 @@
+{
+  "parameters":
+  {
+    "host":"169.254.135.53",
+    "ports":
+    {
+      "http":8000,
+      "https":8443,
+      "ws":9000,
+      "wss":9443
+    },
+    "paths":
+    {
+      "query":"/query",
+      "update":"/update",
+      "subscribe":"/subscribe",
+      "register":"/oauth/register",
+      "tokenRequest":"/oauth/token",
+      "securePath":"/secure"
+    },
+    "methods":{},
+    "formats":{}
+  }
+}

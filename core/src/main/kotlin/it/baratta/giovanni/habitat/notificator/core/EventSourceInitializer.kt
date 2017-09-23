@@ -52,7 +52,9 @@ class EventSourceInitializer(val clientToken : String,
                     unregisterClient()
                     logger.errorAndThrow(IllegalStateException("Il servizio ${it.moduleName} non è riuscito ad effettuare il setup."))
                 }catch (exception : Exception){
-                        // una delle richieste è fallita, posso terminare
+                    // una delle richieste è fallita, posso terminare
+                    logger.error("Eccezione durante l'init.",exception)
+
                 }
             }
             threadArray.add(thread)
