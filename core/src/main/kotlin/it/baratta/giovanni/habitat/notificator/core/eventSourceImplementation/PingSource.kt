@@ -14,7 +14,7 @@ import java.util.concurrent.Semaphore
 class PingSource private constructor(): IEventSource {
 
     private val emitter : PublishSubject<Message> = PublishSubject.create()
-    override val sourceName: String = "pingsource"
+    override val sourceName: String = "ping"
     private val timeEmitter : TimeEmitter
     private val registerClient = HashSet<String>()
 
