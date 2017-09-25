@@ -1,6 +1,7 @@
 package it.baratta.giovanni.habitat.notificator.core
 
 import io.reactivex.disposables.Disposable
+import it.baratta.giovanni.habitat.notificator.api.IClientManager
 import it.baratta.giovanni.habitat.notificator.api.InitializationException
 import it.baratta.giovanni.habitat.notificator.api.Message
 import it.baratta.giovanni.habitat.notificator.api.request.ModuleRequest
@@ -13,7 +14,7 @@ import kotlin.collections.HashMap
 /**
  * Gestisce le registrazione dei clienti
  */
-class ClientManager private constructor(){
+class ClientManager private constructor() : IClientManager {
 
     private val client = HashMap<String, Pair<EventSourceInitializer,NotificatorInitializer>>()
     private val clientSubscription = HashMap<String, Disposable>()
@@ -25,7 +26,7 @@ class ClientManager private constructor(){
      * @param notificatorsRequest moduli per le notifiche da attivare per il cliente
      * @return Token univoco associato al cliente, da usare durante la deregistrazione o per le notifiche
      */
-    fun registerClient(eventSourceRequest : List<ModuleRequest>, notificatorsRequest : List<ModuleRequest>) : String {
+    override fun registerClient(eventSourceRequest : List<ModuleRequest>, notificatorsRequest : List<ModuleRequest>) : String {
 
         // generazione token univoco
         val clientToken = UUID.randomUUID().toString().replace("-","")
@@ -101,7 +102,7 @@ class ClientManager private constructor(){
     /**
      *  Rimuovo il cliente dal sistema
      */
-    fun unregisterClient(clientToken : String){
+    override fun unregisterClient(clientToken : String){
         val clientToDelete = client[clientToken]
         client.remove(clientToken)
         clientSubscription[clientToken]?.dispose()
@@ -110,7 +111,7 @@ class ClientManager private constructor(){
         clientToDelete?.second?.unregisterClient()
     }
 
-    fun registrationStatus(clientToken : String) : Pair<List<ModuleRequest>,List<ModuleRequest>>{
+    override fun registrationStatus(clientToken : String) : Pair<List<ModuleRequest>,List<ModuleRequest>>{
         val clientStatus = client[clientToken]
         if(clientStatus == null)
             return Pair(emptyList(), emptyList())

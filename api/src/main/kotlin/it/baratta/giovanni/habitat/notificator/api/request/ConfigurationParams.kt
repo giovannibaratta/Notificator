@@ -2,7 +2,9 @@ package it.baratta.giovanni.habitat.notificator.api.request
 
 import java.util.*
 
-data class ConfigurationParams(private val params : HashMap<String, String>) {
+class ConfigurationParams(paramsMap : HashMap<String, String>) {
+
+    private val params = paramsMap
 
     fun setParam(key : String, value : String){
         params.put(key, value)
