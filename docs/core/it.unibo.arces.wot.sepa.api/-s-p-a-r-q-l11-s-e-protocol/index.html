@@ -1,0 +1,244 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>SPARQL11SEProtocol - core</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">it.unibo.arces.wot.sepa.api</a>&nbsp;/&nbsp;<a
+        href=".">SPARQL11SEProtocol</a><br/>
+<br/>
+<h1>SPARQL11SEProtocol</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span
+        class="identifier">SPARQL11SEProtocol</span>&nbsp;<span class="symbol">:</span>&nbsp;<a
+        href="../../it.unibo.arces.wot.sepa.commons.protocol/-s-p-a-r-q-l11-protocol/index.html"><span
+        class="identifier">SPARQL11Protocol</span></a></code>
+<h3>Constructors</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-init-.html">&lt;init&gt;</a></p>
+        </td>
+        <td>
+            <code><span class="identifier">SPARQL11SEProtocol</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$<init>(it.unibo.arces.wot.sepa.api.SPARQL11SEProperties)/properties">properties</span><span
+                    class="symbol">:</span>&nbsp;<a href="../-s-p-a-r-q-l11-s-e-properties/index.html"><span
+                    class="identifier">SPARQL11SEProperties</span></a><span class="symbol">)</span></code><br/>
+            <code><span class="identifier">SPARQL11SEProtocol</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$<init>(it.unibo.arces.wot.sepa.api.SPARQL11SEProperties, it.unibo.arces.wot.sepa.api.INotificationHandler)/properties">properties</span><span
+                    class="symbol">:</span>&nbsp;<a href="../-s-p-a-r-q-l11-s-e-properties/index.html"><span
+                    class="identifier">SPARQL11SEProperties</span></a><span class="symbol">, </span><span
+                    class="identifier"
+                    id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$<init>(it.unibo.arces.wot.sepa.api.SPARQL11SEProperties, it.unibo.arces.wot.sepa.api.INotificationHandler)/handler">handler</span><span
+                    class="symbol">:</span>&nbsp;<a href="../-i-notification-handler/index.html"><span
+                    class="identifier">INotificationHandler</span></a><span class="symbol">)</span></code><br/>
+            <code><span class="identifier">SPARQL11SEProtocol</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$<init>(it.unibo.arces.wot.sepa.api.SPARQL11SEProperties, it.unibo.arces.wot.sepa.api.INotificationHandler, kotlin.String, kotlin.String, kotlin.String)/properties">properties</span><span
+                    class="symbol">:</span>&nbsp;<a href="../-s-p-a-r-q-l11-s-e-properties/index.html"><span
+                    class="identifier">SPARQL11SEProperties</span></a><span class="symbol">, </span><span
+                    class="identifier"
+                    id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$<init>(it.unibo.arces.wot.sepa.api.SPARQL11SEProperties, it.unibo.arces.wot.sepa.api.INotificationHandler, kotlin.String, kotlin.String, kotlin.String)/handler">handler</span><span
+                    class="symbol">:</span>&nbsp;<a href="../-i-notification-handler/index.html"><span
+                    class="identifier">INotificationHandler</span></a><span class="symbol">, </span><span
+                    class="identifier"
+                    id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$<init>(it.unibo.arces.wot.sepa.api.SPARQL11SEProperties, it.unibo.arces.wot.sepa.api.INotificationHandler, kotlin.String, kotlin.String, kotlin.String)/jksFile">jksFile</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$<init>(it.unibo.arces.wot.sepa.api.SPARQL11SEProperties, it.unibo.arces.wot.sepa.api.INotificationHandler, kotlin.String, kotlin.String, kotlin.String)/jksName">jksName</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$<init>(it.unibo.arces.wot.sepa.api.SPARQL11SEProperties, it.unibo.arces.wot.sepa.api.INotificationHandler, kotlin.String, kotlin.String, kotlin.String)/jksPassword">jksPassword</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">)</span></code></td>
+    </tr>
+    </tbody>
+</table>
+<h3>Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="query.html">query</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">query</span><span class="symbol">(</span><span class="identifier"
+                                                                                      id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$query(it.unibo.arces.wot.sepa.commons.request.QueryRequest)/request">request</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="../../it.unibo.arces.wot.sepa.commons.request/-query-request/index.html"><span
+                    class="identifier">QueryRequest</span></a><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="../../it.unibo.arces.wot.sepa.commons.response/-response/index.html"><span class="identifier">Response</span></a></code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="register.html">register</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">register</span><span class="symbol">(</span><span class="identifier"
+                                                                                         id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$register(kotlin.String)/identity">identity</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="../../it.unibo.arces.wot.sepa.commons.response/-response/index.html"><span class="identifier">Response</span></a></code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="request-token.html">requestToken</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">requestToken</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="../../it.unibo.arces.wot.sepa.commons.response/-response/index.html"><span class="identifier">Response</span></a></code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="secure-query.html">secureQuery</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">secureQuery</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$secureQuery(it.unibo.arces.wot.sepa.commons.request.QueryRequest)/request">request</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="../../it.unibo.arces.wot.sepa.commons.request/-query-request/index.html"><span
+                    class="identifier">QueryRequest</span></a><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="../../it.unibo.arces.wot.sepa.commons.response/-response/index.html"><span class="identifier">Response</span></a></code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="secure-subscribe.html">secureSubscribe</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">secureSubscribe</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$secureSubscribe(it.unibo.arces.wot.sepa.commons.request.SubscribeRequest)/request">request</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="../../it.unibo.arces.wot.sepa.commons.request/-subscribe-request/index.html"><span
+                    class="identifier">SubscribeRequest</span></a><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="../../it.unibo.arces.wot.sepa.commons.response/-response/index.html"><span class="identifier">Response</span></a></code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="secure-unsubscribe.html">secureUnsubscribe</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">secureUnsubscribe</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$secureUnsubscribe(it.unibo.arces.wot.sepa.commons.request.UnsubscribeRequest)/request">request</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="../../it.unibo.arces.wot.sepa.commons.request/-unsubscribe-request/index.html"><span
+                    class="identifier">UnsubscribeRequest</span></a><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="../../it.unibo.arces.wot.sepa.commons.response/-response/index.html"><span class="identifier">Response</span></a></code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="secure-update.html">secureUpdate</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">secureUpdate</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$secureUpdate(it.unibo.arces.wot.sepa.commons.request.UpdateRequest)/request">request</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="../../it.unibo.arces.wot.sepa.commons.request/-update-request/index.html"><span
+                    class="identifier">UpdateRequest</span></a><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="../../it.unibo.arces.wot.sepa.commons.response/-response/index.html"><span class="identifier">Response</span></a></code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="set-notification-handler.html">setNotificationHandler</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setNotificationHandler</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$setNotificationHandler(it.unibo.arces.wot.sepa.api.INotificationHandler)/handler">handler</span><span
+                    class="symbol">:</span>&nbsp;<a href="../-i-notification-handler/index.html"><span
+                    class="identifier">INotificationHandler</span></a><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code></td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="subscribe.html">subscribe</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">subscribe</span><span class="symbol">(</span><span class="identifier"
+                                                                                          id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$subscribe(it.unibo.arces.wot.sepa.commons.request.SubscribeRequest)/request">request</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="../../it.unibo.arces.wot.sepa.commons.request/-subscribe-request/index.html"><span
+                    class="identifier">SubscribeRequest</span></a><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="../../it.unibo.arces.wot.sepa.commons.response/-response/index.html"><span class="identifier">Response</span></a></code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="unsubscribe.html">unsubscribe</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unsubscribe</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$unsubscribe(it.unibo.arces.wot.sepa.commons.request.UnsubscribeRequest)/request">request</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="../../it.unibo.arces.wot.sepa.commons.request/-unsubscribe-request/index.html"><span
+                    class="identifier">UnsubscribeRequest</span></a><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="../../it.unibo.arces.wot.sepa.commons.response/-response/index.html"><span class="identifier">Response</span></a></code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="update.html">update</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">update</span><span class="symbol">(</span><span class="identifier"
+                                                                                       id="it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol$update(it.unibo.arces.wot.sepa.commons.request.UpdateRequest)/request">request</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="../../it.unibo.arces.wot.sepa.commons.request/-update-request/index.html"><span
+                    class="identifier">UpdateRequest</span></a><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="../../it.unibo.arces.wot.sepa.commons.response/-response/index.html"><span class="identifier">Response</span></a></code>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p>
+                <a href="../../it.unibo.arces.wot.sepa.commons.protocol/-s-p-a-r-q-l11-protocol/to-string.html">toString</a>
+            </p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code></td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

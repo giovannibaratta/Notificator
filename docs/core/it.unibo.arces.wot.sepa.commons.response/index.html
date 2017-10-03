@@ -1,0 +1,139 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>it.unibo.arces.wot.sepa.commons.response - core</title>
+    <link rel="stylesheet" href="..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">core</a>&nbsp;/&nbsp;<a href=".">it.unibo.arces.wot.sepa.commons.response</a><br/>
+<br/>
+<h2>Package it.unibo.arces.wot.sepa.commons.response</h2>
+<h3>Types</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-error-response/index.html">ErrorResponse</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ErrorResponse</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<a href="-response/index.html"><span class="identifier">Response</span></a></code>
+            <p>It represents a generic error. If it applies, the use of HTTP status codes is RECOMMENDED (<strong><a
+                    href="#">RFC 2616</a></strong>) 400 Bad Request 401 Unauthorized 402 Payment Required 403 Forbidden
+                404 Not Found 405 Method Not Allowed 406 Not Acceptable 407 Proxy Authentication Required 408 Request
+                Timeout 409 Conflict 410 Gone 411 Length Required 412 Precondition Failed 413 Request Entity Too Large
+                414 Request-URI Too Long 415 Unsupported Media Type 416 Requested Range Not Satisfiable 417 Expectation
+                Failed 500 Internal Server Error 501 Not Implemented 502 Bad Gateway 503 Service Unavailable 504 Gateway
+                Timeout 505 HTTP Version Not Supported The JSON representation of an error response follows: { "body" :
+                "Internal Server Error: SPARQL endpoint not found" , "code" : 500 } Body is optional</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-j-w-t-response/index.html">JWTResponse</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JWTResponse</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<a href="-response/index.html"><span class="identifier">Response</span></a></code>
+            <p>Produce JWT compliant with WoT W3C recommendations {"access_token":"eyJhbGciOiJSUzI1NiJ9.
+                eyJzdWIiOiJTRVBBRW5naW5lIiwiYXVkIjpbImh0dHBzOlwvXC93b3QuYXJjZXMudW5pYm8uaXQ6ODQ0M
+                1wvc3BhcnFsIiwid3NzOlwvXC93b3QuYXJjZXMudW5pYm8uaXQ6OTQ0M1wvc3BhcnFsIl0sIm5iZiI6MT
+                Q5MTAzMzQ4MjI2MiwiaXNzIjoiaHR0cHM6XC9cL3dvdC5hcmNlcy51bmliby5pdCIsImV4cCI6MTQ5MTA
+                zNzA4MjI2MiwiaWF0IjoxNDkxMDMzNDgyMjYyLCJqdGkiOiJjZTIwZmM3NC05NWU1LTQ2NzEtYTllOS1k
+                MjMwZmE4NTlhMTQ6NjhhMmYwOWQtN2E4NS00YzU1LTgxOWUtZWU1YWRhYjgxNDI1In0.IwTisstsZhJVu
+                Guhes4s9GE6sikh0rPtJg4QtY1DFT3OZ3WDF05OCwsBCe6dkNOn__68-e_9cEoiFY4s4KQ8heRQHpyRuD
+                QK0vTOefpgumKtRHrlCe0JGHBnPNqo8Zp7cVivZnin8NsePcuweFgZxWfaOC-EH5ClpqjPEbjj65g", "token_type":"bearer",
+                "expires_in":3600}</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-notification/index.html">Notification</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Notification</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<a href="-response/index.html"><span class="identifier">Response</span></a></code>
+            <p>This class represents a SPARQL Notification (see SPARQL 1.1 Subscription Language) The JSON serialization
+                looks like: <code>{ "spuid" : "SPUID" , "sequence" : "SEQUENTIAL NUMBER", "results" : &lt;JSON
+                    Notification Results&gt; } </code></p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-ping/index.html">Ping</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span
+                    class="identifier">Ping</span>&nbsp;<span class="symbol">:</span>&nbsp;<a
+                    href="-response/index.html"><span class="identifier">Response</span></a></code>
+            <p>This class represents the ping message sent on every active websocket (see SPARQL 1.1 Subscription
+                Language) The JSON serialization is the following: {"ping" : "yyyy-MM-dd HH:mm:ss.SSS"}</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-query-response/index.html">QueryResponse</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">QueryResponse</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<a href="-response/index.html"><span class="identifier">Response</span></a></code>
+            <p>This class represents the results of a SPARQL 1.1 Query</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-registration-response/index.html">RegistrationResponse</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RegistrationResponse</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<a href="-response/index.html"><span class="identifier">Response</span></a></code>
+            <p>{"client_id":"5b60a155-bada-4499-bc6f-26b4d37bc1ef",
+                "client_secret":"40e18d77-421c-48ce-a44a-14da1238e923", "signature": {"kty":"RSA", "e":"AQAB",
+                "x5t":"...", "kid":"sepacertificate", "x5c":["..."], "n":"..."}}</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-response/index.html">Response</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">Response</span></code>
+            <p>This class represents the response to a generic request.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-subscribe-response/index.html">SubscribeResponse</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SubscribeResponse</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<a href="-response/index.html"><span class="identifier">Response</span></a></code>
+            <p>This class represents the response to a SPARQL 1.1 Subscribe (see SPARQL 1.1 Subscription Language) The
+                JSON serialization is the following: {"subscribed" : "SPUID"}</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-unsubscribe-response/index.html">UnsubscribeResponse</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UnsubscribeResponse</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<a href="-response/index.html"><span class="identifier">Response</span></a></code>
+            <p>This class represents the response to a SPARQL 1.1 Unsubscribe (see SPARQL 1.1 Subscription Language) The
+                JSON serialization is the following: {"unsubscribed" : "SPUID"}</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-update-response/index.html">UpdateResponse</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UpdateResponse</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<a href="-response/index.html"><span class="identifier">Response</span></a></code>
+            <p>This class represents the response of a SPARQL 1.1 Update</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

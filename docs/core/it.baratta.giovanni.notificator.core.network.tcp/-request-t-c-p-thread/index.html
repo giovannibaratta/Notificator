@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>RequestTCPThread - core</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a
+        href="../index.html">it.baratta.giovanni.notificator.core.network.tcp</a>&nbsp;/&nbsp;<a href=".">RequestTCPThread</a><br/>
+<br/>
+<h1>RequestTCPThread</h1>
+<code><span class="keyword">class </span><span class="identifier">RequestTCPThread</span>&nbsp;<span
+        class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Thread.html"><span
+        class="identifier">Thread</span></a></code>
+<p>Apre una connessione TCP sulla porta <a href="#">port</a> e resta in ascolto per le richieste dei clienti.
+    Ogni richiesta viene delegata al ClientRequestHandler che si occuperà di capire la tipologia di
+    richiesta ed soddisfarla</p>
+<h3>Parameters</h3>
+<a name="port"></a>
+<code>port</code> - porta sulla quale aprire la connessione tcp
+<h3>Constructors</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-init-.html">&lt;init&gt;</a></p>
+        </td>
+        <td>
+            <code><span class="identifier">RequestTCPThread</span><span class="symbol">(</span><span class="identifier"
+                                                                                                     id="it.baratta.giovanni.notificator.core.network.tcp.RequestTCPThread$<init>(kotlin.Int)/port">port</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span
+                    class="symbol">)</span></code>
+            <p>Apre una connessione TCP sulla porta <a
+                    href="-init-.html#it.baratta.giovanni.notificator.core.network.tcp.RequestTCPThread$<init>(kotlin.Int)/port">port</a>
+                e resta in ascolto per le richieste dei clienti.
+                Ogni richiesta viene delegata al ClientRequestHandler che si occuperà di capire la tipologia di
+                richiesta ed soddisfarla</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="run.html">run</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">run</span><span class="symbol">(</span><span
+                    class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code></td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="shutdown.html">shutdown</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">shutdown</span><span class="symbol">(</span><span
+                    class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code></td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

@@ -107,7 +107,7 @@ class ClientRequestHandler(private val clientSocket : Socket) : Thread() {
         }
 
         try{
-            val clientToken = ClientManager.instance.registerClient(eventRequest.toList(),notificatorRequest.toList())
+            val clientToken = ClientManager.instance.registerClient(eventRequest.toSet(), notificatorRequest.toSet())
             outputStream.write(0)
             // invio il token
             outputStream.write(clientToken.toByteArray(Charset.forName("UTF-8")))

@@ -1,0 +1,7 @@
+$dokka.format:html
+$dokka.linkExtension:html
+
+it.baratta.giovanni.notificator.api
+it.baratta.giovanni.notificator.api.exceptions
+it.baratta.giovanni.notificator.api.request
+it.baratta.giovanni.notificator.api.response

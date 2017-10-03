@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>it.baratta.giovanni.notificator.core - core</title>
+    <link rel="stylesheet" href="..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">core</a>&nbsp;/&nbsp;<a href=".">it.baratta.giovanni.notificator.core</a><br/>
+<br/>
+<h2>Package it.baratta.giovanni.notificator.core</h2>
+<h3>Types</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-client-manager/index.html">ClientManager</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">class </span><span class="identifier">ClientManager</span></code>
+            <p>Gestisce le registrazione dei clienti</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-core-application/index.html">CoreApplication</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">class </span><span class="identifier">CoreApplication</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<span class="identifier">Application</span></code></td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-event-source-initializer/index.html">EventSourceInitializer</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">class </span><span class="identifier">EventSourceInitializer</span></code></td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-notificator-initializer/index.html">NotificatorInitializer</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">class </span><span class="identifier">NotificatorInitializer</span></code>
+            <p>Ogni client è associato un <a href="-notificator-initializer/index.html">NotificatorInitializer</a>. Il
+                <a href="-notificator-initializer/index.html">NotificatorInitializer</a> si occupa di inizializzare
+                tutti
+                i notificatori presenti in <a href="-notificator-initializer/notificators-request.html">notificatorsRequest</a>
+                utilizzando i parametri oppurtuni. Se non si riesce a configurare
+                anche solo un unico notificatore prima dello scadere del timeout viene lancita un'eccezione.
+                Il <a href="#">notificatorInizializer</a> può eliminare tutte le sottoscrizioni dai Notificator.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-service-binder/index.html">ServiceBinder</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">class </span><span class="identifier">ServiceBinder</span></code>
+            <p>Gestisce i notificatori, tramite il moduleBinding si passano delle coppie composte
+                da &lt;nomeLogico,Classe che realizza il servizio di Notificator&gt; si istanziano i notificatori
+                desiderati</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-web-server-initializer/index.html">WebServerInitializer</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">class </span><span class="identifier">WebServerInitializer</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<span class="identifier">ServletContextListener</span></code></td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

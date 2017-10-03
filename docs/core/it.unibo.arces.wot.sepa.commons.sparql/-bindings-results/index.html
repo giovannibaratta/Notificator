@@ -1,0 +1,177 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>BindingsResults - core</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">it.unibo.arces.wot.sepa.commons.sparql</a>&nbsp;/&nbsp;<a
+        href=".">BindingsResults</a><br/>
+<br/>
+<h1>BindingsResults</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span
+        class="identifier">BindingsResults</span></code>
+<p>This class represents the results of a SPARQL 1.1 Query This conforms with the following: - SPARQL 1.1 Query Results
+    JSON Format https://www.w3.org/TR/2013/REC-sparql11-results-json-20130321/ It uses https://github.com/google/gso as
+    internal representation of the results in JSON format</p>
+<h3>Constructors</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-init-.html">&lt;init&gt;</a></p>
+        </td>
+        <td>
+            <code><span class="identifier">BindingsResults</span><span class="symbol">(</span><span class="identifier"
+                                                                                                    id="it.unibo.arces.wot.sepa.commons.sparql.BindingsResults$<init>(JsonObject)/results">results</span><span
+                    class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span></code><br/>
+            <code><span class="identifier">BindingsResults</span><span class="symbol">(</span><span class="identifier"
+                                                                                                    id="it.unibo.arces.wot.sepa.commons.sparql.BindingsResults$<init>(kotlin.collections.MutableSet((kotlin.String)), kotlin.collections.MutableList((it.unibo.arces.wot.sepa.commons.sparql.Bindings)))/varSet">varSet</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span
+                    class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">&gt;</span><span
+                    class="symbol">, </span><span class="identifier"
+                                                  id="it.unibo.arces.wot.sepa.commons.sparql.BindingsResults$<init>(kotlin.collections.MutableSet((kotlin.String)), kotlin.collections.MutableList((it.unibo.arces.wot.sepa.commons.sparql.Bindings)))/solutions">solutions</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span
+                    class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a
+                    href="../-bindings/index.html"><span class="identifier">Bindings</span></a><span
+                    class="symbol">&gt;</span><span class="symbol">)</span></code><br/>
+            <code><span class="identifier">BindingsResults</span><span class="symbol">(</span><span class="identifier"
+                                                                                                    id="it.unibo.arces.wot.sepa.commons.sparql.BindingsResults$<init>(it.unibo.arces.wot.sepa.commons.sparql.BindingsResults)/newBindings">newBindings</span><span
+                    class="symbol">:</span>&nbsp;<span class="identifier">BindingsResults</span><span
+                    class="symbol">)</span></code>
+            <p>Instantiates a new bindings results.</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="add.html">add</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">add</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.unibo.arces.wot.sepa.commons.sparql.BindingsResults$add(it.unibo.arces.wot.sepa.commons.sparql.Bindings)/binding">binding</span><span
+                    class="symbol">:</span>&nbsp;<a href="../-bindings/index.html"><span
+                    class="identifier">Bindings</span></a><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Adds the.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="contains.html">contains</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">contains</span><span class="symbol">(</span><span class="identifier"
+                                                                                         id="it.unibo.arces.wot.sepa.commons.sparql.BindingsResults$contains(it.unibo.arces.wot.sepa.commons.sparql.Bindings)/solution">solution</span><span
+                    class="symbol">:</span>&nbsp;<a href="../-bindings/index.html"><span
+                    class="identifier">Bindings</span></a><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span
+                    class="identifier">Boolean</span></a></code>
+            <p>Contains.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="get-bindings.html">getBindings</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBindings</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span
+                    class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a
+                    href="../-bindings/index.html"><span class="identifier">Bindings</span></a><span
+                    class="symbol">&gt;</span></code>
+            <p>Gets the bindings.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="get-variables.html">getVariables</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getVariables</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span
+                    class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+            <p>Gets the variables.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="is-empty.html">isEmpty</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">isEmpty</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span
+                    class="identifier">Boolean</span></a></code>
+            <p>Checks if is empty.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="remove.html">remove</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">remove</span><span class="symbol">(</span><span class="identifier"
+                                                                                       id="it.unibo.arces.wot.sepa.commons.sparql.BindingsResults$remove(it.unibo.arces.wot.sepa.commons.sparql.Bindings)/solution">solution</span><span
+                    class="symbol">:</span>&nbsp;<a href="../-bindings/index.html"><span
+                    class="identifier">Bindings</span></a><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Removes the.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="size.html">size</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">size</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+            <p>Size.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="to-json.html">toJson</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">toJson</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><span class="identifier">JsonObject</span></code>
+            <p>To json.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="to-string.html">toString</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code></td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

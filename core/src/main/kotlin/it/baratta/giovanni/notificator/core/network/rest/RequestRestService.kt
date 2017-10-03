@@ -2,6 +2,8 @@ package it.baratta.giovanni.notificator.core.network.rest
 
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
+import it.baratta.giovanni.notificator.api.exceptions.ClientNotFoundException
+import it.baratta.giovanni.notificator.api.request.ModuleRequest
 import it.baratta.giovanni.notificator.api.request.RegistrationRequest
 import it.baratta.giovanni.notificator.api.response.DeregistrationResponse
 import it.baratta.giovanni.notificator.api.response.ErrorResponse
@@ -50,10 +52,15 @@ class RequestRestService {
         logger.info("Richiesta di stato per il token ${token}")
         if(token == null)
             return gson.toJson(ErrorResponse("token non presente"))
-        val status = ClientManager.instance.registrationStatus(token)
-        val registered = !status.first.isEmpty() && !status.second.isEmpty()
-        logger.info("Stato token ${token} - ${registered}")
-        return gson.toJson(StatusResponse( token, registered,
+        val status: Pair<Set<ModuleRequest>, Set<ModuleRequest>>
+
+        try {
+            status = ClientManager.instance.registrationStatus(token)
+        } catch (ex: ClientNotFoundException) {
+            return gson.toJson(StatusResponse(token, false, emptySet(), emptySet()))
+        }
+
+        return gson.toJson(StatusResponse(token, true,
                                     status.first, status.second))
     }
 

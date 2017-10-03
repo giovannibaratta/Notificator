@@ -11,11 +11,11 @@ class TCPSource : IEventSource {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun registerClient(clientToken: String, params: ConfigurationParams): Observable<Message> {
+    override fun initClient(clientToken: String, params: ConfigurationParams): Observable<Message> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun unregisterClient(clientToken: String) {
+    override fun releaseClient(clientToken: String) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

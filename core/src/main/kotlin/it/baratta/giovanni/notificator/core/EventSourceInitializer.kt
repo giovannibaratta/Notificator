@@ -2,8 +2,8 @@ package it.baratta.giovanni.notificator.core
 
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
-import it.baratta.giovanni.notificator.api.InitializationException
 import it.baratta.giovanni.notificator.api.Message
+import it.baratta.giovanni.notificator.api.exceptions.InitializationException
 import it.baratta.giovanni.notificator.api.request.ModuleRequest
 import it.baratta.giovanni.notificator.core.network.BadRequestException
 import it.baratta.giovanni.notificator.utils.errorAndThrow
@@ -18,7 +18,7 @@ import java.util.concurrent.TimeoutException
  *
  */
 class EventSourceInitializer(val clientToken : String,
-                             val moduleRequest: List<ModuleRequest>) {
+                             val moduleRequest: Set<ModuleRequest>) {
 
 
     private val binder = ServiceBinder.instance
@@ -45,7 +45,7 @@ class EventSourceInitializer(val clientToken : String,
             /* Creo un thread per ogni configurazione, ogni event source potrebbe essereguire sulla rete o sul disco */
             val thread = Thread{
                 try {
-                    observer.add(binder.getEventSourceModule(it.moduleName).registerClient(clientToken, it.params))
+                    observer.add(binder.getEventSourceModule(it.moduleName).initClient(clientToken, it.params))
                     logger.debug{ SimpleMessage("Binding presso ${it.moduleName} per il client ${clientToken} completato.") }
                     positiveResponse()
                 }catch (exception : InitializationException) {
@@ -78,7 +78,7 @@ class EventSourceInitializer(val clientToken : String,
 
     fun unregisterClient(){
         moduleRequest.forEach{
-            binder.getEventSourceModule(it.moduleName).unregisterClient(clientToken)
+            binder.getEventSourceModule(it.moduleName).releaseClient(clientToken)
         }
         threadArray.forEach{ it.interrupt() }
     }

@@ -3,6 +3,7 @@ package it.baratta.giovanni.notificator.core.notificatorImplementation
 import com.google.gson.Gson
 import it.baratta.giovanni.notificator.api.INotificator
 import it.baratta.giovanni.notificator.api.Message
+import it.baratta.giovanni.notificator.api.exceptions.InitializationException
 import it.baratta.giovanni.notificator.api.request.ConfigurationParams
 import it.baratta.giovanni.notificator.utils.errorAndThrow
 import org.apache.logging.log4j.LogManager
@@ -31,22 +32,21 @@ class MqttNotificator private constructor(): INotificator {
     /**
      * Crea un nuovo thread per il cliente. Utilizza [params] per le impostazioni della
      * connessione.
-     * @return true se è il thread è stato creato senza errori, false altrimenti.
      */
-    override fun initNotifcator(clientToken: String, params: ConfigurationParams): Boolean {
+    override fun initClient(clientToken: String, params: ConfigurationParams) {
 
         val server = params.getParam("server")
         if(server == null)
-            return false
+            throw InitializationException("Server non presente nei parametri")
 
         val topic = params.getParam("topic")
         if(topic == null)
-            return false
+            throw InitializationException("topic non presente nei parametri")
 
         synchronized(lock){
             logger.debug("registazione ${creatingClient.contains(clientToken)} - ${this}")
             if(creatingClient.contains(clientToken))
-                return false
+                throw InitializationException("token già registrato")
             creatingClient.add(clientToken)
         }
 
@@ -59,19 +59,18 @@ class MqttNotificator private constructor(): INotificator {
         }catch (exception : Exception){
             logger.error("Non sono riuscito a connettermi al server ${server}")
             creatingClient.remove(clientToken)
-            return false
+            throw InitializationException("Errore durante la connesioen al server $server", exception)
         }
 
         thread.start()
         clientThread.put(clientToken, thread)
-        return true
     }
 
     /**
      * Chiudo la connessione e il thread relativo al cliente. Non lancia eccezione se il
      * cliente non è registrato.
      */
-    override fun destroyNotificator(clientToken: String) {
+    override fun releaseClient(clientToken: String) {
         logger.debug("Destory notificator ${clientToken}")
         clientThread[clientToken]?.closeConnection()
         clientThread.remove(clientToken)

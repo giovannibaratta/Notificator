@@ -1,0 +1,220 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>SPARQL11Properties - core</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">it.unibo.arces.wot.sepa.commons.protocol</a>&nbsp;/&nbsp;<a
+        href=".">SPARQL11Properties</a><br/>
+<br/>
+<h1>SPARQL11Properties</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span
+        class="identifier">SPARQL11Properties</span></code>
+<p>The Class SPARQL11Properties includes all the properties needed to connect to a SPARQL 1.1 Protocol Service: the URLs
+    used by queries and updates (scheme, host, port and path), the HTTP method used by the primitives (GET, POST or
+    URL_ENCODED_POST) and the format of the results (JSON, XML, HTML, CSV)
+<pre><code> { parameters": { "host": "localhost", "ports":{ "http" : 9999 }, "paths": { "update" : "/blazegraph/namespace/kb/sparql", "query" : "/blazegraph/namespace/kb/sparql" }, "methods": { "query": "POST", "update": "URL_ENCODED_POST" }, "formats" : { "update" : "HTML", "query" : "JSON" } } }</code></pre>
+</p>
+<h3>Types</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-h-t-t-p-method/index.html">HTTPMethod</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">class </span><span class="identifier">HTTPMethod</span></code>
+            <p>The Enum HTTPMethod (GET,POST,URL_ENCODED_POST).</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-query-results-format/index.html">QueryResultsFormat</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">class </span><span class="identifier">QueryResultsFormat</span></code>
+            <p>The Enum QueryResultsFormat (JSON,XML,CSV).</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-s-p-a-r-q-l-primitive/index.html">SPARQLPrimitive</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">class </span><span class="identifier">SPARQLPrimitive</span></code>
+            <p>The Enum SPARQLPrimitive (QUERY, UPDATE).</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-update-results-format/index.html">UpdateResultsFormat</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">class </span><span class="identifier">UpdateResultsFormat</span></code>
+            <p>The Enum UpdateResultsFormat (JSON,HTML).</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Constructors</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-init-.html">&lt;init&gt;</a></p>
+        </td>
+        <td>
+            <code><span class="identifier">SPARQL11Properties</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="it.unibo.arces.wot.sepa.commons.protocol.SPARQL11Properties$<init>(kotlin.String)/propertiesFile">propertiesFile</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">)</span></code>
+            <p>Instantiates a new SPARQL 11 properties.</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="get-host.html">getHost</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">getHost</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code>
+            <p>Gets the host.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="get-http-port.html">getHttpPort</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHttpPort</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+            <p>Gets the update port.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="get-query-method.html">getQueryMethod</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getQueryMethod</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="-h-t-t-p-method/index.html"><span class="identifier">HTTPMethod</span></a></code>
+            <p>Gets the query method.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="get-query-path.html">getQueryPath</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getQueryPath</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code>
+            <p>Gets the query path.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="get-query-results-format.html">getQueryResultsFormat</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getQueryResultsFormat</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="-query-results-format/index.html"><span
+                    class="identifier">QueryResultsFormat</span></a></code>
+            <p>Gets the query results format.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="get-update-method.html">getUpdateMethod</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUpdateMethod</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="-h-t-t-p-method/index.html"><span class="identifier">HTTPMethod</span></a></code>
+            <p>Gets the update method.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="get-update-path.html">getUpdatePath</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUpdatePath</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code>
+            <p>Gets the update path.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="get-update-results-format.html">getUpdateResultsFormat</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUpdateResultsFormat</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="-update-results-format/index.html"><span
+                    class="identifier">UpdateResultsFormat</span></a></code>
+            <p>Gets the update results format.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="to-string.html">toString</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code></td>
+    </tr>
+    </tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p>
+                <a href="../../it.unibo.arces.wot.sepa.api/-s-p-a-r-q-l11-s-e-properties/index.html">SPARQL11SEProperties</a>
+            </p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SPARQL11SEProperties</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<span class="identifier">SPARQL11Properties</span></code>
+            <p>The Class SPARQL11SEProperties. { "parameters": { "host": "localhost", "ports": { "http": 8000, "ws":
+                9000, "https": 8443, "wss": 9443 }, "paths": { "update": "/update", "query": "/query", "subscribe":
+                "/subscribe", "securePath": "/secure", "register": "/oauth/register", "tokenRequest": "/oauth/token" },
+                "security": { "clientId":
+                "NjA3YjA5NjMtMjIyYy00MTVmLWFhYTEtM2ZhMjIzMTlkM2NhOmM3ZjcxZGRmLWFmNTctNDY0ZC05MjViLWRjNWQ4MTA4ZmEyMw==+MsPJeSo0/Py4oMBai+7XPEdfVEAzU5G3AiiAdT5Kh75xG47x+843PTaTg7FPBrU",
+                "clientSecret":
+                "NjA3YjA5NjMtMjIyYy00MTVmLWFhYTEtM2ZhMjIzMTlkM2NhOmM3ZjcxZGRmLWFmNTctNDY0ZC05MjViLWRjNWQ4MTA4ZmEyMw==+MsPJeSo0/Py4oMBai+7XPEdfVEAzU5G3AiiAdT5Kh75xG47x+843PTaTg7FPBrU72cwZ5VCUzjLOlxbM3hJL7eZpGPVdgzVxwYPZpktzA3ou8FgWd48FuBhE8nSlO6j",
+                "jwt":
+                "NjA3YjA5NjMtMjIyYy00MTVmLWFhYTEtM2ZhMjIzMTlkM2NhOmM3ZjcxZGRmLWFmNTctNDY0ZC05MjViLWRjNWQ4MTA4ZmEyMw==+MsPJeSo0/Py4oMBai+7XPEdfVEAzU5G3AiiAdT5Kh75xG47x+843PTaTg7FPBrU72cwZ5VCUzjLOlxbM3hJL7eZpGPVdgzVxwYPZpktzA3ou8FgWd48FuBhE8nSlO6jxabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfun6peA2iw+Yzgy++JvqYcNK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYkWldw9We4PoULmmCLsYMJhsZXJGTP7Ts2MJvFfhzLpNL7RUMQFh1SgaUw0DDIfhMzhOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvsVvET1WCV8SCPO9Eb3ngKzMfrOATYiVTFgkvxW8ILYMjBTTpT/mxs7h+m2x+dUyYHf0dO6ijEwC+4RbAD3G9no7DYxZ6vwE1rgdgjKMO8FDB70btp5wDLC/Ix4ODpjjcEC+5QjFYqLVx1hHcO3OofKlkDTW8SZC2ja+Y0e+DxQBP4KQNicqbb6nHtVquc7evcL7qiBubPC0vCgC0rnG/KnwAuM20poF+9wdxQIRAbEM7FKShSUOUKWiFuwrGwmDo8=03GyA/KHCksRpbTE427Duw==XPrHEX2xHy+5IuXHPHigMw==xabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfv8OLnSINurvOL38hvfHCFsK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYkWldw9We4PoULmmCLsYMJh2V85wkVIZ+xfygiqcn0BDZ0wcyjgOsLXBmegg4oeHQ/hOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvt7rSSsKqJWuEEPG7XZz8sb5eyV+03bXZ3gtEDElHkpTqgEkE1i97ssq+xQ8FQxQorLmtYAPTbAlAdq0WYKCLqf82XYa0/BQxsSDolYh6LyzhVZFSw38B9M8SZoUy1o2TKgLkwqhbWqSOMqSHadZc1GgudYeL6jnT15YoMDxSgh2ipp9xqfEg14hftHUjnn+eVvbFSrB0/64yhNcy8QEpOTugfcXUOdX/QZFUYYfk0z+pX3VK6kDBvsGt1Gu1OiHUE=s7busLq+ySuYDqnFWs2/lg==XPrHEX2xHy+5IuXHPHigMw==xabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfsP07Rrw5G3cPYZKKp1RLZyK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYke9XGiRtdWCLU/9WQpwUqWD1tYwAEOHOn0qZK0z17hqCgkaOp/sLyIGq4J047Pc+HhOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvsUoMF/UIVlrrGwX+ghtGDJtG2OuBC/KY5hLtHN3G7lzmlmSehTw2ec40BqxcLCf2yCmjRSb1xnf+2NtiidKa3qdnk8f2epx/i1vcnG6PLOkSNdJryKVIQSi38X1A/gNtp7hWs97JuVihxDUblVOLWX4TqBDzet8ZvSxxguP+KBGn1CUczRUI28novZLU1KpWTHH64nNLLSLVHuTaQP3mQgisGofYLYhzsW/dnz7OgpbARFXipZ1smUaGbfGSn06sU=",
+                "expires":
+                "NjA3YjA5NjMtMjIyYy00MTVmLWFhYTEtM2ZhMjIzMTlkM2NhOmM3ZjcxZGRmLWFmNTctNDY0ZC05MjViLWRjNWQ4MTA4ZmEyMw==+MsPJeSo0/Py4oMBai+7XPEdfVEAzU5G3AiiAdT5Kh75xG47x+843PTaTg7FPBrU72cwZ5VCUzjLOlxbM3hJL7eZpGPVdgzVxwYPZpktzA3ou8FgWd48FuBhE8nSlO6jxabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfun6peA2iw+Yzgy++JvqYcNK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYkWldw9We4PoULmmCLsYMJhsZXJGTP7Ts2MJvFfhzLpNL7RUMQFh1SgaUw0DDIfhMzhOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvsVvET1WCV8SCPO9Eb3ngKzMfrOATYiVTFgkvxW8ILYMjBTTpT/mxs7h+m2x+dUyYHf0dO6ijEwC+4RbAD3G9no7DYxZ6vwE1rgdgjKMO8FDB70btp5wDLC/Ix4ODpjjcEC+5QjFYqLVx1hHcO3OofKlkDTW8SZC2ja+Y0e+DxQBP4KQNicqbb6nHtVquc7evcL7qiBubPC0vCgC0rnG/KnwAuM20poF+9wdxQIRAbEM7FKShSUOUKWiFuwrGwmDo8=03GyA/KHCksRpbTE427Duw==XPrHEX2xHy+5IuXHPHigMw==xabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfv8OLnSINurvOL38hvfHCFsK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYkWldw9We4PoULmmCLsYMJh2V85wkVIZ+xfygiqcn0BDZ0wcyjgOsLXBmegg4oeHQ/hOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvt7rSSsKqJWuEEPG7XZz8sb5eyV+03bXZ3gtEDElHkpTqgEkE1i97ssq+xQ8FQxQorLmtYAPTbAlAdq0WYKCLqf82XYa0/BQxsSDolYh6LyzhVZFSw38B9M8SZoUy1o2TKgLkwqhbWqSOMqSHadZc1GgudYeL6jnT15YoMDxSgh2ipp9xqfEg14hftHUjnn+eVvbFSrB0/64yhNcy8QEpOTugfcXUOdX/QZFUYYfk0z+pX3VK6kDBvsGt1Gu1OiHUE=s7busLq+ySuYDqnFWs2/lg==XPrHEX2xHy+5IuXHPHigMw==xabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfsP07Rrw5G3cPYZKKp1RLZyK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYke9XGiRtdWCLU/9WQpwUqWD1tYwAEOHOn0qZK0z17hqCgkaOp/sLyIGq4J047Pc+HhOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvsUoMF/UIVlrrGwX+ghtGDJtG2OuBC/KY5hLtHN3G7lzmlmSehTw2ec40BqxcLCf2yCmjRSb1xnf+2NtiidKa3qdnk8f2epx/i1vcnG6PLOkSNdJryKVIQSi38X1A/gNtp7hWs97JuVihxDUblVOLWX4TqBDzet8ZvSxxguP+KBGn1CUczRUI28novZLU1KpWTHH64nNLLSLVHuTaQP3mQgisGofYLYhzsW/dnz7OgpbARFXipZ1smUaGbfGSn06sU=C8gpZPX8vmBkyVufxJn4/g==",
+                "type":
+                "NjA3YjA5NjMtMjIyYy00MTVmLWFhYTEtM2ZhMjIzMTlkM2NhOmM3ZjcxZGRmLWFmNTctNDY0ZC05MjViLWRjNWQ4MTA4ZmEyMw==+MsPJeSo0/Py4oMBai+7XPEdfVEAzU5G3AiiAdT5Kh75xG47x+843PTaTg7FPBrU72cwZ5VCUzjLOlxbM3hJL7eZpGPVdgzVxwYPZpktzA3ou8FgWd48FuBhE8nSlO6jxabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfun6peA2iw+Yzgy++JvqYcNK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYkWldw9We4PoULmmCLsYMJhsZXJGTP7Ts2MJvFfhzLpNL7RUMQFh1SgaUw0DDIfhMzhOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvsVvET1WCV8SCPO9Eb3ngKzMfrOATYiVTFgkvxW8ILYMjBTTpT/mxs7h+m2x+dUyYHf0dO6ijEwC+4RbAD3G9no7DYxZ6vwE1rgdgjKMO8FDB70btp5wDLC/Ix4ODpjjcEC+5QjFYqLVx1hHcO3OofKlkDTW8SZC2ja+Y0e+DxQBP4KQNicqbb6nHtVquc7evcL7qiBubPC0vCgC0rnG/KnwAuM20poF+9wdxQIRAbEM7FKShSUOUKWiFuwrGwmDo8=03GyA/KHCksRpbTE427Duw==XPrHEX2xHy+5IuXHPHigMw==xabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfv8OLnSINurvOL38hvfHCFsK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYkWldw9We4PoULmmCLsYMJh2V85wkVIZ+xfygiqcn0BDZ0wcyjgOsLXBmegg4oeHQ/hOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvt7rSSsKqJWuEEPG7XZz8sb5eyV+03bXZ3gtEDElHkpTqgEkE1i97ssq+xQ8FQxQorLmtYAPTbAlAdq0WYKCLqf82XYa0/BQxsSDolYh6LyzhVZFSw38B9M8SZoUy1o2TKgLkwqhbWqSOMqSHadZc1GgudYeL6jnT15YoMDxSgh2ipp9xqfEg14hftHUjnn+eVvbFSrB0/64yhNcy8QEpOTugfcXUOdX/QZFUYYfk0z+pX3VK6kDBvsGt1Gu1OiHUE=s7busLq+ySuYDqnFWs2/lg==XPrHEX2xHy+5IuXHPHigMw==xabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfsP07Rrw5G3cPYZKKp1RLZyK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYke9XGiRtdWCLU/9WQpwUqWD1tYwAEOHOn0qZK0z17hqCgkaOp/sLyIGq4J047Pc+HhOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvsUoMF/UIVlrrGwX+ghtGDJtG2OuBC/KY5hLtHN3G7lzmlmSehTw2ec40BqxcLCf2yCmjRSb1xnf+2NtiidKa3qdnk8f2epx/i1vcnG6PLOkSNdJryKVIQSi38X1A/gNtp7hWs97JuVihxDUblVOLWX4TqBDzet8ZvSxxguP+KBGn1CUczRUI28novZLU1KpWTHH64nNLLSLVHuTaQP3mQgisGofYLYhzsW/dnz7OgpbARFXipZ1smUaGbfGSn06sU=C8gpZPX8vmBkyVufxJn4/g==XPrHEX2xHy+5IuXHPHigMw=="
+                } } } }</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

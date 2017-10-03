@@ -1,0 +1,131 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>ErrorResponse - core</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">it.unibo.arces.wot.sepa.commons.response</a>&nbsp;/&nbsp;<a
+        href=".">ErrorResponse</a><br/>
+<br/>
+<h1>ErrorResponse</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ErrorResponse</span>&nbsp;<span
+        class="symbol">:</span>&nbsp;<a href="../-response/index.html"><span
+        class="identifier">Response</span></a></code>
+<p>It represents a generic error. If it applies, the use of HTTP status codes is RECOMMENDED (<strong><a href="#">RFC
+    2616</a></strong>) 400 Bad Request 401 Unauthorized 402 Payment Required 403 Forbidden 404 Not Found 405 Method Not
+    Allowed 406 Not Acceptable 407 Proxy Authentication Required 408 Request Timeout 409 Conflict 410 Gone 411 Length
+    Required 412 Precondition Failed 413 Request Entity Too Large 414 Request-URI Too Long 415 Unsupported Media Type
+    416 Requested Range Not Satisfiable 417 Expectation Failed 500 Internal Server Error 501 Not Implemented 502 Bad
+    Gateway 503 Service Unavailable 504 Gateway Timeout 505 HTTP Version Not Supported The JSON representation of an
+    error response follows: { "body" : "Internal Server Error: SPARQL endpoint not found" , "code" : 500 } Body is
+    optional</p>
+<h3>Constructors</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-init-.html">&lt;init&gt;</a></p>
+        </td>
+        <td>
+            <code><span class="identifier">ErrorResponse</span><span class="symbol">(</span><span class="identifier"
+                                                                                                  id="it.unibo.arces.wot.sepa.commons.response.ErrorResponse$<init>(kotlin.Int, kotlin.Int, kotlin.String)/token">token</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span
+                    class="symbol">, </span><span class="identifier"
+                                                  id="it.unibo.arces.wot.sepa.commons.response.ErrorResponse$<init>(kotlin.Int, kotlin.Int, kotlin.String)/code">code</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span
+                    class="symbol">, </span><span class="identifier"
+                                                  id="it.unibo.arces.wot.sepa.commons.response.ErrorResponse$<init>(kotlin.Int, kotlin.Int, kotlin.String)/message">message</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">)</span></code><br/>
+            <code><span class="identifier">ErrorResponse</span><span class="symbol">(</span><span class="identifier"
+                                                                                                  id="it.unibo.arces.wot.sepa.commons.response.ErrorResponse$<init>(kotlin.Int, kotlin.String)/code">code</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span
+                    class="symbol">, </span><span class="identifier"
+                                                  id="it.unibo.arces.wot.sepa.commons.response.ErrorResponse$<init>(kotlin.Int, kotlin.String)/message">message</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">)</span></code><br/>
+            <code><span class="identifier">ErrorResponse</span><span class="symbol">(</span><span class="identifier"
+                                                                                                  id="it.unibo.arces.wot.sepa.commons.response.ErrorResponse$<init>(kotlin.Int)/code">code</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span
+                    class="symbol">)</span></code>
+            <p>Instantiates a new error response.</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="get-error-code.html">getErrorCode</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getErrorCode</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+            <p>Gets the error code.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="get-error-message.html">getErrorMessage</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getErrorMessage</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code>
+            <p>Gets the error message.</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="../-response/get-as-json-object.html">getAsJsonObject</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAsJsonObject</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span
+                    class="identifier">JsonObject</span></code>
+            <p>Gets the as json object.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="../-response/get-token.html">getToken</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">getToken</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+            <p>Gets the token.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="../-response/to-string.html">toString</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code></td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

@@ -2,8 +2,9 @@ package it.baratta.giovanni.notificator.core
 
 import io.reactivex.disposables.Disposable
 import it.baratta.giovanni.notificator.api.IClientManager
-import it.baratta.giovanni.notificator.api.InitializationException
 import it.baratta.giovanni.notificator.api.Message
+import it.baratta.giovanni.notificator.api.exceptions.ClientNotFoundException
+import it.baratta.giovanni.notificator.api.exceptions.ClientRegistrationException
 import it.baratta.giovanni.notificator.api.request.ModuleRequest
 import it.baratta.giovanni.notificator.utils.errorAndThrow
 import org.apache.logging.log4j.LogManager
@@ -19,14 +20,8 @@ class ClientManager private constructor() : IClientManager {
     private val client = HashMap<String, Pair<EventSourceInitializer,NotificatorInitializer>>()
     private val clientSubscription = HashMap<String, Disposable>()
 
-    /**
-     * Elabora la richiesta del cliente e restituisce un token in
-     * caso di successo altrimenti eccezione.
-     *
-     * @param notificatorsRequest moduli per le notifiche da attivare per il cliente
-     * @return Token univoco associato al cliente, da usare durante la deregistrazione o per le notifiche
-     */
-    override fun registerClient(eventSourceRequest : List<ModuleRequest>, notificatorsRequest : List<ModuleRequest>) : String {
+
+    override fun registerClient(eventSourceRequest: Set<ModuleRequest>, notificatorsRequest: Set<ModuleRequest>): String {
 
         // generazione token univoco
         val clientToken = UUID.randomUUID().toString().replace("-","")
@@ -64,11 +59,11 @@ class ClientManager private constructor() : IClientManager {
         eventSourceInitializer = eventThread.initializer
 
         if(notificatorInitializer == null){
-            logger.errorAndThrow(IllegalStateException("uno dei gli notificator initializer non è valido"))
+            logger.errorAndThrow(ClientRegistrationException("uno dei gli notificator initializer non è valido"))
         }
 
         if(eventSourceInitializer == null){
-            logger.errorAndThrow(IllegalStateException("uno dei gli event source initializer non è valido"))
+            logger.errorAndThrow(ClientRegistrationException("uno dei gli event source initializer non è valido"))
         }
 
         client.put(clientToken, Pair(eventSourceInitializer,notificatorInitializer))
@@ -84,14 +79,14 @@ class ClientManager private constructor() : IClientManager {
     }
 
     private fun exceptionCollector(thread: Thread, throwable: Throwable) : Nothing{
-        logger.errorAndThrow(InitializationException("Uno dei thread configuratori non è terminato correttamente"))
+        logger.errorAndThrow(ClientRegistrationException("Uno dei thread configuratori non è terminato correttamente", throwable))
     }
 
     private fun notify(clientToken: String, message : Message){
         //logger.debug("Messagio ricevuto")
 
         val moduleList : List<ModuleRequest>
-                = client[clientToken]?.second?.notificatorsRequest ?: emptyList()
+                = client[clientToken]?.second?.notificatorsRequest?.toList() ?: emptyList()
 
         for (i in 0.until(moduleList.size))
             ServiceBinder.instance
@@ -111,10 +106,10 @@ class ClientManager private constructor() : IClientManager {
         clientToDelete?.second?.unregisterClient()
     }
 
-    override fun registrationStatus(clientToken : String) : Pair<List<ModuleRequest>,List<ModuleRequest>>{
+    override fun registrationStatus(clientToken: String): Pair<Set<ModuleRequest>, Set<ModuleRequest>> {
         val clientStatus = client[clientToken]
         if(clientStatus == null)
-            return Pair(emptyList(), emptyList())
+            throw ClientNotFoundException("il token $clientToken non è registrato nel sistema")
         return Pair(clientStatus.first.moduleRequest, clientStatus.second.notificatorsRequest)
     }
 

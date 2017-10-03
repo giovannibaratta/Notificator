@@ -2,24 +2,40 @@ package it.baratta.giovanni.notificator.api
 
 import it.baratta.giovanni.notificator.api.request.ConfigurationParams
 
+/**
+ * Rappresenta un sistema di notifica. Ogni implementazione rappresenta una tecnologia
+ * differente. Ogni implementazione può gestire autonomamente i client registrati.
+ */
 interface INotificator{
-    /**
-     * Inizializza il notificatore per lo specifico cliente
-     * @param params parametri con cui effettuare l'inizializzazione
-     * */
-    fun initNotifcator(clientToken : String, params : ConfigurationParams) : Boolean
 
     /**
-     * Ripulisce il notificatore dai dati del cliente
+     * Registra il client presso il modulo. Dal parametro [params] è possibile recuperare i
+     * parametri di configurazione inviati dal client.
+     * In questo metodo bisogna configurare il modulo per lo specifico cliente.
+     *
+     * @param clientToken token del client che si vuole registrare
+     * @param parmas parametri specificati dal cliente per effettuare la registrazione
+     * @throws InitializationException se si verifica un errore durante l'inizializzazione
      */
-    fun destroyNotificator(clientToken : String)
+    fun initClient(clientToken: String, params: ConfigurationParams)
 
     /**
-     * Invia i dati al cliente indicato
-     * @param clientToken cliente a cui inviare i dati
-     * @param payload dati da inviare
+     * Rilascia le risorse associate al client con il token [clientToken]
+     * @param clientToken token del client da rimuovere dal server
+     */
+    fun releaseClient(clientToken: String)
+
+    /**
+     * Invia un messagio al client con il token [clientToken].
+     *
+     * @param clientToken client a cui inviare i dati
+     * @param message dati da inviare al client
+     * @throws ClientNotFoundException se il token non è associato a nessun client
      */
     fun notify(clientToken: String, message: Message)
 
+    /**
+     * Nome logico del notificator
+     */
     val notificatorName : String
 }

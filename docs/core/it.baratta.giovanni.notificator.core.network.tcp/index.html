@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>it.baratta.giovanni.notificator.core.network.tcp - core</title>
+    <link rel="stylesheet" href="..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">core</a>&nbsp;/&nbsp;<a href=".">it.baratta.giovanni.notificator.core.network.tcp</a><br/>
+<br/>
+<h2>Package it.baratta.giovanni.notificator.core.network.tcp</h2>
+<h3>Types</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-client-request-handler/index.html">ClientRequestHandler</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">class </span><span class="identifier">ClientRequestHandler</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<a
+                    href="http://docs.oracle.com/javase/6/docs/api/java/lang/Thread.html"><span class="identifier">Thread</span></a></code>
+            <p>Riceve una socket in ingresso dalla quale recuperare i dati della
+                richiesta. Se la richiesta può essere soddisfatta invia al client
+                il token per poter effettuare la deregistrazione.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-request-t-c-p-thread/index.html">RequestTCPThread</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">class </span><span class="identifier">RequestTCPThread</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<a
+                    href="http://docs.oracle.com/javase/6/docs/api/java/lang/Thread.html"><span class="identifier">Thread</span></a></code>
+            <p>Apre una connessione TCP sulla porta <a href="#">port</a> e resta in ascolto per le richieste dei
+                clienti.
+                Ogni richiesta viene delegata al ClientRequestHandler che si occuperà di capire la tipologia di
+                richiesta ed soddisfarla</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-t-c-p-helper/index.html">TCPHelper</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">class </span><span class="identifier">TCPHelper</span></code></td>
+    </tr>
+    </tbody>
+</table>
+<h3>Extensions for External Classes</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="java.io.-input-stream/index.html">java.io.InputStream</a></p>
+        </td>
+        <td>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

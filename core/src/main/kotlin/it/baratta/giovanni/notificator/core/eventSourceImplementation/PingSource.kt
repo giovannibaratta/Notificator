@@ -23,13 +23,13 @@ class PingSource private constructor(): IEventSource {
         timeEmitter.start()
     }
 
-    override fun registerClient(clientToken: String, params: ConfigurationParams): Observable<Message> {
+    override fun initClient(clientToken: String, params: ConfigurationParams): Observable<Message> {
         timeEmitter.resumeEmission()
         registerClient.add(clientToken)
         return emitter.hide()
     }
 
-    override fun unregisterClient(clientToken: String) {
+    override fun releaseClient(clientToken: String) {
         registerClient.remove(clientToken)
         if(registerClient.size <= 0)
             timeEmitter.pauseEmission()

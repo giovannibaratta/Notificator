@@ -24,7 +24,7 @@ subprojects {
 
     dokka {
         outputFormat = 'html'
-        outputDirectory = "$rootProject.buildDir/javadoc"
+        outputDirectory = "$rootProject.rootDir/docs"
     }
 
     apply plugin : 'idea'

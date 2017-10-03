@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>IClientManager.registrationStatus - api</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">api</a>&nbsp;/&nbsp;<a href="../index.html">it.baratta.giovanni.notificator.api</a>&nbsp;/&nbsp;<a
+        href="index.html">IClientManager</a>&nbsp;/&nbsp;<a href=".">registrationStatus</a><br/>
+<br/>
+<h1>registrationStatus</h1>
+<a name="it.baratta.giovanni.notificator.api.IClientManager$registrationStatus(kotlin.String)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span
+        class="identifier">registrationStatus</span><span class="symbol">(</span><span class="identifier"
+                                                                                       id="it.baratta.giovanni.notificator.api.IClientManager$registrationStatus(kotlin.String)/clientToken">clientToken</span><span
+        class="symbol">:</span>&nbsp;<a
+        href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+        class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span
+        class="identifier">&lt;ERROR CLASS&gt;</span><span class="symbol">&lt;</span><a
+        href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html"><span class="identifier">Set</span></a><span
+        class="symbol">&lt;</span><a
+        href="../../it.baratta.giovanni.notificator.api.request/-module-request/index.html"><span class="identifier">ModuleRequest</span></a><span
+        class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<a
+        href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html"><span class="identifier">Set</span></a><span
+        class="symbol">&lt;</span><a
+        href="../../it.baratta.giovanni.notificator.api.request/-module-request/index.html"><span class="identifier">ModuleRequest</span></a><span
+        class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Verifica se il token <a
+        href="registration-status.html#it.baratta.giovanni.notificator.api.IClientManager$registrationStatus(kotlin.String)/clientToken">clientToken</a>
+    è registrato nel sistema.
+    Se presente restituisce una lista dei moduli ancora attivi.
+    Se non presente lancia eccezione.</p>
+<h3>Parameters</h3>
+<a name="clientToken"></a>
+<code>clientToken</code> - token del client da controllare
+<h3>Exceptions</h3>
+<a name="ClientNotFoundException"></a>
+<code>ClientNotFoundException</code> - se <a
+        href="registration-status.html#it.baratta.giovanni.notificator.api.IClientManager$registrationStatus(kotlin.String)/clientToken">clientToken</a>
+non è associato a nessun client.
+<p><strong>Return</strong><br/>
+    Coppia contenente due set, il primo si riferisce ai moduli sorgente dati,
+    il secondo ai notificator.</p>
+</BODY>
+</HTML>

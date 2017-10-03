@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>ClientRequestHandler - core</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a
+        href="../index.html">it.baratta.giovanni.notificator.core.network.tcp</a>&nbsp;/&nbsp;<a href=".">ClientRequestHandler</a><br/>
+<br/>
+<h1>ClientRequestHandler</h1>
+<code><span class="keyword">class </span><span class="identifier">ClientRequestHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a
+        href="http://docs.oracle.com/javase/6/docs/api/java/lang/Thread.html"><span class="identifier">Thread</span></a></code>
+<p>Riceve una socket in ingresso dalla quale recuperare i dati della
+    richiesta. Se la richiesta può essere soddisfatta invia al client
+    il token per poter effettuare la deregistrazione.</p>
+<p>STRUTTURA RICHIESTA :
+    2 byte - Tipologia richiesta (shortint) - ex. REGISTER, UNREGISTER, ...</p>
+<pre><code><pre><code>    RICHIESTA DI TIPO REGISTER:</code></pre>
+<pre><code>    1 byte - Tipologia dati trasferimento</code></pre>
+<pre><code>    1 byte - Numero di moduli per gli eventSource</code></pre>
+<pre><code>    1 byte - Numero di moduli per i notificator</code></pre>
+
+<pre><code>        DATI TI TIPO JSON:</code></pre>
+<pre><code>        per ogni moduli di event source</code></pre>
+<pre><code>            4 byte - Lunghezza dati modulo</code></pre>
+<pre><code>            Lunghezza dati modulo byte - Modulo in formato JSON</code></pre>
+
+<pre><code>    RICHIESTA DI TIPO UNREGISTER:</code></pre>
+<pre><code>    32 byte - TOKEN</code></pre></code></pre>
+<p>STRUTTURA RISPOSTA DI TIPO REGISTER:
+    1 byte - ESITO RICHIESTA</p>
+<pre><code><pre><code>    ESITO POSITIVO :</code></pre>
+<pre><code>    32 byte - Token</code></pre>
+
+<pre><code>    ESITO NEGATIVO :</code></pre>
+<pre><code>    ----------------</code></pre></code></pre>
+<p>STRUTTURA RISPOSTA DI TIPO UNREGISTER
+    1 byte - ESITO RICHIESTA</p>
+<h3>Parameters</h3>
+<a name="clientSocket"></a>
+<code>clientSocket</code> - socket connessa con il cliente
+<h3>Constructors</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-init-.html">&lt;init&gt;</a></p>
+        </td>
+        <td>
+            <code><span class="identifier">ClientRequestHandler</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="it.baratta.giovanni.notificator.core.network.tcp.ClientRequestHandler$<init>(java.net.Socket)/clientSocket">clientSocket</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="http://docs.oracle.com/javase/6/docs/api/java/net/Socket.html"><span
+                    class="identifier">Socket</span></a><span class="symbol">)</span></code>
+            <p>Riceve una socket in ingresso dalla quale recuperare i dati della
+                richiesta. Se la richiesta può essere soddisfatta invia al client
+                il token per poter effettuare la deregistrazione.</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="run.html">run</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">run</span><span class="symbol">(</span><span
+                    class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code></td>
+    </tr>
+    </tbody>
+</table>
+<h3>Companion Object Properties</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-d-e-f-a-u-l-t_-t-i-m-e-o-u-t.html">DEFAULT_TIMEOUT</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">const</span> <span class="keyword">val </span><span class="identifier">DEFAULT_TIMEOUT</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

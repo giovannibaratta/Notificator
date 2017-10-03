@@ -3,12 +3,15 @@ package it.baratta.giovanni.notificator.core.notificatorImplementation
 import com.google.gson.Gson
 import it.baratta.giovanni.notificator.api.INotificator
 import it.baratta.giovanni.notificator.api.Message
+import it.baratta.giovanni.notificator.api.exceptions.InitializationException
 import it.baratta.giovanni.notificator.api.request.ConfigurationParams
 import org.apache.logging.log4j.LogManager
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
+/**
+ * Rendere thread safe
+ */
 class FirebaseCloudMessagingNotificator private constructor(): INotificator {
 
     companion object {
@@ -19,17 +22,17 @@ class FirebaseCloudMessagingNotificator private constructor(): INotificator {
 
     private val registeredClient = HashMap<String, Pair<String,FcmProxyService>>()
 
-    override fun initNotifcator(clientToken: String, params: ConfigurationParams): Boolean {
+    override fun initClient(clientToken: String, params: ConfigurationParams) {
         if(registeredClient.containsKey(clientToken))
-            return false
+            throw InitializationException("client già registrato")
 
         val fcmToken = params.getParam("fcmToken")
         if(fcmToken == null)
-            return false
+            throw InitializationException("token fcm non presente tra i parametri")
 
         val fcmProxy = params.getParam("fcmProxy")
         if(fcmProxy == null)
-            return false
+            throw InitializationException("fcmProxy non presente tra i parametri")
 
         val retrofit : Retrofit
 
@@ -40,14 +43,13 @@ class FirebaseCloudMessagingNotificator private constructor(): INotificator {
                     .build()
         }catch (exception : Exception){
             logger.error("Errore durante la creazione del retrofit per il token $clientToken con url $fcmProxy")
-            return false
+            throw InitializationException("Errore durante la creazione di retrofit")
         }
 
         registeredClient.putIfAbsent(clientToken, Pair(fcmToken,retrofit.create(FcmProxyService::class.java)))
-        return true
     }
 
-    override fun destroyNotificator(clientToken: String) {
+    override fun releaseClient(clientToken: String) {
         registeredClient.remove(clientToken)
     }
 

@@ -39,7 +39,7 @@ class SEPASource private constructor(): IEventSource {
     private val tokenConnection = HashMap<String, SepaConnectionHolder>()
     private val tokenJasp = HashMap<String, SPARQL11SEProperties>()
 
-    override fun registerClient(clientToken: String, params: ConfigurationParams): Observable<Message> {
+    override fun initClient(clientToken: String, params: ConfigurationParams): Observable<Message> {
         logger.debug("Cliente in arrivo nella SEPA")
         // verifico che nei parametri sia il file jasp di configurazione e il file ssl serializzato
         val jasp = params.getParam("jasp")
@@ -128,7 +128,7 @@ class SEPASource private constructor(): IEventSource {
         return emitter.hide()
     }
 
-    override fun unregisterClient(clientToken: String) {
+    override fun releaseClient(clientToken: String) {
         lock.lock()
         val conn = tokenConnection[clientToken]
         if(conn == null)

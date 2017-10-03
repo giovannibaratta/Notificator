@@ -1,0 +1,485 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>alltypes - core</title>
+    <link rel="stylesheet" href="..\..\style.css">
+</HEAD>
+<BODY>
+<h3>All Types</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.sparql/-a-r-bindings-results/index.html">it.unibo.arces.wot.sepa.commons.sparql.ARBindingsResults</a>
+        </td>
+        <td>
+            <p>This class represents the content of a SEPA notification It includes the added and removed bindings since
+                the previous notification.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core.network/-bad-request-exception/index.html">it.baratta.giovanni.notificator.core.network.BadRequestException</a>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.sparql/-bindings/index.html">it.unibo.arces.wot.sepa.commons.sparql.Bindings</a>
+        </td>
+        <td>
+            <p>This class represents a query solution of a SPARQL 1.1 Query An example of the internal representation as
+                JSON object follows: <code>{ "x" : { "type": "bnode", "value": "r2" }, "hpage" : { "type": "uri",
+                    "value": "http://work.example.org/alice/" }, "blurb" : { "datatype":
+                    "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral", "type": "literal", "value": "&lt;p
+                    xmlns=\"http://www.w3.org/1999/xhtml\"&gt;My name is &lt;b&gt;alice&lt;/b&gt; &lt;/p&gt; " }, "name"
+                    : { "type": "literal", "value": "Bob", "xml:lang": "en" } }</code></p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.sparql/-bindings-results/index.html">it.unibo.arces.wot.sepa.commons.sparql.BindingsResults</a>
+        </td>
+        <td>
+            <p>This class represents the results of a SPARQL 1.1 Query This conforms with the following: - SPARQL 1.1
+                Query Results JSON Format https://www.w3.org/TR/2013/REC-sparql11-results-json-20130321/ It uses
+                https://github.com/google/gso as internal representation of the results in JSON format</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core/-client-manager/index.html">it.baratta.giovanni.notificator.core.ClientManager</a>
+        </td>
+        <td>
+            <p>Gestisce le registrazione dei clienti</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core.network.tcp/-client-request-handler/index.html">it.baratta.giovanni.notificator.core.network.tcp.ClientRequestHandler</a>
+        </td>
+        <td>
+            <p>Riceve una socket in ingresso dalla quale recuperare i dati della
+                richiesta. Se la richiesta può essere soddisfatta invia al client
+                il token per poter effettuare la deregistrazione.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core/-core-application/index.html">it.baratta.giovanni.notificator.core.CoreApplication</a>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.response/-error-response/index.html">it.unibo.arces.wot.sepa.commons.response.ErrorResponse</a>
+        </td>
+        <td>
+            <p>It represents a generic error. If it applies, the use of HTTP status codes is RECOMMENDED (<strong><a
+                    href="#">RFC 2616</a></strong>) 400 Bad Request 401 Unauthorized 402 Payment Required 403 Forbidden
+                404 Not Found 405 Method Not Allowed 406 Not Acceptable 407 Proxy Authentication Required 408 Request
+                Timeout 409 Conflict 410 Gone 411 Length Required 412 Precondition Failed 413 Request Entity Too Large
+                414 Request-URI Too Long 415 Unsupported Media Type 416 Requested Range Not Satisfiable 417 Expectation
+                Failed 500 Internal Server Error 501 Not Implemented 502 Bad Gateway 503 Service Unavailable 504 Gateway
+                Timeout 505 HTTP Version Not Supported The JSON representation of an error response follows: { "body" :
+                "Internal Server Error: SPARQL endpoint not found" , "code" : 500 } Body is optional</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core/-event-source-initializer/index.html">it.baratta.giovanni.notificator.core.EventSourceInitializer</a>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core.notificator-implementation/-fcm-proxy-service/index.html">it.baratta.giovanni.notificator.core.notificatorImplementation.FcmProxyService</a>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core.notificator-implementation/-firebase-cloud-messaging-notificator/index.html">it.baratta.giovanni.notificator.core.notificatorImplementation.FirebaseCloudMessagingNotificator</a>
+        </td>
+        <td>
+            <p>Rendere thread safe</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core.network.websocket/-hello-socket/index.html">it.baratta.giovanni.notificator.core.network.websocket.HelloSocket</a>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.api/-i-notification-handler/index.html">it.unibo.arces.wot.sepa.api.INotificationHandler</a>
+        </td>
+        <td>
+            <p>The Interface NotificationHandler.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core.network.tcp/java.io.-input-stream/index.html">java.io.InputStream</a>
+            (extensions in package it.baratta.giovanni.notificator.core.network.tcp)
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.response/-j-w-t-response/index.html">it.unibo.arces.wot.sepa.commons.response.JWTResponse</a>
+        </td>
+        <td>
+            <p>Produce JWT compliant with WoT W3C recommendations {"access_token":"eyJhbGciOiJSUzI1NiJ9.
+                eyJzdWIiOiJTRVBBRW5naW5lIiwiYXVkIjpbImh0dHBzOlwvXC93b3QuYXJjZXMudW5pYm8uaXQ6ODQ0M
+                1wvc3BhcnFsIiwid3NzOlwvXC93b3QuYXJjZXMudW5pYm8uaXQ6OTQ0M1wvc3BhcnFsIl0sIm5iZiI6MT
+                Q5MTAzMzQ4MjI2MiwiaXNzIjoiaHR0cHM6XC9cL3dvdC5hcmNlcy51bmliby5pdCIsImV4cCI6MTQ5MTA
+                zNzA4MjI2MiwiaWF0IjoxNDkxMDMzNDgyMjYyLCJqdGkiOiJjZTIwZmM3NC05NWU1LTQ2NzEtYTllOS1k
+                MjMwZmE4NTlhMTQ6NjhhMmYwOWQtN2E4NS00YzU1LTgxOWUtZWU1YWRhYjgxNDI1In0.IwTisstsZhJVu
+                Guhes4s9GE6sikh0rPtJg4QtY1DFT3OZ3WDF05OCwsBCe6dkNOn__68-e_9cEoiFY4s4KQ8heRQHpyRuD
+                QK0vTOefpgumKtRHrlCe0JGHBnPNqo8Zp7cVivZnin8NsePcuweFgZxWfaOC-EH5ClpqjPEbjj65g", "token_type":"bearer",
+                "expires_in":3600}</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core.notificator-implementation/-mqtt-notificator/index.html">it.baratta.giovanni.notificator.core.notificatorImplementation.MqttNotificator</a>
+        </td>
+        <td>
+            <p>Crea dei thread per gestire le connessione verso dei broker mqtt.
+                Ogni cliente dispone di un proprio thread.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.response/-notification/index.html">it.unibo.arces.wot.sepa.commons.response.Notification</a>
+        </td>
+        <td>
+            <p>This class represents a SPARQL Notification (see SPARQL 1.1 Subscription Language) The JSON serialization
+                looks like: <code>{ "spuid" : "SPUID" , "sequence" : "SEQUENTIAL NUMBER", "results" : &lt;JSON
+                    Notification Results&gt; } </code></p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core.event-source-implementation/-notification-handler/index.html">it.baratta.giovanni.notificator.core.eventSourceImplementation.NotificationHandler</a>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core/-notificator-initializer/index.html">it.baratta.giovanni.notificator.core.NotificatorInitializer</a>
+        </td>
+        <td>
+            <p>Ogni client è associato un <a
+                    href="../it.baratta.giovanni.notificator.core/-notificator-initializer/index.html">NotificatorInitializer</a>.
+                Il <a href="../it.baratta.giovanni.notificator.core/-notificator-initializer/index.html">NotificatorInitializer</a>
+                si occupa di inizializzare tutti
+                i notificatori presenti in <a
+                        href="../it.baratta.giovanni.notificator.core/-notificator-initializer/notificators-request.html">notificatorsRequest</a>
+                utilizzando i parametri oppurtuni. Se non si riesce a configurare
+                anche solo un unico notificatore prima dello scadere del timeout viene lancita un'eccezione.
+                Il <a href="#">notificatorInizializer</a> può eliminare tutte le sottoscrizioni dai Notificator.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.response/-ping/index.html">it.unibo.arces.wot.sepa.commons.response.Ping</a>
+        </td>
+        <td>
+            <p>This class represents the ping message sent on every active websocket (see SPARQL 1.1 Subscription
+                Language) The JSON serialization is the following: {"ping" : "yyyy-MM-dd HH:mm:ss.SSS"}</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core.event-source-implementation/-ping-source/index.html">it.baratta.giovanni.notificator.core.eventSourceImplementation.PingSource</a>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.request/-query-request/index.html">it.unibo.arces.wot.sepa.commons.request.QueryRequest</a>
+        </td>
+        <td>
+            <p>This class represents a request to perform a SPARQL 1.1 Query</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.response/-query-response/index.html">it.unibo.arces.wot.sepa.commons.response.QueryResponse</a>
+        </td>
+        <td>
+            <p>This class represents the results of a SPARQL 1.1 Query</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.sparql/-r-d-f-term/index.html">it.unibo.arces.wot.sepa.commons.sparql.RDFTerm</a>
+        </td>
+        <td>
+            <p>The Class RDFTerm.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.request/-registration-request/index.html">it.unibo.arces.wot.sepa.commons.request.RegistrationRequest</a>
+        </td>
+        <td>
+            <p>The Class RegistrationRequest.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.response/-registration-response/index.html">it.unibo.arces.wot.sepa.commons.response.RegistrationResponse</a>
+        </td>
+        <td>
+            <p>{"client_id":"5b60a155-bada-4499-bc6f-26b4d37bc1ef",
+                "client_secret":"40e18d77-421c-48ce-a44a-14da1238e923", "signature": {"kty":"RSA", "e":"AQAB",
+                "x5t":"...", "kid":"sepacertificate", "x5c":["..."], "n":"..."}}</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.request/-request/index.html">it.unibo.arces.wot.sepa.commons.request.Request</a>
+        </td>
+        <td>
+            <p>This class represents a generic request (i.e., QUERY, UPDATE, SUBSCRIBE, UNSUBSCRIBE)</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core.network.rest/-request-rest-service/index.html">it.baratta.giovanni.notificator.core.network.rest.RequestRestService</a>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core.network.tcp/-request-t-c-p-thread/index.html">it.baratta.giovanni.notificator.core.network.tcp.RequestTCPThread</a>
+        </td>
+        <td>
+            <p>Apre una connessione TCP sulla porta <a href="#">port</a> e resta in ascolto per le richieste dei
+                clienti.
+                Ogni richiesta viene delegata al ClientRequestHandler che si occuperà di capire la tipologia di
+                richiesta ed soddisfarla</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.response/-response/index.html">it.unibo.arces.wot.sepa.commons.response.Response</a>
+        </td>
+        <td>
+            <p>This class represents the response to a generic request.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core.event-source-implementation/-s-e-p-a-source/index.html">it.baratta.giovanni.notificator.core.eventSourceImplementation.SEPASource</a>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.protocol/-s-p-a-r-q-l11-properties/index.html">it.unibo.arces.wot.sepa.commons.protocol.SPARQL11Properties</a>
+        </td>
+        <td>
+            <p>The Class SPARQL11Properties includes all the properties needed to connect to a SPARQL 1.1 Protocol
+                Service: the URLs used by queries and updates (scheme, host, port and path), the HTTP method used by the
+                primitives (GET, POST or URL_ENCODED_POST) and the format of the results (JSON, XML, HTML, CSV)
+            <pre><code> { parameters": { "host": "localhost", "ports":{ "http" : 9999 }, "paths": { "update" : "/blazegraph/namespace/kb/sparql", "query" : "/blazegraph/namespace/kb/sparql" }, "methods": { "query": "POST", "update": "URL_ENCODED_POST" }, "formats" : { "update" : "HTML", "query" : "JSON" } } }</code></pre>
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.protocol/-s-p-a-r-q-l11-protocol/index.html">it.unibo.arces.wot.sepa.commons.protocol.SPARQL11Protocol</a>
+        </td>
+        <td>
+            <p>This class implements the SPARQL 1.1 Protocol</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.api/-s-p-a-r-q-l11-s-e-properties/index.html">it.unibo.arces.wot.sepa.api.SPARQL11SEProperties</a>
+        </td>
+        <td>
+            <p>The Class SPARQL11SEProperties. { "parameters": { "host": "localhost", "ports": { "http": 8000, "ws":
+                9000, "https": 8443, "wss": 9443 }, "paths": { "update": "/update", "query": "/query", "subscribe":
+                "/subscribe", "securePath": "/secure", "register": "/oauth/register", "tokenRequest": "/oauth/token" },
+                "security": { "clientId":
+                "NjA3YjA5NjMtMjIyYy00MTVmLWFhYTEtM2ZhMjIzMTlkM2NhOmM3ZjcxZGRmLWFmNTctNDY0ZC05MjViLWRjNWQ4MTA4ZmEyMw==+MsPJeSo0/Py4oMBai+7XPEdfVEAzU5G3AiiAdT5Kh75xG47x+843PTaTg7FPBrU",
+                "clientSecret":
+                "NjA3YjA5NjMtMjIyYy00MTVmLWFhYTEtM2ZhMjIzMTlkM2NhOmM3ZjcxZGRmLWFmNTctNDY0ZC05MjViLWRjNWQ4MTA4ZmEyMw==+MsPJeSo0/Py4oMBai+7XPEdfVEAzU5G3AiiAdT5Kh75xG47x+843PTaTg7FPBrU72cwZ5VCUzjLOlxbM3hJL7eZpGPVdgzVxwYPZpktzA3ou8FgWd48FuBhE8nSlO6j",
+                "jwt":
+                "NjA3YjA5NjMtMjIyYy00MTVmLWFhYTEtM2ZhMjIzMTlkM2NhOmM3ZjcxZGRmLWFmNTctNDY0ZC05MjViLWRjNWQ4MTA4ZmEyMw==+MsPJeSo0/Py4oMBai+7XPEdfVEAzU5G3AiiAdT5Kh75xG47x+843PTaTg7FPBrU72cwZ5VCUzjLOlxbM3hJL7eZpGPVdgzVxwYPZpktzA3ou8FgWd48FuBhE8nSlO6jxabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfun6peA2iw+Yzgy++JvqYcNK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYkWldw9We4PoULmmCLsYMJhsZXJGTP7Ts2MJvFfhzLpNL7RUMQFh1SgaUw0DDIfhMzhOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvsVvET1WCV8SCPO9Eb3ngKzMfrOATYiVTFgkvxW8ILYMjBTTpT/mxs7h+m2x+dUyYHf0dO6ijEwC+4RbAD3G9no7DYxZ6vwE1rgdgjKMO8FDB70btp5wDLC/Ix4ODpjjcEC+5QjFYqLVx1hHcO3OofKlkDTW8SZC2ja+Y0e+DxQBP4KQNicqbb6nHtVquc7evcL7qiBubPC0vCgC0rnG/KnwAuM20poF+9wdxQIRAbEM7FKShSUOUKWiFuwrGwmDo8=03GyA/KHCksRpbTE427Duw==XPrHEX2xHy+5IuXHPHigMw==xabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfv8OLnSINurvOL38hvfHCFsK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYkWldw9We4PoULmmCLsYMJh2V85wkVIZ+xfygiqcn0BDZ0wcyjgOsLXBmegg4oeHQ/hOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvt7rSSsKqJWuEEPG7XZz8sb5eyV+03bXZ3gtEDElHkpTqgEkE1i97ssq+xQ8FQxQorLmtYAPTbAlAdq0WYKCLqf82XYa0/BQxsSDolYh6LyzhVZFSw38B9M8SZoUy1o2TKgLkwqhbWqSOMqSHadZc1GgudYeL6jnT15YoMDxSgh2ipp9xqfEg14hftHUjnn+eVvbFSrB0/64yhNcy8QEpOTugfcXUOdX/QZFUYYfk0z+pX3VK6kDBvsGt1Gu1OiHUE=s7busLq+ySuYDqnFWs2/lg==XPrHEX2xHy+5IuXHPHigMw==xabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfsP07Rrw5G3cPYZKKp1RLZyK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYke9XGiRtdWCLU/9WQpwUqWD1tYwAEOHOn0qZK0z17hqCgkaOp/sLyIGq4J047Pc+HhOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvsUoMF/UIVlrrGwX+ghtGDJtG2OuBC/KY5hLtHN3G7lzmlmSehTw2ec40BqxcLCf2yCmjRSb1xnf+2NtiidKa3qdnk8f2epx/i1vcnG6PLOkSNdJryKVIQSi38X1A/gNtp7hWs97JuVihxDUblVOLWX4TqBDzet8ZvSxxguP+KBGn1CUczRUI28novZLU1KpWTHH64nNLLSLVHuTaQP3mQgisGofYLYhzsW/dnz7OgpbARFXipZ1smUaGbfGSn06sU=",
+                "expires":
+                "NjA3YjA5NjMtMjIyYy00MTVmLWFhYTEtM2ZhMjIzMTlkM2NhOmM3ZjcxZGRmLWFmNTctNDY0ZC05MjViLWRjNWQ4MTA4ZmEyMw==+MsPJeSo0/Py4oMBai+7XPEdfVEAzU5G3AiiAdT5Kh75xG47x+843PTaTg7FPBrU72cwZ5VCUzjLOlxbM3hJL7eZpGPVdgzVxwYPZpktzA3ou8FgWd48FuBhE8nSlO6jxabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfun6peA2iw+Yzgy++JvqYcNK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYkWldw9We4PoULmmCLsYMJhsZXJGTP7Ts2MJvFfhzLpNL7RUMQFh1SgaUw0DDIfhMzhOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvsVvET1WCV8SCPO9Eb3ngKzMfrOATYiVTFgkvxW8ILYMjBTTpT/mxs7h+m2x+dUyYHf0dO6ijEwC+4RbAD3G9no7DYxZ6vwE1rgdgjKMO8FDB70btp5wDLC/Ix4ODpjjcEC+5QjFYqLVx1hHcO3OofKlkDTW8SZC2ja+Y0e+DxQBP4KQNicqbb6nHtVquc7evcL7qiBubPC0vCgC0rnG/KnwAuM20poF+9wdxQIRAbEM7FKShSUOUKWiFuwrGwmDo8=03GyA/KHCksRpbTE427Duw==XPrHEX2xHy+5IuXHPHigMw==xabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfv8OLnSINurvOL38hvfHCFsK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYkWldw9We4PoULmmCLsYMJh2V85wkVIZ+xfygiqcn0BDZ0wcyjgOsLXBmegg4oeHQ/hOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvt7rSSsKqJWuEEPG7XZz8sb5eyV+03bXZ3gtEDElHkpTqgEkE1i97ssq+xQ8FQxQorLmtYAPTbAlAdq0WYKCLqf82XYa0/BQxsSDolYh6LyzhVZFSw38B9M8SZoUy1o2TKgLkwqhbWqSOMqSHadZc1GgudYeL6jnT15YoMDxSgh2ipp9xqfEg14hftHUjnn+eVvbFSrB0/64yhNcy8QEpOTugfcXUOdX/QZFUYYfk0z+pX3VK6kDBvsGt1Gu1OiHUE=s7busLq+ySuYDqnFWs2/lg==XPrHEX2xHy+5IuXHPHigMw==xabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfsP07Rrw5G3cPYZKKp1RLZyK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYke9XGiRtdWCLU/9WQpwUqWD1tYwAEOHOn0qZK0z17hqCgkaOp/sLyIGq4J047Pc+HhOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvsUoMF/UIVlrrGwX+ghtGDJtG2OuBC/KY5hLtHN3G7lzmlmSehTw2ec40BqxcLCf2yCmjRSb1xnf+2NtiidKa3qdnk8f2epx/i1vcnG6PLOkSNdJryKVIQSi38X1A/gNtp7hWs97JuVihxDUblVOLWX4TqBDzet8ZvSxxguP+KBGn1CUczRUI28novZLU1KpWTHH64nNLLSLVHuTaQP3mQgisGofYLYhzsW/dnz7OgpbARFXipZ1smUaGbfGSn06sU=C8gpZPX8vmBkyVufxJn4/g==",
+                "type":
+                "NjA3YjA5NjMtMjIyYy00MTVmLWFhYTEtM2ZhMjIzMTlkM2NhOmM3ZjcxZGRmLWFmNTctNDY0ZC05MjViLWRjNWQ4MTA4ZmEyMw==+MsPJeSo0/Py4oMBai+7XPEdfVEAzU5G3AiiAdT5Kh75xG47x+843PTaTg7FPBrU72cwZ5VCUzjLOlxbM3hJL7eZpGPVdgzVxwYPZpktzA3ou8FgWd48FuBhE8nSlO6jxabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfun6peA2iw+Yzgy++JvqYcNK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYkWldw9We4PoULmmCLsYMJhsZXJGTP7Ts2MJvFfhzLpNL7RUMQFh1SgaUw0DDIfhMzhOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvsVvET1WCV8SCPO9Eb3ngKzMfrOATYiVTFgkvxW8ILYMjBTTpT/mxs7h+m2x+dUyYHf0dO6ijEwC+4RbAD3G9no7DYxZ6vwE1rgdgjKMO8FDB70btp5wDLC/Ix4ODpjjcEC+5QjFYqLVx1hHcO3OofKlkDTW8SZC2ja+Y0e+DxQBP4KQNicqbb6nHtVquc7evcL7qiBubPC0vCgC0rnG/KnwAuM20poF+9wdxQIRAbEM7FKShSUOUKWiFuwrGwmDo8=03GyA/KHCksRpbTE427Duw==XPrHEX2xHy+5IuXHPHigMw==xabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfv8OLnSINurvOL38hvfHCFsK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYkWldw9We4PoULmmCLsYMJh2V85wkVIZ+xfygiqcn0BDZ0wcyjgOsLXBmegg4oeHQ/hOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvt7rSSsKqJWuEEPG7XZz8sb5eyV+03bXZ3gtEDElHkpTqgEkE1i97ssq+xQ8FQxQorLmtYAPTbAlAdq0WYKCLqf82XYa0/BQxsSDolYh6LyzhVZFSw38B9M8SZoUy1o2TKgLkwqhbWqSOMqSHadZc1GgudYeL6jnT15YoMDxSgh2ipp9xqfEg14hftHUjnn+eVvbFSrB0/64yhNcy8QEpOTugfcXUOdX/QZFUYYfk0z+pX3VK6kDBvsGt1Gu1OiHUE=s7busLq+ySuYDqnFWs2/lg==XPrHEX2xHy+5IuXHPHigMw==xabtQWoH8RJJk1FyKJ78J8h8i2PcWmAugfJ4J6nMd+1jVSoiipV4Pcv8bH+8wJLJ2yRaVage8/TzdZJiz2jdRP8bhkuNzFhGx6N1/1mgmvfKihLheMmcU0pLj5uKOYWFb+TB98n1IpNO4G69lia2YoR15LScBzibBPpmKWF+XAr5TeDDHDZQK4N3VBS/e3tFL/yOhkfC9Mw45s3mz83oydQazps2cFzookIhydKJWfsP07Rrw5G3cPYZKKp1RLZyK5uCw8It/0FKvsuW0MAboo4X49sDS+AHTOnVUf67wnnPqJ2M1thThv3dIr/WNn+8xJovJWkwcpGP4T7nH7MOCfZzVnKTHr4hN3q14VUWHYke9XGiRtdWCLU/9WQpwUqWD1tYwAEOHOn0qZK0z17hqCgkaOp/sLyIGq4J047Pc+HhOux8BQ+F7uOGlugo40Eudeoa44m53VQ6Oagup1VnQGQL99rytyAOMbIxeplhO0sHO9K1qxIma7n12grTP/OX+2z715+eQ0GVaWla2uK1JKQyc0nVfY4fg9zApFTrmvsUoMF/UIVlrrGwX+ghtGDJtG2OuBC/KY5hLtHN3G7lzmlmSehTw2ec40BqxcLCf2yCmjRSb1xnf+2NtiidKa3qdnk8f2epx/i1vcnG6PLOkSNdJryKVIQSi38X1A/gNtp7hWs97JuVihxDUblVOLWX4TqBDzet8ZvSxxguP+KBGn1CUczRUI28novZLU1KpWTHH64nNLLSLVHuTaQP3mQgisGofYLYhzsW/dnz7OgpbARFXipZ1smUaGbfGSn06sU=C8gpZPX8vmBkyVufxJn4/g==XPrHEX2xHy+5IuXHPHigMw=="
+                } } } }</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.api/-s-p-a-r-q-l11-s-e-protocol/index.html">it.unibo.arces.wot.sepa.api.SPARQL11SEProtocol</a>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.protocol/-s-s-l-security-manager/index.html">it.unibo.arces.wot.sepa.commons.protocol.SSLSecurityManager</a>
+        </td>
+        <td>
+            <p>The Class SSLSecurityManager. * ### Key and Certificate Storage ### The Java platform provides for
+                long-term persistent storage of cryptographic keys and certificates via key and certificate stores.
+                Specifically, the java.security.KeyStore class represents a key store, a secure repository of
+                cryptographic keys and/or trusted certificates (to be used, for example, during certification path
+                validation), and the java.security.cert.CertStore class represents a certificate store, a public and
+                potentially vast repository of unrelated and typically untrusted certificates. A CertStore may also
+                store CRLs. KeyStore and CertStore implementations are distinguished by types. The Java platform
+                includes the standard PKCS11 and PKCS12 key store types (whose implementations are compliant with the
+                corresponding PKCS specifications from RSA Security). It also contains a proprietary file-based key
+                store type called JKS (which stands for "Java Key Store"), and a type called DKS ("Domain Key Store")
+                which is a collection of keystores that are presented as a single logical keystore. ### PKI Tools ###
+                There are two built-in tools for working with keys, certificates, and key stores: keytool is used to
+                create and manage key stores. It can - Create public/private key pairs - Display, import, and export
+                X.509 v1, v2, and v3 certificates stored as files - Create self-signed certificates ### Secure
+                Communication ### The data that travels across a network can be accessed by someone who is not the
+                intended recipient. When the data includes private information, such as passwords and credit card
+                numbers, steps must be taken to make the data unintelligible to unauthorized parties. It is also
+                important to ensure that you are sending the data to the appropriate party, and that the data has not
+                been modified, either intentionally or unintentionally, during transport. Cryptography forms the basis
+                required for secure communication, and that is described in Section 4. The Java platform also provides
+                API support and provider implementations for a number of standard secure communication protocols. ###
+                SSL/TLS ### The Java platform provides APIs and an implementation of the SSL and TLS protocols that
+                includes functionality for data encryption, message integrity, server authentication, and optional
+                client authentication. Applications can use SSL/TLS to provide for the secure passage of data between
+                two peers over any application protocol, such as HTTP on top of TCP/IP. The javax.net.ssl.SSLSocket
+                class represents a network socket that encapsulates SSL/TLS support on top of a normal stream socket
+                (java.net.Socket). Some applications might want to use alternate data transport abstractions (e.g.,
+                New-I/O); the javax.net.ssl.SSLEngine class is available to produce and consume SSL/TLS packets. The
+                Java platform also includes APIs that support the notion of pluggable (provider-based) key managers and
+                trust managers. A key manager is encapsulated by the javax.net.ssl.KeyManager class, and manages the
+                keys used to perform authentication. A trust manager is encapsulated by the TrustManager class (in the
+                same package), and makes decisions about who to trust based on certificates in the key store it manages.
+                The Java platform includes a built-in provider that implements the SSL/TLS protocols: SSLv3 TLSv1
+                TLSv1.1 TLSv1.2</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core/-service-binder/index.html">it.baratta.giovanni.notificator.core.ServiceBinder</a>
+        </td>
+        <td>
+            <p>Gestisce i notificatori, tramite il moduleBinding si passano delle coppie composte
+                da &lt;nomeLogico,Classe che realizza il servizio di Notificator&gt; si istanziano i notificatori
+                desiderati</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.request/-subscribe-request/index.html">it.unibo.arces.wot.sepa.commons.request.SubscribeRequest</a>
+        </td>
+        <td>
+            <p>This class represents the request of performing a SPARQL 1.1 Subscribe</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.response/-subscribe-response/index.html">it.unibo.arces.wot.sepa.commons.response.SubscribeResponse</a>
+        </td>
+        <td>
+            <p>This class represents the response to a SPARQL 1.1 Subscribe (see SPARQL 1.1 Subscription Language) The
+                JSON serialization is the following: {"subscribed" : "SPUID"}</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.api/-subscription-state/index.html">it.unibo.arces.wot.sepa.api.SubscriptionState</a>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core.network.tcp/-t-c-p-helper/index.html">it.baratta.giovanni.notificator.core.network.tcp.TCPHelper</a>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core.event-source-implementation/-t-c-p-source/index.html">it.baratta.giovanni.notificator.core.eventSourceImplementation.TCPSource</a>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.request/-unsubscribe-request/index.html">it.unibo.arces.wot.sepa.commons.request.UnsubscribeRequest</a>
+        </td>
+        <td>
+            <p>The Class UnsubscribeRequest.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.response/-unsubscribe-response/index.html">it.unibo.arces.wot.sepa.commons.response.UnsubscribeResponse</a>
+        </td>
+        <td>
+            <p>This class represents the response to a SPARQL 1.1 Unsubscribe (see SPARQL 1.1 Subscription Language) The
+                JSON serialization is the following: {"unsubscribed" : "SPUID"}</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.request/-update-request/index.html">it.unibo.arces.wot.sepa.commons.request.UpdateRequest</a>
+        </td>
+        <td>
+            <p>This class represents the request to perform a SPARQL 1.1 Update</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.commons.response/-update-response/index.html">it.unibo.arces.wot.sepa.commons.response.UpdateResponse</a>
+        </td>
+        <td>
+            <p>This class represents the response of a SPARQL 1.1 Update</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.api/-watchdog/index.html">it.unibo.arces.wot.sepa.api.Watchdog</a></td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.baratta.giovanni.notificator.core/-web-server-initializer/index.html">it.baratta.giovanni.notificator.core.WebServerInitializer</a>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="../it.unibo.arces.wot.sepa.api/-websocket/index.html">it.unibo.arces.wot.sepa.api.Websocket</a>
+        </td>
+        <td>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

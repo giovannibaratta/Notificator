@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>NotificatorInitializer.
+        <init> - core
+    </title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">it.baratta.giovanni.notificator.core</a>&nbsp;/&nbsp;<a
+        href="index.html">NotificatorInitializer</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="it.baratta.giovanni.notificator.core.NotificatorInitializer$&lt;init&gt;(kotlin.String, kotlin.collections.Set(()))"></a>
+<code><span class="identifier">NotificatorInitializer</span><span class="symbol">(</span><span class="identifier"
+                                                                                               id="it.baratta.giovanni.notificator.core.NotificatorInitializer$<init>(kotlin.String, kotlin.collections.Set(()))/clientToken">clientToken</span><span
+        class="symbol">:</span>&nbsp;<a
+        href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+        class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                id="it.baratta.giovanni.notificator.core.NotificatorInitializer$<init>(kotlin.String, kotlin.collections.Set(()))/notificatorsRequest">notificatorsRequest</span><span
+        class="symbol">:</span>&nbsp;<a
+        href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html"><span class="identifier">Set</span></a><span
+        class="symbol">&lt;</span><span class="identifier">&lt;ERROR CLASS&gt;</span><span
+        class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Ogni client è associato un <a href="index.html">NotificatorInitializer</a>. Il <a href="index.html">NotificatorInitializer</a>
+    si occupa di inizializzare tutti
+    i notificatori presenti in <a
+            href="-init-.html#it.baratta.giovanni.notificator.core.NotificatorInitializer$<init>(kotlin.String, kotlin.collections.Set(()))/notificatorsRequest">notificatorsRequest</a>
+    utilizzando i parametri oppurtuni. Se non si riesce a configurare
+    anche solo un unico notificatore prima dello scadere del timeout viene lancita un'eccezione.
+    Il <a href="#">notificatorInizializer</a> può eliminare tutte le sottoscrizioni dai Notificator.</p>
+<h3>Parameters</h3>
+<a name="clientToken"></a>
+<code>clientToken</code> - cliente a cui è associato<a name="notificatorsRequest"></a>
+<code>notificatorsRequest</code> - notificatori da inizializzare
+<h3>Exceptions</h3>
+<a name="BadRequestException"></a>
+<code>BadRequestException</code> - se uno dei notificatori da configurare non è disponibile<a
+        name="TimeoutException"></a>
+<code>TimeoutException</code> - se non si è riuscito a configurare tutti i notificatori prima del timeout
+</BODY>
+</HTML>

@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>Message - api</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">api</a>&nbsp;/&nbsp;<a href="../index.html">it.baratta.giovanni.notificator.api</a>&nbsp;/&nbsp;<a
+        href=".">Message</a><br/>
+<br/>
+<h1>Message</h1>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span
+        class="identifier">Message</span></code>
+<p>Wrapper che include i dati effettivi da inviare ad un client
+    più metadati per facilitare il parsing. La coppia &lt;id,source&gt;
+    identifica univocamente un messaggio. Messaggi proveniente da
+    sorgenti differenti possono avere lo stesso id.</p>
+<h3>Parameters</h3>
+<a name="id"></a>
+<code>id</code> - id univoco del messaggio. Serve per identificare il messaggio.<a name="source"></a>
+<code>source</code> - nome della sorgente che ha generato il messaggio<a name="jsonData"></a>
+<code>jsonData</code> - dati da inviare in formato json<a name="classData"></a>
+<code>classData</code> - nome completo della classe dei dati (comprende anche il package)
+<h3>Properties</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="class-data.html">classData</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">val </span><span class="identifier">classData</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code></td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="id.html">id</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">val </span><span class="identifier">id</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span
+                    class="identifier">Long</span></a></code></td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="json-data.html">jsonData</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">val </span><span class="identifier">jsonData</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code></td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="source.html">source</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">val </span><span class="identifier">source</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code></td>
+    </tr>
+    </tbody>
+</table>
+<h3>Companion Object Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="build.html">build</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">build</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.baratta.giovanni.notificator.api.Message.Companion$build(it.baratta.giovanni.notificator.api.IEventSource, kotlin.Long, kotlin.Any)/source">source</span><span
+                    class="symbol">:</span>&nbsp;<a href="../-i-event-source/index.html"><span class="identifier">IEventSource</span></a><span
+                    class="symbol">, </span><span class="identifier"
+                                                  id="it.baratta.giovanni.notificator.api.Message.Companion$build(it.baratta.giovanni.notificator.api.IEventSource, kotlin.Long, kotlin.Any)/id">id</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span
+                    class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                          id="it.baratta.giovanni.notificator.api.Message.Companion$build(it.baratta.giovanni.notificator.api.IEventSource, kotlin.Long, kotlin.Any)/data">data</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span
+                    class="symbol">)</span><span class="symbol">: </span><span class="identifier">Message</span></code>
+            <p>Funzione di supporto per creare un messaggio.</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>
