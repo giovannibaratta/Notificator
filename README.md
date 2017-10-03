@@ -1,8 +1,4 @@
-[![Release](giovannibaratta/Notificator)]
-(giovannibaratta/Notificator)
-
-[![Release](https://jitpack.io/v/giovannibaratta/Notificator.svg)]
-(https://jitpack.io/#giovannibaratta/Notificator)
+[![Release](https://jitpack.io/v/giovannibaratta/Notificator.svg)](https://jitpack.io/#giovannibaratta/Notificator)
 
 <p>Il progetto è diviso in due moduli:
 <ul>
