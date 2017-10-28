@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>INotificationHandler - core</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">it.unibo.arces.wot.sepa.api</a>&nbsp;/&nbsp;<a
+        href=".">INotificationHandler</a><br/>
+<br/>
+<h1>INotificationHandler</h1>
+<code><span class="keyword">interface </span><span class="identifier">INotificationHandler</span></code>
+<p>The Interface NotificationHandler.</p>
+<h3>Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="on-broken-socket.html">onBrokenSocket</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onBrokenSocket</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Broken subscription. This method is called if the Websocket connection has been lost</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="on-error.html">onError</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onError</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.unibo.arces.wot.sepa.api.INotificationHandler$onError(it.unibo.arces.wot.sepa.commons.response.ErrorResponse)/errorResponse">errorResponse</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="../../it.unibo.arces.wot.sepa.commons.response/-error-response/index.html"><span
+                    class="identifier">ErrorResponse</span></a><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>On error.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="on-ping.html">onPing</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">abstract</span> <span class="keyword">fun </span><span
+                    class="identifier">onPing</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Ping.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="on-semantic-event.html">onSemanticEvent</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onSemanticEvent</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.unibo.arces.wot.sepa.api.INotificationHandler$onSemanticEvent(it.unibo.arces.wot.sepa.commons.response.Notification)/notify">notify</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="../../it.unibo.arces.wot.sepa.commons.response/-notification/index.html"><span
+                    class="identifier">Notification</span></a><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Semantic event.</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p>
+                <a href="../../it.baratta.giovanni.notificator.core.event-source-implementation/-notification-handler/index.html">NotificationHandler</a>
+            </p>
+        </td>
+        <td>
+            <code><span class="keyword">class </span><span class="identifier">NotificationHandler</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<span class="identifier">INotificationHandler</span></code></td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

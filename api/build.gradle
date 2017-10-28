@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'kotlin'
 
 buildscript {
-    ext.kotlin_version = '1.1.4-3'
+    ext.kotlin_version = '1.1.51'
 
     dependencies {
         repositories {
@@ -12,11 +12,11 @@ buildscript {
     }
 }
 
-
 dependencies{
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.1.3'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.1'
 }
 
 compileKotlin {

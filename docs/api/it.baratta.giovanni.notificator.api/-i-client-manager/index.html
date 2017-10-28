@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>IClientManager - api</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">api</a>&nbsp;/&nbsp;<a href="../index.html">it.baratta.giovanni.notificator.api</a>&nbsp;/&nbsp;<a
+        href=".">IClientManager</a><br/>
+<br/>
+<h1>IClientManager</h1>
+<code><span class="keyword">interface </span><span class="identifier">IClientManager</span></code>
+<p>Rappresenta un gestore dei client. Il gestore deve inizializzare i moduli
+    specificati dal cliente e rilasciare un token univoco in caso di successo.
+    Inoltre deve effettuare il cleanup delle risorse quando un client chiede di
+    cancellare la registrazione.</p>
+<p>L'implementazione deve essere thread safe.</p>
+<h3>Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="register-client.html">registerClient</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">registerClient</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.baratta.giovanni.notificator.api.IClientManager$registerClient(kotlin.collections.Set((it.baratta.giovanni.notificator.api.request.ModuleRequest)), kotlin.collections.Set((it.baratta.giovanni.notificator.api.request.ModuleRequest)))/eventSourceRequest">eventSourceRequest</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html"><span
+                    class="identifier">Set</span></a><span class="symbol">&lt;</span><a
+                    href="../../it.baratta.giovanni.notificator.api.request/-module-request/index.html"><span
+                    class="identifier">ModuleRequest</span></a><span class="symbol">&gt;</span><span
+                    class="symbol">, </span><span class="identifier"
+                                                  id="it.baratta.giovanni.notificator.api.IClientManager$registerClient(kotlin.collections.Set((it.baratta.giovanni.notificator.api.request.ModuleRequest)), kotlin.collections.Set((it.baratta.giovanni.notificator.api.request.ModuleRequest)))/notificatorsRequest">notificatorsRequest</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html"><span
+                    class="identifier">Set</span></a><span class="symbol">&lt;</span><a
+                    href="../../it.baratta.giovanni.notificator.api.request/-module-request/index.html"><span
+                    class="identifier">ModuleRequest</span></a><span class="symbol">&gt;</span><span
+                    class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code>
+            <p>Inizializza i moduli contenuti in <a
+                    href="register-client.html#it.baratta.giovanni.notificator.api.IClientManager$registerClient(kotlin.collections.Set((it.baratta.giovanni.notificator.api.request.ModuleRequest)), kotlin.collections.Set((it.baratta.giovanni.notificator.api.request.ModuleRequest)))/eventSourceRequest">eventSourceRequest</a>
+                e
+                <a href="register-client.html#it.baratta.giovanni.notificator.api.IClientManager$registerClient(kotlin.collections.Set((it.baratta.giovanni.notificator.api.request.ModuleRequest)), kotlin.collections.Set((it.baratta.giovanni.notificator.api.request.ModuleRequest)))/notificatorsRequest">notificatorsRequest</a>.
+                Entrambi i set devono contenere almeno un elemento.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="registration-status.html">registrationStatus</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">registrationStatus</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.baratta.giovanni.notificator.api.IClientManager$registrationStatus(kotlin.String)/clientToken">clientToken</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span
+                    class="identifier">&lt;ERROR CLASS&gt;</span><span class="symbol">&lt;</span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html"><span
+                    class="identifier">Set</span></a><span class="symbol">&lt;</span><a
+                    href="../../it.baratta.giovanni.notificator.api.request/-module-request/index.html"><span
+                    class="identifier">ModuleRequest</span></a><span class="symbol">&gt;</span><span
+                    class="symbol">,</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html"><span
+                    class="identifier">Set</span></a><span class="symbol">&lt;</span><a
+                    href="../../it.baratta.giovanni.notificator.api.request/-module-request/index.html"><span
+                    class="identifier">ModuleRequest</span></a><span class="symbol">&gt;</span><span
+                    class="symbol">&gt;</span></code>
+            <p>Verifica se il token <a
+                    href="registration-status.html#it.baratta.giovanni.notificator.api.IClientManager$registrationStatus(kotlin.String)/clientToken">clientToken</a>
+                è registrato nel sistema.
+                Se presente restituisce una lista dei moduli ancora attivi.
+                Se non presente lancia eccezione.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="unregister-client.html">unregisterClient</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">unregisterClient</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.baratta.giovanni.notificator.api.IClientManager$unregisterClient(kotlin.String)/clientToken">clientToken</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Elimina il client dal sistema rilasciando le risorse a lui riservate.
+                Se il token non è presente non viene lanciata nessuna eccezione</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

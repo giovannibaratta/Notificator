@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>it.baratta.giovanni.notificator.api - api</title>
+    <link rel="stylesheet" href="..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">api</a>&nbsp;/&nbsp;<a href=".">it.baratta.giovanni.notificator.api</a><br/>
+<br/>
+<h2>Package it.baratta.giovanni.notificator.api</h2>
+<h3>Types</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-data-type/index.html">DataType</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">enum</span> <span class="keyword">class </span><span
+                    class="identifier">DataType</span></code>
+            <p>Enumerativo per indicare il formato del dato trasferito.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-i-client-manager/index.html">IClientManager</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">interface </span><span class="identifier">IClientManager</span></code>
+            <p>Rappresenta un gestore dei client. Il gestore deve inizializzare i moduli
+                specificati dal cliente e rilasciare un token univoco in caso di successo.
+                Inoltre deve effettuare il cleanup delle risorse quando un client chiede di
+                cancellare la registrazione.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-i-event-source/index.html">IEventSource</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">interface </span><span class="identifier">IEventSource</span></code>
+            <p>Rappresenta una sorgente dati. Ogni implementazione di una sorgente dati
+                può gestire autonomamente i client registrati. Quando una sorgente dati non
+                è più necessaria viene invocato lo <a href="-i-event-source/shutdown.html">shutdown</a>. Da quel momento
+                in poi la
+                sorgente non può essere utilizzata.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-i-notificator/index.html">INotificator</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">interface </span><span class="identifier">INotificator</span></code>
+            <p>Rappresenta un sistema di notifica. Ogni implementazione rappresenta una tecnologia
+                differente. Ogni implementazione può gestire autonomamente i client registrati.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-message/index.html">Message</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">data</span> <span class="keyword">class </span><span
+                    class="identifier">Message</span></code>
+            <p>Wrapper che include i dati effettivi da inviare ad un client
+                più metadati per facilitare il parsing. La coppia &lt;id,source&gt;
+                identifica univocamente un messaggio. Messaggi proveniente da
+                sorgenti differenti possono avere lo stesso id.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-request-code/index.html">RequestCode</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">RequestCode</span></code>
+            <p>Enumerativo utilizzato per intificare il tipo
+                di operazioni richiesta.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-request-handler/index.html">RequestHandler</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">interface </span><span class="identifier">RequestHandler</span></code>
+            <p>Raprresenta un gestore di richieste dei client.</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

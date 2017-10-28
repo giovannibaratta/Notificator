@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>ARBindingsResults - core</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">it.unibo.arces.wot.sepa.commons.sparql</a>&nbsp;/&nbsp;<a
+        href=".">ARBindingsResults</a><br/>
+<br/>
+<h1>ARBindingsResults</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span
+        class="identifier">ARBindingsResults</span></code>
+<p>This class represents the content of a SEPA notification It includes the added and removed bindings since the
+    previous notification.</p>
+<h3>Constructors</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-init-.html">&lt;init&gt;</a></p>
+        </td>
+        <td>
+            <code><span class="identifier">ARBindingsResults</span><span class="symbol">(</span><span class="identifier"
+                                                                                                      id="it.unibo.arces.wot.sepa.commons.sparql.ARBindingsResults$<init>(JsonObject)/results">results</span><span
+                    class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span></code><br/>
+            <code><span class="identifier">ARBindingsResults</span><span class="symbol">(</span><span class="identifier"
+                                                                                                      id="it.unibo.arces.wot.sepa.commons.sparql.ARBindingsResults$<init>(it.unibo.arces.wot.sepa.commons.sparql.BindingsResults, it.unibo.arces.wot.sepa.commons.sparql.BindingsResults)/added">added</span><span
+                    class="symbol">:</span>&nbsp;<a href="../-bindings-results/index.html"><span class="identifier">BindingsResults</span></a><span
+                    class="symbol">, </span><span class="identifier"
+                                                  id="it.unibo.arces.wot.sepa.commons.sparql.ARBindingsResults$<init>(it.unibo.arces.wot.sepa.commons.sparql.BindingsResults, it.unibo.arces.wot.sepa.commons.sparql.BindingsResults)/removed">removed</span><span
+                    class="symbol">:</span>&nbsp;<a href="../-bindings-results/index.html"><span class="identifier">BindingsResults</span></a><span
+                    class="symbol">)</span></code>
+            <p>Instantiates a new AR bindings results.</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="get-added-bindings.html">getAddedBindings</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAddedBindings</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="../-bindings-results/index.html"><span class="identifier">BindingsResults</span></a></code>
+            <p>Gets the added bindings.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="get-removed-bindings.html">getRemovedBindings</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRemovedBindings</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="../-bindings-results/index.html"><span class="identifier">BindingsResults</span></a></code>
+            <p>Gets the removed bindings.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="to-json.html">toJson</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">toJson</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><span class="identifier">JsonObject</span></code>
+            <p>To json.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="to-string.html">toString</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code></td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

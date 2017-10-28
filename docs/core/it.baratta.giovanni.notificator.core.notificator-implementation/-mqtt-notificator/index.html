@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>MqttNotificator - core</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">it.baratta.giovanni.notificator.core.notificatorImplementation</a>&nbsp;/&nbsp;<a
+        href=".">MqttNotificator</a><br/>
+<br/>
+<h1>MqttNotificator</h1>
+<code><span class="keyword">class </span><span class="identifier">MqttNotificator</span></code>
+<p>Crea dei thread per gestire le connessione verso dei broker mqtt.
+    Ogni cliente dispone di un proprio thread.</p>
+<h3>Properties</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="notificator-name.html">notificatorName</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">val </span><span class="identifier">notificatorName</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code></td>
+    </tr>
+    </tbody>
+</table>
+<h3>Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="init-client.html">initClient</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">initClient</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.baratta.giovanni.notificator.core.notificatorImplementation.MqttNotificator$initClient(kotlin.String, )/clientToken">clientToken</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="it.baratta.giovanni.notificator.core.notificatorImplementation.MqttNotificator$initClient(kotlin.String, )/params">params</span><span
+                    class="symbol">:</span>&nbsp;<span class="identifier">&lt;ERROR CLASS&gt;</span><span
+                    class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Crea un nuovo thread per il cliente. Utilizza <a
+                    href="init-client.html#it.baratta.giovanni.notificator.core.notificatorImplementation.MqttNotificator$initClient(kotlin.String, )/params">params</a>
+                per le impostazioni della
+                connessione.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="notify.html">notify</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">notify</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.baratta.giovanni.notificator.core.notificatorImplementation.MqttNotificator$notify(kotlin.String, )/clientToken">clientToken</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="it.baratta.giovanni.notificator.core.notificatorImplementation.MqttNotificator$notify(kotlin.String, )/message">message</span><span
+                    class="symbol">:</span>&nbsp;<span class="identifier">&lt;ERROR CLASS&gt;</span><span
+                    class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Invia i dati al mqtt broker utilizzando il thread del cliente</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="release-client.html">releaseClient</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">releaseClient</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.baratta.giovanni.notificator.core.notificatorImplementation.MqttNotificator$releaseClient(kotlin.String)/clientToken">clientToken</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Chiudo la connessione e il thread relativo al cliente. Non lancia eccezione se il
+                cliente non è registrato.</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Companion Object Properties</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="instance.html">instance</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">val </span><span class="identifier">instance</span><span
+                    class="symbol">: </span><span class="identifier">MqttNotificator</span></code></td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

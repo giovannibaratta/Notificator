@@ -1,0 +1,141 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>Notification - core</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">it.unibo.arces.wot.sepa.commons.response</a>&nbsp;/&nbsp;<a
+        href=".">Notification</a><br/>
+<br/>
+<h1>Notification</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Notification</span>&nbsp;<span
+        class="symbol">:</span>&nbsp;<a href="../-response/index.html"><span
+        class="identifier">Response</span></a></code>
+<p>This class represents a SPARQL Notification (see SPARQL 1.1 Subscription Language) The JSON serialization looks like:
+    <code>{ "spuid" : "SPUID" , "sequence" : "SEQUENTIAL NUMBER", "results" : &lt;JSON Notification Results&gt;
+        } </code></p>
+<h3>Constructors</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-init-.html">&lt;init&gt;</a></p>
+        </td>
+        <td>
+            <code><span class="identifier">Notification</span><span class="symbol">(</span><span class="identifier"
+                                                                                                 id="it.unibo.arces.wot.sepa.commons.response.Notification$<init>(kotlin.String, it.unibo.arces.wot.sepa.commons.sparql.ARBindingsResults, kotlin.Int)/spuid">spuid</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="it.unibo.arces.wot.sepa.commons.response.Notification$<init>(kotlin.String, it.unibo.arces.wot.sepa.commons.sparql.ARBindingsResults, kotlin.Int)/results">results</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="../../it.unibo.arces.wot.sepa.commons.sparql/-a-r-bindings-results/index.html"><span
+                    class="identifier">ARBindingsResults</span></a><span class="symbol">, </span><span
+                    class="identifier"
+                    id="it.unibo.arces.wot.sepa.commons.response.Notification$<init>(kotlin.String, it.unibo.arces.wot.sepa.commons.sparql.ARBindingsResults, kotlin.Int)/sequence">sequence</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span
+                    class="symbol">)</span></code><br/>
+            <code><span class="identifier">Notification</span><span class="symbol">(</span><span class="identifier"
+                                                                                                 id="it.unibo.arces.wot.sepa.commons.response.Notification$<init>(JsonObject)/notify">notify</span><span
+                    class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span></code>
+            <p>Instantiates a new notification.</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="get-a-r-bindings-results.html">getARBindingsResults</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getARBindingsResults</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="../../it.unibo.arces.wot.sepa.commons.sparql/-a-r-bindings-results/index.html"><span
+                    class="identifier">ARBindingsResults</span></a></code>
+            <p>Gets the AR bindings results.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="get-s-p-u-i-d.html">getSPUID</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">getSPUID</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code>
+            <p>Gets the spuid.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="get-sequence.html">getSequence</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSequence</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+            <p>Gets the sequence.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="to-be-notified.html">toBeNotified</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toBeNotified</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span
+                    class="identifier">Boolean</span></a></code>
+            <p>To be notified.</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="../-response/get-as-json-object.html">getAsJsonObject</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAsJsonObject</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span
+                    class="identifier">JsonObject</span></code>
+            <p>Gets the as json object.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="../-response/get-token.html">getToken</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">getToken</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+            <p>Gets the token.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="../-response/to-string.html">toString</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code></td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

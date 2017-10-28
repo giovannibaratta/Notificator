@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>it.unibo.arces.wot.sepa.commons.protocol - core</title>
+    <link rel="stylesheet" href="..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">core</a>&nbsp;/&nbsp;<a href=".">it.unibo.arces.wot.sepa.commons.protocol</a><br/>
+<br/>
+<h2>Package it.unibo.arces.wot.sepa.commons.protocol</h2>
+<h3>Types</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-s-p-a-r-q-l11-properties/index.html">SPARQL11Properties</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SPARQL11Properties</span></code>
+            <p>The Class SPARQL11Properties includes all the properties needed to connect to a SPARQL 1.1 Protocol
+                Service: the URLs used by queries and updates (scheme, host, port and path), the HTTP method used by the
+                primitives (GET, POST or URL_ENCODED_POST) and the format of the results (JSON, XML, HTML, CSV)
+            <pre><code> { parameters": { "host": "localhost", "ports":{ "http" : 9999 }, "paths": { "update" : "/blazegraph/namespace/kb/sparql", "query" : "/blazegraph/namespace/kb/sparql" }, "methods": { "query": "POST", "update": "URL_ENCODED_POST" }, "formats" : { "update" : "HTML", "query" : "JSON" } } }</code></pre>
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-s-p-a-r-q-l11-protocol/index.html">SPARQL11Protocol</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SPARQL11Protocol</span></code>
+            <p>This class implements the SPARQL 1.1 Protocol</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="-s-s-l-security-manager/index.html">SSLSecurityManager</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SSLSecurityManager</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<a
+                    href="http://docs.oracle.com/javase/6/docs/api/javax/net/ssl/HostnameVerifier.html"><span
+                    class="identifier">HostnameVerifier</span></a></code>
+            <p>The Class SSLSecurityManager. * ### Key and Certificate Storage ### The Java platform provides for
+                long-term persistent storage of cryptographic keys and certificates via key and certificate stores.
+                Specifically, the java.security.KeyStore class represents a key store, a secure repository of
+                cryptographic keys and/or trusted certificates (to be used, for example, during certification path
+                validation), and the java.security.cert.CertStore class represents a certificate store, a public and
+                potentially vast repository of unrelated and typically untrusted certificates. A CertStore may also
+                store CRLs. KeyStore and CertStore implementations are distinguished by types. The Java platform
+                includes the standard PKCS11 and PKCS12 key store types (whose implementations are compliant with the
+                corresponding PKCS specifications from RSA Security). It also contains a proprietary file-based key
+                store type called JKS (which stands for "Java Key Store"), and a type called DKS ("Domain Key Store")
+                which is a collection of keystores that are presented as a single logical keystore. ### PKI Tools ###
+                There are two built-in tools for working with keys, certificates, and key stores: keytool is used to
+                create and manage key stores. It can - Create public/private key pairs - Display, import, and export
+                X.509 v1, v2, and v3 certificates stored as files - Create self-signed certificates ### Secure
+                Communication ### The data that travels across a network can be accessed by someone who is not the
+                intended recipient. When the data includes private information, such as passwords and credit card
+                numbers, steps must be taken to make the data unintelligible to unauthorized parties. It is also
+                important to ensure that you are sending the data to the appropriate party, and that the data has not
+                been modified, either intentionally or unintentionally, during transport. Cryptography forms the basis
+                required for secure communication, and that is described in Section 4. The Java platform also provides
+                API support and provider implementations for a number of standard secure communication protocols. ###
+                SSL/TLS ### The Java platform provides APIs and an implementation of the SSL and TLS protocols that
+                includes functionality for data encryption, message integrity, server authentication, and optional
+                client authentication. Applications can use SSL/TLS to provide for the secure passage of data between
+                two peers over any application protocol, such as HTTP on top of TCP/IP. The javax.net.ssl.SSLSocket
+                class represents a network socket that encapsulates SSL/TLS support on top of a normal stream socket
+                (java.net.Socket). Some applications might want to use alternate data transport abstractions (e.g.,
+                New-I/O); the javax.net.ssl.SSLEngine class is available to produce and consume SSL/TLS packets. The
+                Java platform also includes APIs that support the notion of pluggable (provider-based) key managers and
+                trust managers. A key manager is encapsulated by the javax.net.ssl.KeyManager class, and manages the
+                keys used to perform authentication. A trust manager is encapsulated by the TrustManager class (in the
+                same package), and makes decisions about who to trust based on certificates in the key store it manages.
+                The Java platform includes a built-in provider that implements the SSL/TLS protocols: SSLv3 TLSv1
+                TLSv1.1 TLSv1.2</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

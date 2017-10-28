@@ -2,19 +2,34 @@ apply plugin: 'maven'
 
 group = 'com.github.giovannibaratta'
 
-subprojects {
+buildscript{
+    ext.dokka_version = '0.9.14'
     dependencies{
-
+        repositories{
+            maven { url "https://plugins.gradle.org/m2/" }
+            jcenter()
+        }
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokka_version"
     }
+}
+
+subprojects {
 
     repositories{
         mavenCentral()
         google()
     }
 
+    apply plugin: 'org.jetbrains.dokka'
+
+    dokka {
+        outputFormat = 'html'
+        outputDirectory = "$rootProject.rootDir/docs"
+    }
+
     apply plugin : 'idea'
     apply plugin : 'maven'
 
-    group 'it.baratta.giovanni.habitat'
-    version '0.2-SNAPSHOT'
+    group 'it.baratta.giovanni'
+    version '1.0'
 }

@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>IEventSource - api</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">api</a>&nbsp;/&nbsp;<a href="../index.html">it.baratta.giovanni.notificator.api</a>&nbsp;/&nbsp;<a
+        href=".">IEventSource</a><br/>
+<br/>
+<h1>IEventSource</h1>
+<code><span class="keyword">interface </span><span class="identifier">IEventSource</span></code>
+<p>Rappresenta una sorgente dati. Ogni implementazione di una sorgente dati
+    può gestire autonomamente i client registrati. Quando una sorgente dati non
+    è più necessaria viene invocato lo <a href="shutdown.html">shutdown</a>. Da quel momento in poi la
+    sorgente non può essere utilizzata.</p>
+<h3>Properties</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="source-name.html">sourceName</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">sourceName</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code>
+            <p>Nome logico della sorgente</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="init-client.html">initClient</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">initClient</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.baratta.giovanni.notificator.api.IEventSource$initClient(kotlin.String, it.baratta.giovanni.notificator.api.request.ConfigurationParams)/clientToken">clientToken</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="it.baratta.giovanni.notificator.api.IEventSource$initClient(kotlin.String, it.baratta.giovanni.notificator.api.request.ConfigurationParams)/params">params</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="../../it.baratta.giovanni.notificator.api.request/-configuration-params/index.html"><span
+                    class="identifier">ConfigurationParams</span></a><span class="symbol">)</span><span
+                    class="symbol">: </span><span class="identifier">&lt;ERROR CLASS&gt;</span><span
+                    class="symbol">&lt;</span><a href="../-message/index.html"><span
+                    class="identifier">Message</span></a><span class="symbol">&gt;</span></code>
+            <p>Registra il client presso il modulo. Dal parametro <a
+                    href="init-client.html#it.baratta.giovanni.notificator.api.IEventSource$initClient(kotlin.String, it.baratta.giovanni.notificator.api.request.ConfigurationParams)/params">params</a>
+                è possibile recuperare i
+                parametri di configurazione inviati dal client.
+                In questo metodo bisogna configurare il modulo per lo specifico cliente.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="release-client.html">releaseClient</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">releaseClient</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.baratta.giovanni.notificator.api.IEventSource$releaseClient(kotlin.String)/clientToken">clientToken</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Il client con il token <a
+                    href="release-client.html#it.baratta.giovanni.notificator.api.IEventSource$releaseClient(kotlin.String)/clientToken">clientToken</a>
+                non ha più bisogno di utilizzare la sorgente.
+                In questo metodo bisogna fare il cleanup del modulo per lo specifico cliente.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="shutdown.html">shutdown</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">shutdown</span><span
+                    class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>La sorgente dati non è più necessaria. Bisogna rilasciare tutte
+                le risorse utilizzate.</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

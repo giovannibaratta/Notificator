@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>Request - core</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">it.unibo.arces.wot.sepa.commons.request</a>&nbsp;/&nbsp;<a
+        href=".">Request</a><br/>
+<br/>
+<h1>Request</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span
+        class="identifier">Request</span></code>
+<p>This class represents a generic request (i.e., QUERY, UPDATE, SUBSCRIBE, UNSUBSCRIBE)</p>
+<h3>Constructors</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-init-.html">&lt;init&gt;</a></p>
+        </td>
+        <td>
+            <code><span class="identifier">Request</span><span class="symbol">(</span><span class="identifier"
+                                                                                            id="it.unibo.arces.wot.sepa.commons.request.Request$<init>(kotlin.Int, kotlin.String)/token">token</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span
+                    class="symbol">, </span><span class="identifier"
+                                                  id="it.unibo.arces.wot.sepa.commons.request.Request$<init>(kotlin.Int, kotlin.String)/sparql">sparql</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">)</span></code><br/>
+            <code><span class="identifier">Request</span><span class="symbol">(</span><span class="identifier"
+                                                                                            id="it.unibo.arces.wot.sepa.commons.request.Request$<init>(kotlin.String)/sparql">sparql</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">)</span></code>
+            <p>Instantiates a new request.</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="get-s-p-a-r-q-l.html">getSPARQL</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">getSPARQL</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a></code>
+            <p>Gets the sparql.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="get-token.html">getToken</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">getToken</span><span class="symbol">(</span><span class="symbol">)</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+            <p>Gets the token.</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="../-query-request/index.html">QueryRequest</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">QueryRequest</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<span class="identifier">Request</span></code>
+            <p>This class represents a request to perform a SPARQL 1.1 Query</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="../-unsubscribe-request/index.html">UnsubscribeRequest</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UnsubscribeRequest</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<span class="identifier">Request</span></code>
+            <p>The Class UnsubscribeRequest.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="../-update-request/index.html">UpdateRequest</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UpdateRequest</span>&nbsp;<span
+                    class="symbol">:</span>&nbsp;<span class="identifier">Request</span></code>
+            <p>This class represents the request to perform a SPARQL 1.1 Update</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

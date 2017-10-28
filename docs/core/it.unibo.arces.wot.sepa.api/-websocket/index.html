@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>Websocket - core</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">it.unibo.arces.wot.sepa.api</a>&nbsp;/&nbsp;<a
+        href=".">Websocket</a><br/>
+<br/>
+<h1>Websocket</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span
+        class="identifier">Websocket</span></code>
+<h3>Constructors</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-init-.html">&lt;init&gt;</a></p>
+        </td>
+        <td>
+            <code><span class="identifier">Websocket</span><span class="symbol">(</span><span class="identifier"
+                                                                                              id="it.unibo.arces.wot.sepa.api.Websocket$<init>(kotlin.String, kotlin.Boolean, it.unibo.arces.wot.sepa.api.INotificationHandler, kotlin.String)/wsUrl">wsUrl</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="it.unibo.arces.wot.sepa.api.Websocket$<init>(kotlin.String, kotlin.Boolean, it.unibo.arces.wot.sepa.api.INotificationHandler, kotlin.String)/ssl">ssl</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span
+                    class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                             id="it.unibo.arces.wot.sepa.api.Websocket$<init>(kotlin.String, kotlin.Boolean, it.unibo.arces.wot.sepa.api.INotificationHandler, kotlin.String)/handler">handler</span><span
+                    class="symbol">:</span>&nbsp;<a href="../-i-notification-handler/index.html"><span
+                    class="identifier">INotificationHandler</span></a><span class="symbol">, </span><span
+                    class="identifier"
+                    id="it.unibo.arces.wot.sepa.api.Websocket$<init>(kotlin.String, kotlin.Boolean, it.unibo.arces.wot.sepa.api.INotificationHandler, kotlin.String)/jksFile">jksFile</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">)</span></code></td>
+    </tr>
+    </tbody>
+</table>
+<h3>Properties</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-s-u-b-s-c-r-i-b-e_-t-i-m-e-o-u-t.html">SUBSCRIBE_TIMEOUT</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">static</span> <span class="keyword">var </span><span class="identifier">SUBSCRIBE_TIMEOUT</span><span
+                    class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span
+                    class="identifier">Long</span></a></code></td>
+    </tr>
+    </tbody>
+</table>
+<h3>Functions</h3>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="set-notification-handler.html">setNotificationHandler</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setNotificationHandler</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.unibo.arces.wot.sepa.api.Websocket$setNotificationHandler(it.unibo.arces.wot.sepa.api.INotificationHandler)/handler">handler</span><span
+                    class="symbol">:</span>&nbsp;<a href="../-i-notification-handler/index.html"><span
+                    class="identifier">INotificationHandler</span></a><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code></td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="subscribe.html">subscribe</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span
+                    class="identifier">subscribe</span><span class="symbol">(</span><span class="identifier"
+                                                                                          id="it.unibo.arces.wot.sepa.api.Websocket$subscribe(kotlin.String, kotlin.String, kotlin.String)/sparql">sparql</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="it.unibo.arces.wot.sepa.api.Websocket$subscribe(kotlin.String, kotlin.String, kotlin.String)/alias">alias</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="it.unibo.arces.wot.sepa.api.Websocket$subscribe(kotlin.String, kotlin.String, kotlin.String)/jwt">jwt</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="../../it.unibo.arces.wot.sepa.commons.response/-response/index.html"><span class="identifier">Response</span></a></code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="unsubscribe.html">unsubscribe</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unsubscribe</span><span
+                    class="symbol">(</span><span class="identifier"
+                                                 id="it.unibo.arces.wot.sepa.api.Websocket$unsubscribe(kotlin.String, kotlin.String)/spuid">spuid</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="it.unibo.arces.wot.sepa.api.Websocket$unsubscribe(kotlin.String, kotlin.String)/jwt">jwt</span><span
+                    class="symbol">:</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="../../it.unibo.arces.wot.sepa.commons.response/-response/index.html"><span class="identifier">Response</span></a></code>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</BODY>
+</HTML>

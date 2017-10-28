@@ -1,0 +1,16 @@
+$dokka.format:html
+$dokka.linkExtension:html
+$dokka.location:it.baratta.giovanni.notificator.core.network.tcp$readBytes(java.io.InputStream, kotlin.Int)it.baratta.giovanni.notificator.core.network.tcp/java.io.-input-stream/read-bytes.html
+it.baratta.giovanni.notificator.core
+it.baratta.giovanni.notificator.core.eventSourceImplementation
+it.baratta.giovanni.notificator.core.network
+it.baratta.giovanni.notificator.core.network.rest
+it.baratta.giovanni.notificator.core.network.tcp
+it.baratta.giovanni.notificator.core.network.websocket
+it.baratta.giovanni.notificator.core.notificatorImplementation
+it.baratta.giovanni.notificator.utils
+it.unibo.arces.wot.sepa.api
+it.unibo.arces.wot.sepa.commons.protocol
+it.unibo.arces.wot.sepa.commons.request
+it.unibo.arces.wot.sepa.commons.response
+it.unibo.arces.wot.sepa.commons.sparql
